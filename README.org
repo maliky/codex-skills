@@ -1,0 +1,115 @@
+#+TITLE: Local Skill Backlog
+
+This folder is the local skill workspace for this host.
+
+I reviewed:
+- the Agent Skills specification at =agentskills.io/specification=
+- the OpenAI Codex skills documentation
+- the =openai/skills= catalog
+- the past Codex session history stored on this machine
+
+The main constraints repeated by the upstream spec are:
+- each skill lives in its own directory
+- each skill must contain a =SKILL.md=
+- the =SKILL.md= must start with YAML frontmatter with at least =name= and =description=
+- optional material should stay in =references/=, =scripts/=, =assets/=, and optionally =agents/openai.yaml=
+- skill descriptions must say both what the skill does and when it should trigger
+- skills should use progressive disclosure: keep =SKILL.md= lean and move detail to references
+
+* Candidate Skills From Past Work On This Host
+
+The interaction history on this host suggests a stable set of reusable skills.
+
+** TODO 1. =document-conversion=
+Purpose:
+- extended document conversion beyond plain pandoc
+- org/tex -> docx
+- docx -> org/latex
+- support for =.cls=, =.sty=, and PDF reference material
+
+Why it is a good candidate:
+- repeated work on Org, LaTeX, PDF, class files, and export cleanup
+- repeated need to preserve structure rather than only plain text
+- repeated need to round-trip between authoring formats
+
+Status:
+- drafted in this folder
+
+** TODO 3. =tu-curriculum-transformation=
+Purpose:
+- transform messy ODT or imported text into normalized Org/LaTeX curriculum sources
+
+Why it is a good candidate:
+- repeated curriculum cleanup for CAFS, CAS, CBA, and other colleges
+- recurring grammar questions, table normalization, course description restructuring, and cross-file consistency work
+
+Likely scope:
+- heading normalization
+- table family selection
+- course description macro conversion
+- structure-preserving cleanup from ODT residue
+
+** TODO 2. =tu-policy-authoring=
+Purpose:
+- maintain Tubman University standalone policies, manuals, procedures, guides, and annexes in Org/LaTeX
+
+Why it is a good candidate:
+- long sequence of sessions on research policy, IRB policy, policy manuals, numbering, formatting, and guide/procedure distinctions
+
+Likely scope:
+- policy framing and named blocks
+- manual assembly
+- PDF inclusion versus source inclusion decisions
+- terminology standardization
+
+** TODO 4. =tu-latex-classes=
+Purpose:
+- maintain and extend institution-specific LaTeX classes and style files such as =tupolicy.cls=, =tupolicymanual.cls=, =tuprocedures.cls=, =tuform.cls=, =tumemo.cls=, =tuminutes.cls=, and curriculum classes
+
+Why it is a good candidate:
+- repeated class-level edits across memo, minutes, forms, policies, and curriculum work
+- recurring concerns about spacing, headings, metadata blocks, footer/header layout, and Org export compatibility
+
+** TODO 5. =research-irb-forms=
+Purpose:
+- maintain IRB and research forms in Org/LaTeX with reusable class-based rendering
+
+Why it is a good candidate:
+- repeated work on =forms-irb.org=, IRB cover letter, protocol submission checklist, and class/header parity
+
+** TODO 6. =codex-memory-recovery=
+Purpose:
+- recover prior work from local Codex history, session indexes, transcripts, and state stores
+
+Why it is a good candidate:
+- repeated need to recover policy-session ids, recall previous decisions, and map prior work to current tasks
+
+** TODO 7. =tusis-import-debugging=
+Purpose:
+- debug academic import/export pipelines in the Tusis Django codebase
+
+Why it is a good candidate:
+- repeated sessions on import-export, CSV canonicalization, curriculum/course lookup, circular imports, and typed manager fixes
+
+** COMMENT 8. =schedule-conflict-analysis=
+Purpose:
+- debug and improve the schedule conflict checker and its timetable visualizations
+
+Why it is a good candidate:
+- repeated work on uploaded Excel schedules, parsing problems, visualization logic, and conflict reporting
+
+* Backlog Order
+
+Recommended implementation order:
+1. =document-conversion=
+2. =tu-curriculum-transformation=
+3. =tu-policy-authoring=
+4. =tu-latex-classes=
+5. =research-irb-forms=
+6. =codex-memory-recovery=
+
+* Notes
+
+- The first drafted skill should stay instruction-heavy and script-light.
+- Once the workflow stabilizes, the next step is to add deterministic helpers in =scripts/= for XML unzip/inspect, Pandoc pipelines, and PDF extraction.
+- The local Codex installation in this environment already exposes skills from =/home/mlk/.codex/skills=, so this directory is the practical working catalog for this host.
