@@ -20,6 +20,20 @@ The main constraints repeated by the upstream spec are:
 
 The interaction history on this host suggests a stable set of reusable skills.
 
+** TODO 0. =long-memory-retrieval=
+Purpose:
+- recover prior work, decisions, and recurring workflows from this Codex repository
+- use =history.jsonl=, =session_index.jsonl=, and =sessions/...jsonl=
+- identify candidate skills and prior session clusters from local evidence
+
+Why it is a good candidate:
+- repeated need to recover prior policy, curriculum, and tooling decisions
+- repeated need to identify session ids and thread names tied to a topic
+- repeated need to reconstruct what kinds of skills have already been practiced on this host
+
+Status:
+- drafted in this folder
+
 ** TODO 1. =document-conversion=
 Purpose:
 - extended document conversion beyond plain pandoc
@@ -84,6 +98,9 @@ Purpose:
 Why it is a good candidate:
 - repeated need to recover policy-session ids, recall previous decisions, and map prior work to current tasks
 
+Note:
+- superseded in practice by the narrower first-draft skill =long-memory-retrieval= which ignores SQLite and focuses on the file-based stores actually used on this host
+
 ** TODO 7. =tusis-import-debugging=
 Purpose:
 - debug academic import/export pipelines in the Tusis Django codebase
@@ -101,15 +118,16 @@ Why it is a good candidate:
 * Backlog Order
 
 Recommended implementation order:
-1. =document-conversion=
-2. =tu-curriculum-transformation=
-3. =tu-policy-authoring=
-4. =tu-latex-classes=
-5. =research-irb-forms=
-6. =codex-memory-recovery=
+1. =long-memory-retrieval=
+2. =document-conversion=
+3. =tu-curriculum-transformation=
+4. =tu-policy-authoring=
+5. =tu-latex-classes=
+6. =research-irb-forms=
 
 * Notes
 
 - The first drafted skill should stay instruction-heavy and script-light.
+- For this host, file-based memory retrieval is more immediately useful than SQLite archaeology.
 - Once the workflow stabilizes, the next step is to add deterministic helpers in =scripts/= for XML unzip/inspect, Pandoc pipelines, and PDF extraction.
 - The local Codex installation in this environment already exposes skills from =/home/mlk/.codex/skills=, so this directory is the practical working catalog for this host.
