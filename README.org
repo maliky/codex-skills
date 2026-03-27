@@ -1,5 +1,21 @@
 #+TITLE: Local Skill Backlog
 
+  1. Policy Design And Formatting
+     For policy structure, standalone policies, manuals, procedures, guides, and IRB/policy formatting work.
+  2. Curriculum Transformation And Typesetting
+     For curriculum cleanup, ODT-to-Org wrangling, radio tables, course descriptions, and curriculum LaTeX workflows.
+  3. Tusis Data Imports And Admin Engineering
+     For Tusis import/export, resources, widgets, managers, fuzzy matching, admin fixes, and academic data pipelines.
+  4. Crypto And Experimental Coding
+     For finnoise, crypto-related prototypes, and adjacent exploratory coding sessions.
+  5. Schedule Conflict Analysis And Visualization
+     For the Flask schedule-checker app, Excel parsing, conflict detection, and timetable/chart work.
+  6. Institutional Templates And LaTeX Tooling
+     For tumemo, tuletter, tuminutes, tuform, tuprocedures, Beamer/template work, and class-level formatting outside the main policy/curriculum streams.
+  7. Codex Meta Memory And Skillcraft
+
+
+  
 This folder is the local skill workspace for this host.
 
 I reviewed:
@@ -25,6 +41,7 @@ Purpose:
 - recover prior work, decisions, and recurring workflows from this Codex repository
 - use =history.jsonl=, =session_index.jsonl=, and =sessions/...jsonl=
 - identify candidate skills and prior session clusters from local evidence
+- handle thread-name changes by treating repeated session ids as rename history, not different sessions
 
 Why it is a good candidate:
 - repeated need to recover prior policy, curriculum, and tooling decisions
@@ -91,16 +108,6 @@ Purpose:
 Why it is a good candidate:
 - repeated work on =forms-irb.org=, IRB cover letter, protocol submission checklist, and class/header parity
 
-** TODO 6. =codex-memory-recovery=
-Purpose:
-- recover prior work from local Codex history, session indexes, transcripts, and state stores
-
-Why it is a good candidate:
-- repeated need to recover policy-session ids, recall previous decisions, and map prior work to current tasks
-
-Note:
-- superseded in practice by the narrower first-draft skill =long-memory-retrieval= which ignores SQLite and focuses on the file-based stores actually used on this host
-
 ** TODO 7. =tusis-import-debugging=
 Purpose:
 - debug academic import/export pipelines in the Tusis Django codebase
@@ -129,5 +136,6 @@ Recommended implementation order:
 
 - The first drafted skill should stay instruction-heavy and script-light.
 - For this host, file-based memory retrieval is more immediately useful than SQLite archaeology.
+- Session ids are more stable than thread names; thread names should be treated as labels that may change over time.
 - Once the workflow stabilizes, the next step is to add deterministic helpers in =scripts/= for XML unzip/inspect, Pandoc pipelines, and PDF extraction.
 - The local Codex installation in this environment already exposes skills from =/home/mlk/.codex/skills=, so this directory is the practical working catalog for this host.

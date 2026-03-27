@@ -21,6 +21,24 @@ When asked about a domain such as policy, curriculum, forms, or skills:
 4. if needed, open one or more `sessions/...jsonl` files for the best candidates
 5. summarize the result with confidence labels
 
+## Useful commands
+
+```bash
+rg -n -i "topic words here" /home/mlk/.codex/history.jsonl
+rg -n '"session_id":"SESSION_ID"' /home/mlk/.codex/history.jsonl
+rg -n '"id":"SESSION_ID"|\"thread_name\"' /home/mlk/.codex/session_index.jsonl
+rg -n -i "topic words here" /home/mlk/.codex/sessions
+sed -n 'N,Mp' /home/mlk/.codex/history.jsonl
+```
+
+Use these as a progression, not all at once.
+
+## Session rename handling
+
+- if one session id appears several times in `session_index.jsonl` with different thread names, merge them into one session record
+- use the most recent `updated_at` row as the current display name
+- keep older thread names as aliases when they help explain older references or user wording
+
 ## Recovering prior decisions
 
 Use transcript files when you need:

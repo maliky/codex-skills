@@ -1,6 +1,6 @@
 ---
 name: long-memory-retrieval
-description: Recover prior work, session clusters, and recurring workflows from this Codex repository using history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before on this host, which sessions covered a topic, what candidate skills emerge from past work, or what prior decisions should be reused. Ignore SQLite for this skill.
+description: Recover previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before on this host, which sessions or thread names covered a topic, what prior decisions should be reused, or what repeated workflows on this host should become skills. Handle session renames by treating thread names in session_index.jsonl as aliases for the same session id. Ignore SQLite for this skill.
 compatibility: Designed for the local Codex host at /home/mlk/.codex/skills. Works best when rg, sed, and basic shell tools are available. Network access is not required. This first draft intentionally ignores SQLite and focuses on file-based memory sources.
 metadata:
   author: local-codex
@@ -33,6 +33,7 @@ This skill is not for:
 2. Narrow to candidate sessions before opening transcripts.
    - Prefer searching `history.jsonl` first for topic discovery.
    - Use `session_index.jsonl` to attach names where available.
+   - Treat multiple thread names for the same session id as a rename history, not as different sessions.
 
 3. Open `sessions/...jsonl` only for richer context.
    - Use transcript files when you need prior plans, exact reasoning context, or richer reconstruction than `history.jsonl` can provide.
@@ -49,6 +50,23 @@ This skill is not for:
    - Richer reconstructed evidence from `sessions/...jsonl`
    - Mark inference when clustering several traces into one skill theme
 
+## Quick Patterns
+
+Use these patterns to start fast:
+
+```bash
+rg -n -i "policy|curriculum|irb|skills" /home/mlk/.codex/history.jsonl
+rg -n '"id":"SESSION_ID"|\"thread_name\"' /home/mlk/.codex/session_index.jsonl
+rg -n -i "search phrase" /home/mlk/.codex/sessions
+sed -n 'START,ENDp' /home/mlk/.codex/history.jsonl
+```
+
+Typical sequence:
+1. search `history.jsonl`
+2. collect session ids
+3. resolve or merge thread names from `session_index.jsonl`
+4. inspect matching `sessions/...jsonl` only if needed
+
 ## Preferred Retrieval Route
 
 ### Find prior work on a topic
@@ -60,7 +78,7 @@ This skill is not for:
 - Default route:
   1. search `history.jsonl` for the topic
   2. collect session ids
-  3. attach thread names from `session_index.jsonl`
+  3. attach thread names from `session_index.jsonl`, keeping rename aliases for the same id
   4. order or cluster the results
   5. open matching `sessions/...jsonl` only if needed for deeper context
 
@@ -104,6 +122,7 @@ Ignore for this skill:
 - Do not claim a skill exists just because a topic appeared once.
 - When the user asks about “skills done on this host”, look for repeated task families, explicit skill discussions, and recurring implementation patterns.
 - Keep retrieval grounded in file paths and session ids where possible.
+- If `session_index.jsonl` shows more than one thread name for the same session id, treat the newest thread name as the current label and older names as aliases.
 
 ## Deliverables
 

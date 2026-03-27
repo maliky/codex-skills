@@ -23,9 +23,15 @@ Weakness:
   - attaching names to session ids
   - ordering by recency
   - recognizing thread-level clusters
+  - detecting rename history when the same session id appears with different thread names
 
 Weakness:
 - lightweight only; not enough for decision reconstruction
+
+Important note:
+- do not assume one session id has one permanent thread name
+- if the same id appears more than once with different `thread_name` values, treat that as rename tracking
+- use the most recent name as the current label and preserve the older names as aliases when reporting
 
 ### `sessions/YYYY/MM/DD/rollout-...jsonl`
 

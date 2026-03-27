@@ -1,0 +1,4 @@
+interface:
+  display_name: "Long Memory Retrieval"
+  short_description: "Recover prior local Codex work"
+  default_prompt: "Use $long-memory-retrieval to recover prior sessions, decisions, and recurring workflows from this local Codex repository."
