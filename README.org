@@ -1,127 +1,130 @@
-* Local Skill Backlog
+* Codex Skills
 
-This folder is the local skill workspace for this Codex host.
+This repository is the personal skill collection for this Codex host. It is checked out at =~/.codex/skills= so Codex can discover the skills directly after restart.
 
-The practical rules for this workspace are:
-- each skill lives in its own directory
-- each skill must contain a =SKILL.md= with YAML frontmatter
-- optional material belongs in =references/=, =scripts/=, =assets/=, or =agents/openai.yaml=
-- skill descriptions must make trigger conditions clear
-- detailed procedures should use progressive disclosure through reference files
-- repeated workflows become skills; one-off work stays as retrievable memory
-- forgetting means suppressing noisy material from active attention, not deleting raw history by default
+The tracked folders are portable skills that can be shared across hosts with Git. The local =.system/= folder contains built-in Codex skills and is intentionally not tracked by this repository.
 
-* Active Local Skills
+* Directory Layout
+
+- =<skill>/SKILL.md=: required skill entrypoint with YAML =name= and =description= frontmatter plus concise operating instructions.
+- =<skill>/agents/openai.yaml=: UI metadata such as display name, short description, and default prompt.
+- =<skill>/references/=: progressively loaded guidance for detailed workflows, edge cases, source priorities, and command routes.
+- =<skill>/scripts/=: deterministic helpers for repeated or fragile operations.
+- =.system/=: local built-in skills supplied by Codex; do not commit this directory here.
+
+* Skills
 
 ** =long-memory-retrieval=
 
-Purpose:
-- recover prior work, decisions, recurring workflows, session ids, and thread-name aliases
-- use =history.jsonl=, =session_index.jsonl=, and selected =sessions/...jsonl=
-- identify what to promote into skills and what to suppress from active attention
+Recovers prior Codex work from =history.jsonl=, =session_index.jsonl=, and =sessions/...jsonl=.
 
-Status:
-- drafted
-- updated with forgetting and suppression guidance
+Contents:
+- =references/sources.md= and =references/retrieval-workflow.md= describe where to search and in what order.
+- =references/qualitative-synthesis.md=, =references/forgetting-and-suppression.md=, and =references/reporting-rules.md= guide promotion, suppression, and evidence reporting.
+- =scripts/find_sessions.py= provides a reusable local search helper.
 
 ** =codex-session-cleanup=
 
-Purpose:
-- remove explicitly targeted local Codex sessions by exact id or exact alias
-- clean rollout files, history/index rows, and thread state consistently
+Removes exact local Codex sessions or low-value blank sessions from transcript and thread-state stores.
 
-Status:
-- drafted
-- wraps the deterministic local cleanup script in =scripts/remove_codex_session.py=
+Contents:
+- =scripts/remove_codex_session.py= performs deterministic cleanup.
+- =references/cleanup-heuristics.md= explains what is safe to clean.
+- =references/cleanup-script-usage.md= documents the script route and expected checks.
 
 ** =document-conversion=
 
-Purpose:
-- extended conversion between Org, LaTeX, DOCX, and PDF
-- support local =.cls=, =.sty=, PDF witnesses, and structure-preserving conversion
+Converts between Org, LaTeX, DOCX, ODT, PDF, and plain text while preserving structure and house style.
 
-Status:
-- drafted
-- remains instruction-led; no current script reference is recorded in this skill
+Contents:
+- =references/conversion-matrix.md= chooses routes by source and target format.
+- =references/docx-ingestion.md= covers DOCX to structured source recovery.
+- =references/org-latex-preservation.md= covers Org/LaTeX class-aware conversion.
+- =scripts/inspect_document_stack.py= inspects local conversion tooling.
 
 ** =tu-curriculum-transformation=
 
-Purpose:
-- transform messy ODT, DOCX, or imported curriculum text into normalized Org/LaTeX curriculum sources
-- handle course-description macros, radio tables, Emacs Lisp helpers, and Org -> TeX -> PDF export checks
+Transforms Tubman University curriculum sources from ODT, DOCX, or imported text into normalized Org/LaTeX sources.
 
-Status:
-- drafted
-- updated to point audit-heavy reconciliation work to =tu-curriculum-audit=
-- includes catalog-production guidance where catalog work remains part of curriculum source production
+Contents:
+- =references/source-ingestion.md= handles source cleanup and structural triage.
+- =references/curriculum-grammar.md= describes the target Org curriculum grammar.
+- =references/course-descriptions.md= covers course-description normalization.
+- =references/tables-and-batch-export.md= covers radio tables, helpers, and export checks.
+- =references/catalog-production.md= keeps catalog-related output guidance within the curriculum workflow.
+- =scripts/export_org_curriculum.el= supports repeatable Org export checks.
 
 ** =tu-curriculum-audit=
 
-Purpose:
-- extract, compare, and reconcile TU curriculum/course catalog facts
-- handle 3-column course lists, 6-column semester tables, course descriptions, aliases, duplicates, credit mismatches, TSV audit reports, spreadsheet reconciliation, and gcode/key regeneration plans
+Audits and reconciles TU curriculum and course-catalog data across Org, converted text, tables, descriptions, and spreadsheets.
 
-Status:
-- drafted
-- promoted from repeated recent curriculum audit and catalog reconciliation work
-- updated to keep the focus on deterministic audit and reconciliation rather than XML-heavy extraction
-
-** =kolabi-bot-runtime=
-
-Purpose:
-- keep typed runtime logic explicit between events, state transitions, and command generation
-- preserve =Chronos= / =StrategyRuntime= / =Ogun= role separation
-- debug tail-tracking semantics, living-tail lifecycle, and interrupt cleanup behavior
-
-Status:
-- drafted
-- promoted from repeated runtime refactor and bot lifecycle sessions
-- used when runtime-level behavior, not CLI, is the main task
-
-** =kolabi-market-feeds=
-
-Purpose:
-- maintain public and private Kraken feed handling for order/state visibility
-- trace missing cancel fields, private balance updates, and subscription gaps
-- normalize feed-driven updates into stable domain state and operator logs
-
-Status:
-- drafted
-- promoted from repeated feed coverage and private-feed logging work
-- used when feed behavior, not CLI shape, is the primary issue
-
-** =kolabi-kraken-futures=
-
-Purpose:
-- build, debug, and operate the local =kolabi= Kraken Futures workflow
-- handle CLI commands, order-contract coverage, smoke flows, cancel/close/list operations, packaging, and codebase cleanup with project-specific naming constraints
-
-Status:
-- drafted
-- promoted from repeated recent =kolaBiBot= / =kolabi= Kraken Futures work
-- captures the durable Python-side workflow rather than the older Haskell exploration
+Contents:
+- =references/course-extraction.md= and =references/course-reference-extraction.md= guide code/title/credit/prerequisite extraction.
+- =references/description-reconciliation.md= covers duplicate and mismatched descriptions.
+- =references/gcode-and-aliases.md= covers course keys, aliases, and regeneration planning.
+- =references/spreadsheet-reconciliation.md= covers spreadsheet witnesses.
+- =scripts/extract_course_refs.py= provides deterministic extraction support.
 
 ** =tu-latex-classes=
 
-Purpose:
-- maintain TU LaTeX classes and styles used by policy, memo, minutes, forms, and curriculum families
-- keep class-level fixes scoped to the class family and target source export chain
-- preserve Org-to-LaTeX export expectations across local TU repos
+Maintains TU LaTeX class and style behavior for curriculum, forms, policies, minutes, memos, and Org-to-LaTeX exports.
 
-Status:
-- drafted
-- promoted from repeated class-level edits and export stability work
-- preferred home for future MOU and new TU policy-form classes
+Contents:
+- =references/class-inventory.md= records local class/style families.
+- =references/class-refactor-patterns.md= captures safe class-level refactor patterns.
+- =references/export-compatibility.md= defines export and compile expectations.
 
 ** =tusis-import-engineering=
 
-Purpose:
-- stabilize TUSIS import/export workflows in Django code
-- model batch imports, duplicates, resolution logic, and deterministic parser behavior
-- support new curriculum/academic structures through generic parsing and normalization
+Builds and debugs TUSIS/Django import pipelines for curriculum, course, student, grade, schedule, and related data.
 
-Status:
-- drafted
-- promoted from recurring import-session work, parsing fixes, and schedule/course resolution patterns
-- kept distinct from curriculum source transformation and audit skill families
+Contents:
+- =references/parser-and-normalization.md= covers row parsing, normalization, and mapping rules.
+- =references/curriculum-resolution.md= covers CurriculumCourse, Section, and related reconciliation.
+- =references/batch-import-reliability.md= covers duplicate handling, logging, and import-output validation.
 
+** =tusis-admin-ui-engineering=
+
+Audits and fixes TUSIS Django admin and website UI workflows, including click audits, chained filters, admin actions, role dashboards, Selenium checks, and browser-visible 500 errors.
+
+Contents:
+- =references/admin-ui-workflow.md= covers admin filters, actions, role dashboards, and audit file handling.
+- =references/browser-and-preprod-checks.md= covers Selenium, chromedriver, preprod routes, and 500-error triage.
+
+** =koba-vps-webops=
+
+Operates and debugs Koba/TU VPS web deployments across DNS, Nginx, TLS, Docker Compose, container networking, Moodle/TULearn, WordPress/TUWP, and TUSIS preprod.
+
+Contents:
+- =references/deployment-map.md= records host paths, app names, and service boundaries.
+- =references/diagnostic-ladder.md= gives the DNS -> Nginx -> TLS -> Docker -> app-log diagnostic order.
+- =references/app-notes.md= captures TULearn, TUWP, and TUSIS preprod command routes.
+
+** =kolabi-bot-runtime=
+
+Maintains typed =kolabi= runtime internals around state-event-command transitions, pair lifecycle, tail tracking, Chronos, StrategyRuntime, Horus, and Ogun boundaries.
+
+Contents:
+- =references/state-event-loop.md= documents the core runtime transition model.
+- =references/tail-tracking.md= covers head/tail lifecycle and tracking details.
+- =references/runtime-boundaries.md= describes component responsibilities.
+- =references/admin-action-boundaries.md= covers operator/admin action boundaries.
+
+** =kolabi-market-feeds=
+
+Maintains =kolabi= public/private feed ingestion, private payload reconciliation, order/account visibility, and operator action logging.
+
+Contents:
+- =references/public-feed-handling.md= covers public market data handling.
+- =references/private-feed-reconciliation.md= covers private websocket/order/account reconciliation.
+- =references/operator-logging.md= covers feed-driven logs and operator visibility.
+
+** =kolabi-kraken-futures=
+
+Builds, debugs, and operates the local =kolabi= Kraken Futures workflow, including CLI behavior, order contracts, smoke/probe commands, packaging, and command-surface maintenance.
+
+Contents:
+- =references/cli-and-operations.md= covers command routes and operator flows.
+- =references/order-contract.md= defines order-contract expectations.
+- =references/packaging-and-cleanup.md= covers editable installs, package structure, and cleanup.
+- =references/runtime-boundaries.md= keeps CLI work aligned with runtime ownership.
