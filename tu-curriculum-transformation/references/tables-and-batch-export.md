@@ -1,5 +1,7 @@
 # Tables And Batch Export
 
+Use this reference when maintaining curriculum tables, radio tables, orgtbl helpers, or batch export behavior.
+
 ## Table strategy
 
 Use class-owned table structures and row macros where possible.

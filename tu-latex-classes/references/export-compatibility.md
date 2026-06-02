@@ -1,6 +1,6 @@
 # Export Compatibility
 
-Use this route when class updates risk breaking Org export output.
+Use this reference when class updates risk breaking Org export output.
 
 - identify whether export uses native LaTeX or direct LaTeX backend
 - run minimal export after each class change

@@ -1,5 +1,7 @@
 # Course Descriptions
 
+Use this reference when normalizing course-description sections into TU curriculum macro form.
+
 ## Target form
 
 Normalize stable course-description entries into the TU curriculum macro form.

@@ -1,5 +1,7 @@
 # Reporting Rules
 
+Use this reference when reporting recovered memory evidence, confidence, and inference boundaries.
+
 ## Always distinguish source type
 
 When reporting recovered information, say whether it came from:

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document Conversion"
+  short_description: "Convert structured documents with fidelity"
+  default_prompt: "Use $document-conversion to inspect and convert Org, LaTeX, DOCX, ODT, or PDF sources while preserving structure and house style."

@@ -1,4 +1,4 @@
 interface:
   display_name: "TU Curriculum Audit"
-  short_description: "Audit and reconcile TU course catalogs"
-  default_prompt: "Use $tu-curriculum-audit to extract, compare, and reconcile Tubman University curriculum course tables and course descriptions."
+  short_description: "Audit TU curriculum course data"
+  default_prompt: "Use $tu-curriculum-audit to extract and reconcile TU curriculum course tables, descriptions, aliases, credits, and TSV witnesses."

@@ -1,5 +1,7 @@
 # Cleanup Heuristics
 
+Use this reference when identifying blank, test, or low-value local Codex sessions before any deletion.
+
 ## Good Removal Candidates
 
 - dot-only sessions

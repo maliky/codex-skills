@@ -1,6 +1,6 @@
 # Parsing and Normalization
 
-Use this route when source shape varies across import sessions.
+Use this reference when source shape varies across TUSIS import sessions and parser normalization must stay explicit.
 
 - normalize course-like fields consistently
 - preserve source markers and row provenance

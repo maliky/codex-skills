@@ -1,5 +1,7 @@
 # Course Extraction
 
+Use this reference when extracting raw course facts from clean Org tables or maintained curriculum sources.
+
 ## Extraction Targets
 
 Capture raw facts first:

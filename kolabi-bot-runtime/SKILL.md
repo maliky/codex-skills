@@ -1,105 +1,47 @@
 ---
 name: kolabi-bot-runtime
-description: "Use when work touches typed `kolabi` runtime internals: `State + Event -> State + Commands`, tail lifecycle transitions, or `Chronos`/`StrategyRuntime`/`Ogun` execution boundaries."
-metadata:
-  author: local-codex
-  maturity: draft
+description: "Use when work touches typed kolabi runtime internals, including state-event-command transitions, pair-cycle lifecycle, tail tracking, Chronos dedupe, StrategyRuntime boundaries, Horus command generation, or Ogun execution boundaries."
 ---
 
 # Kolabi Bot Runtime
 
-Use this skill when the request is about the kolabi bot internals rather than CLI-facing UX.
+Keep runtime work inside typed state transitions and explicit command boundaries. Separate domain decisions from adapter calls and operator-facing CLI behavior.
 
-This skill is for:
-- maintaining the `State + Event -> State + Commands` runtime contract
-- debugging `TailState` transitions, tail restoration, and tail-submission semantics
-- preserving `Chronos`/`StrategyRuntime`/`Ogun` role boundaries
-- ensuring interrupt cleanup behavior for living tails remains deterministic
-- reviewing pair-cycle or intent transitions that affect command emission
+## When to Use
 
-This skill is not for:
-- CLI argument design
-- feed websocket parsing
-- static docs not tied to runtime semantics
-- generic exchange theory or non-runtime operator behavior
+- Change reducer state, event handling, command generation, or lifecycle transitions.
+- Debug tail tracking, market-tick reactions, or no-widen tail semantics.
+- Adjust Chronos dedupe, StrategyRuntime flow, Horus translation, or Ogun execution boundaries.
+- Review whether a behavior belongs in the reducer, runtime coordinator, CLI, or exchange adapter.
+
+## Avoid When
+
+- The request is only about Kraken CLI usage or operator commands; use `kolabi-kraken-futures`.
+- The request is only feed parsing or account visibility; use `kolabi-market-feeds`.
+- The user asks for a one-off shell command rather than code changes.
 
 ## Workflow
 
-1. Confirm the request scope.
-   - If behavior changes in command output are expected, work in runtime.
-   - If command syntax or operator help changes are expected, use `kolabi-kraken-futures`.
+1. Locate the active checkout and confirm the branch before changing runtime code.
+2. Map the request onto `State + Event -> State + Commands`.
+3. Keep pure transition logic in reducer/domain helpers.
+4. Let StrategyRuntime feed events, Horus translate intents, and Ogun execute commands.
+5. Add focused tests around state transitions, generated commands, and lifecycle edge cases.
 
-2. Keep the runtime pure.
-   - Keep `State`, `Event`, and transition logic deterministic.
-   - Keep adapter/API execution in command handlers only.
-   - Favor data model updates over side-effectful patches.
+## Routes
 
-3. Apply boundary-safe edits.
-   - Update event-to-state transitions first.
-   - Emit commands from state transitions, not from random helper functions.
-   - Preserve existing naming for `tail`, `PairIntent`, and existing state containers.
+- **State/event work**: read [state and event loop](references/state-event-loop.md).
+- **Runtime placement**: read [runtime boundaries](references/runtime-boundaries.md).
+- **Tail behavior**: read [tail tracking](references/tail-tracking.md).
+- **Admin action safety**: read [admin action boundaries](references/admin-action-boundaries.md).
 
-4. Tail handling rules.
-   - Do not widen target values without an explicit new event.
-   - Respect profitable direction constraints for stop logic.
-   - Preserve "initial reference clear" behavior where required by existing tail semantics.
+## Output Expectations
 
-5. Run bounded verification.
-   - Verify command output after each transition shape change.
-   - Confirm `run`/`run-once` still triggers interrupt cleanup behavior.
-   - Check that living-tail cleanup is deterministic and idempotent where relevant.
-
-## Preferred Routes
-
-### Runtime boundaries
-
-- Start by reading:
-  - [runtime boundaries](references/runtime-boundaries.md)
-
-- Default route:
-  1. identify the current transition entry point
-  2. update transition rules and event handlers
-  3. keep emitted commands unchanged unless a contract change is needed
-  4. validate expected command traces on a bounded run
-
-### Tail tracking internals
-
-- Start by reading:
-  - [tail tracking and lifecycle](references/tail-tracking.md)
-
-- Default route:
-  1. confirm state fields used by legacy tail logic
-  2. preserve reference-clear and direction constraints
-  3. validate trail state for partial or stale events
-
-### Admin safety and cleanup
-
-- Start by reading:
-  - [admin cleanup and safety commands](references/admin-action-boundaries.md)
-
-- Default route:
-  1. verify interrupt cleanup paths are explicit
-  2. preserve bot-mediated destructive actions in the runtime contract
-  3. ensure cancel/all lifecycle semantics remain coherent with current operator constraints
-
-## Operating Rules
-
-- Keep project symbols that carry stable meaning.
-- Document transition changes with expected command traces.
-- Do not patch runtime in a way that changes CLI intent without explicit CLI pass.
-- Preserve the state/event split even when adding new runtime cases.
-
-## Deliverables
-
-When using this skill, include:
-- modified state/event entrypoints
-- impacted command stream and expected command diffs
-- confirmation of tail lifecycle behavior
-- cleanup or shutdown behavior impacts
+Report the runtime boundary touched, the state/event cases covered, tests run, and any operator-facing behavior that intentionally stayed unchanged.
 
 ## References
 
-- [runtime boundaries](references/runtime-boundaries.md)
-- [tail tracking and lifecycle](references/tail-tracking.md)
 - [state and event loop](references/state-event-loop.md)
-- [admin cleanup and safety commands](references/admin-action-boundaries.md)
+- [runtime boundaries](references/runtime-boundaries.md)
+- [tail tracking](references/tail-tracking.md)
+- [admin action boundaries](references/admin-action-boundaries.md)

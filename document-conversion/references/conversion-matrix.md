@@ -1,5 +1,7 @@
 # Conversion Matrix
 
+Use this reference when choosing a conversion route between Org, LaTeX, DOCX, ODT, PDF, and text.
+
 ## Primary goals
 
 - preserve semantic structure

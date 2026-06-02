@@ -1,6 +1,6 @@
 # Public Feed Handling
 
-Use this route when order visibility looks stale or out-of-sync with public channels.
+Use this reference when public feed behavior makes order or market visibility look stale or out of sync.
 
 - confirm channel subscription list
 - validate event order for open orders and trigger orders

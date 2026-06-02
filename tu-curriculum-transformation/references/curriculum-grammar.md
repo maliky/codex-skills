@@ -1,5 +1,7 @@
 # Curriculum Grammar
 
+Use this reference when shaping TU curriculum Org into the expected section, table, and course-description grammar.
+
 ## Purpose
 
 Use this as a harmonized target grammar for TU curricula while allowing local variation in visible wording.

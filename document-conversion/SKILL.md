@@ -1,128 +1,57 @@
 ---
 name: document-conversion
-description: Convert between Org, LaTeX, DOCX, and PDF while preserving structure and formatting intent. Use when a task involves org/tex to docx, docx to org/latex, Pandoc-like conversion with better fidelity, LaTeX class/style support, PDF-backed recovery, or round-tripping academic/policy/curriculum documents.
-metadata:
-  author: local-codex
-  maturity: draft
+description: "Use when converting between Org, LaTeX, DOCX, ODT, PDF, and plain text while preserving structure, document intent, house style, custom classes, tables, metadata, or recoverable layout evidence beyond a simple Pandoc pass."
 ---
 
 # Document Conversion
 
-Use this skill when the user wants higher-fidelity document conversion than plain Pandoc usually gives, especially where structure and house style matter more than raw text extraction.
+Convert documents by preserving structure first, styling second, and raw text last. Prefer the maintained source when one exists, and use generated files as evidence rather than truth.
 
-This skill works best when `pandoc`, `soffice` or `libreoffice`, `unzip`, `zip`, `mutool`, `pdfinfo`, and a TeX engine such as `lualatex` or `pdflatex` are available. Network access is not required.
+## When to Use
 
-This skill is for:
-- Org or LaTeX source that must become DOCX
-- DOCX that must become Org or LaTeX
-- documents that rely on local =.cls= or =.sty= files
-- PDF files used as reference, fallback source, or formatting truth
-- round-trips where semantic structure must be preserved
+- Convert Org or LaTeX sources to DOCX, ODT, PDF, or cleaner text.
+- Recover structure from DOCX, ODT, or PDF-backed sources.
+- Preserve custom class behavior, metadata blocks, policy sections, curriculum tables, forms, and course descriptions.
+- Diagnose conversion routes before committing to Pandoc, LibreOffice, TeX, or XML-level repair.
 
-This skill is not for:
-- trivial plain-text conversion where structure does not matter
-- OCR-heavy scanned PDF recovery without a reliable text layer
-- one-line format swaps that standard Pandoc can handle without custom inspection
+## Avoid When
+
+- The task is trivial plain-text extraction.
+- The task is mainly TU curriculum normalization; use `tu-curriculum-transformation`.
+- The task is mainly TU class maintenance; use `tu-latex-classes`.
+- The user only asks to compile an already-normalized LaTeX source.
 
 ## Workflow
 
-1. Identify the authoritative source.
-   - Prefer editable source over rendered output.
-   - If both source and PDF exist, treat the PDF as formatting truth and the source as semantic truth.
+1. Identify source, target, required fidelity, and whether a maintained source exists.
+2. Inspect dependencies, custom classes, embedded assets, tables, comments, and generated outputs.
+3. Choose the least lossy route: semantic export, office conversion, XML repair, or PDF-backed recovery.
+4. Preserve source wording and structure unless the user asks for cleanup.
+5. Verify the converted document against headings, tables, references, metadata, and obvious formatting constraints.
 
-2. Inventory dependencies before converting.
-   - Look for =#+LATEX_CLASS=, =#+LATEX_HEADER=, =\documentclass=, =\usepackage=, local =.cls=, local =.sty=, included PDFs, and referenced assets.
-   - If the source depends on a custom class, inspect that class before deciding the conversion route.
+## Scripts
 
-3. Choose the least-lossy path.
-   - For Org/TeX -> DOCX, prefer semantic export first and style recovery second.
-   - For DOCX -> Org/LaTeX, inspect Word styles and numbering before flattening the document.
-   - For PDF-backed conversions, use PDF only to recover layout or verify missing structure; do not invent semantic hierarchy without evidence.
+Use the inspection helper before a non-trivial conversion:
 
-4. Preserve structure explicitly.
-   - Keep headings, named blocks, lists, tables, captions, notes, appendices, metadata, and cross-reference intent.
-   - Do not silently collapse custom block structure into plain paragraphs if the original distinguishes policy blocks, procedures, course descriptions, forms, or metadata tables.
+```bash
+python3 scripts/inspect_document_stack.py SOURCE --target docx
+python3 scripts/inspect_document_stack.py SOURCE --target pdf --json
+```
 
-5. Log fidelity gaps.
-   - State what was preserved, approximated, downgraded, or left unresolved.
-   - Separate verified structure from inferred structure.
+The script inventories tools and source signals; it does not replace conversion judgment.
 
-## Preferred Routes
+## Routes
 
-### Org or TeX to DOCX
+- **Route choice**: read [conversion matrix](references/conversion-matrix.md) before selecting Pandoc, LibreOffice, TeX, XML, or PDF-backed recovery.
+- **DOCX source**: read [docx ingestion](references/docx-ingestion.md) before flattening OOXML content.
+- **Org/LaTeX source**: read [org and latex preservation](references/org-latex-preservation.md) before removing raw LaTeX or export blocks.
 
-- Start by reading:
-  - [conversion matrix](references/conversion-matrix.md)
-  - [Org/LaTeX preservation notes](references/org-latex-preservation.md)
+## Output Expectations
 
-- Default route:
-  1. inspect Org front matter or LaTeX preamble
-  2. identify custom classes, packages, and macros
-  3. normalize source only if needed to expose semantics cleanly
-  4. use Pandoc for the base conversion
-  5. use DOCX reference styling or post-process with LibreOffice when house style matters
-
-- If the LaTeX document uses institution-specific =.cls= or =.sty=:
-  - do not assume Pandoc understands those semantics
-  - map custom structures to DOCX-visible constructs explicitly
-  - preserve administrative metadata as tables or labeled blocks rather than raw macro dumps
-
-### DOCX to Org or LaTeX
-
-- Start by reading:
-  - [DOCX ingestion notes](references/docx-ingestion.md)
-  - [conversion matrix](references/conversion-matrix.md)
-
-- Default route:
-  1. inspect style usage, numbering, tables, footnotes, headers, and section breaks
-  2. unzip the DOCX when style behavior is unclear
-  3. map Word styles to Org headings and LaTeX structures
-  4. move repeated formatting into class/header conventions if the target workflow uses them
-  5. keep content faithful; avoid “cleanup” that changes meaning
-
-- For policy, curriculum, or form documents:
-  - preserve named blocks and control metadata
-  - preserve table semantics even if exact layout changes
-  - keep unresolved ambiguities in comments rather than guessing
-
-### PDF-Assisted Conversion
-
-- Use PDF as:
-  - formatting witness
-  - fallback source for lost layout
-  - verification target against regenerated outputs
-
-- Do not use PDF as the only semantic source if editable source exists.
-- If text extraction is weak, report limits instead of fabricating structure.
-
-## Local Tooling
-
-Prefer these local tools when available:
-- =pandoc=
-- =soffice= or =libreoffice=
-- =unzip= and =zip=
-- =pdfinfo=
-- =mutool=
-- =lualatex=, =pdflatex=, or =xelatex=
-
-Use scripts later if the workflow becomes repetitive. For now this skill is instruction-led.
-
-## Operating Rules
-
-- Respect local LaTeX class and style files. They are part of the document model, not decoration.
-- When working with Org export pipelines, check whether raw LaTeX is embedded via native lines, export blocks, or source blocks used as raw emitters in the local workflow.
-- For curriculum and policy work, preserve structure first and typography second.
-- If PDF and source disagree, say so explicitly.
-
-## Deliverables
-
-When using this skill, the output should usually include:
-- converted target document
-- any required companion class/header adjustments
-- a short fidelity note listing preserved structure and unresolved losses
+Return the converted artifact path, route used, skipped or unavailable tools, validation notes, and any source elements that could not be preserved safely.
 
 ## References
 
 - [conversion matrix](references/conversion-matrix.md)
-- [Org/LaTeX preservation notes](references/org-latex-preservation.md)
-- [DOCX ingestion notes](references/docx-ingestion.md)
+- [docx ingestion](references/docx-ingestion.md)
+- [org and latex preservation](references/org-latex-preservation.md)

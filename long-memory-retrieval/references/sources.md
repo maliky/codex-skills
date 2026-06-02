@@ -1,5 +1,7 @@
 # Sources
 
+Use this reference when choosing which local Codex memory files to inspect and how much weight to give each source.
+
 ## Primary File-Based Memory Sources
 
 ### `history.jsonl`

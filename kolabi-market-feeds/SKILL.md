@@ -1,106 +1,45 @@
 ---
 name: kolabi-market-feeds
-description: Use when work touches `kolabi` public/private feed ingestion, private payload reconciliation, feed-derived order/account visibility, or operator action logging driven by feed events.
-metadata:
-  author: local-codex
-  maturity: draft
+description: "Use when work touches kolabi public or private feed ingestion, private payload reconciliation, feed-derived order or account visibility, sparse cancel or fill events, balance/noise suppression, and operator action logging driven by websocket events."
 ---
 
 # Kolabi Market Feeds
 
-Use this skill when the task is about how kolabi observes the market and account state through websocket feeds and feed-derived logs.
+Treat feeds as state evidence. Preserve useful operator visibility while suppressing noisy balance or notice chatter unless the user asks for it.
 
-This skill is for:
-- debugging public websocket feed subscriptions and missed messages
-- debugging private/account websocket payload interpretation
-- reconciling private feed deltas with canonical persistent state
-- adding or validating compact operator-facing action/notification logging
-- diagnosing feed-driven mismatches before touching strategy rules
+## When to Use
 
-This is not for:
-- command surface redesign (use `kolabi-kraken-futures`)
-- runtime transition refactor (use `kolabi-bot-runtime`)
-- exchange account setup unless feed behavior is blocked by account context
+- Parse, normalize, or reconcile public/private websocket payloads.
+- Debug feed-derived order, account, fill, cancel, or trigger visibility.
+- Enrich sparse private deltas from canonical account state.
+- Adjust operator logs produced by feed events.
+
+## Avoid When
+
+- The task is a pure reducer/runtime transition; use `kolabi-bot-runtime`.
+- The task is only CLI construction or packaging; use `kolabi-kraken-futures`.
+- The user asks for historical exchange docs rather than the local adapter behavior.
 
 ## Workflow
 
-1. Identify feed family.
-   - public feed debugging
-   - private/account feed debugging
-   - private-notice or action-log debugging
+1. Capture the exact payload shape or local log evidence.
+2. Identify whether the source is public feed, private feed, REST fallback, or canonical account state.
+3. Normalize sparse deltas without losing raw evidence needed for debugging.
+4. Keep account/order visibility consistent across feed and command surfaces.
+5. Add tests or replay fixtures for the payload shapes that caused the issue.
 
-2. Validate message contracts.
-   - inspect payload shape differences between stream and persistence
-   - check for missing fields (`is_cancel`, `balances`, order ids, trigger markers)
-   - prefer enrichment against canonical state for sparse payloads
+## Routes
 
-3. Reconcile feed-derived state.
-   - verify whether missing fields are expected or a subscription gap
-   - preserve command-side safety assumptions and do not infer ownership from sparse deltas
-   - keep feed-driven status views deterministic and human-readable
+- **Private payloads**: read [private feed reconciliation](references/private-feed-reconciliation.md).
+- **Public feed handling**: read [public feed handling](references/public-feed-handling.md).
+- **Operator logs**: read [operator logging](references/operator-logging.md).
 
-4. Check subscription and coverage.
-   - confirm active channels cover symbols and instrument families in use
-   - confirm message cadence for open orders, trigger orders, and private balance updates
-   - verify no hidden duplication from multiple handlers
+## Output Expectations
 
-5. Improve operator visibility.
-   - keep logs compact and action-oriented
-   - include clear origin, key id, status, and command intent
-   - avoid verbose balance chatter unless explicitly asked
-
-6. Verify with bounded runtime/CLI observations.
-   - run minimal commands that confirm feed observations align with visible open-order state
-   - keep the verification surface minimal and reproducible
-
-## Preferred Routes
-
-### Public feed diagnostics
-
-- Start by reading:
-  - [public feed handling](references/public-feed-handling.md)
-
-- Default route:
-  1. identify missing or reordered events
-  2. inspect subscription list and symbol filters
-  3. confirm feed cadence against command output snapshots
-
-### Private feed and feed-to-state reconciliation
-
-- Start by reading:
-  - [private feed reconciliation](references/private-feed-reconciliation.md)
-
-- Default route:
-  1. check sparse delta behavior
-  2. enrich with canonical order state where needed
-  3. verify feed-derived status maps only after enrichment
-
-### Feed logging and action traces
-
-- Start by reading:
-  - [operator action logging](references/operator-logging.md)
-
-- Default route:
-  1. identify missing action categories
-  2. add compact operator traces for visibility-critical paths
-  3. avoid noisy status lines that reduce signal
-
-## Operating Rules
-
-- Keep feed changes observable without requiring broad runtime introspection.
-- Do not claim feed correctness from sample output alone; reconcile by multiple channels.
-- Preserve log brevity and compactness.
-- Treat private feed payloads as potentially sparse and canonicalize before surfacing.
-
-## Deliverables
-
-- list of confirmed feed channels and coverage gaps
-- action log update strategy if visibility was changed
-- explicit payload mismatch items and expected fallback behavior
-- any side effects on `Kolabi` command confidence from feed corrections
+Report payload shapes handled, visibility or logging changes, tests or fixtures added, and any intentionally suppressed noisy feed output.
 
 ## References
 
-- [public feed handling](references/public-feed-handling.md)
 - [private feed reconciliation](references/private-feed-reconciliation.md)
+- [public feed handling](references/public-feed-handling.md)
 - [operator logging](references/operator-logging.md)

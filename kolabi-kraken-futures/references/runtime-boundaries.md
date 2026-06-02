@@ -1,6 +1,6 @@
 # Runtime Boundaries for Kolabi Runtime Work
 
-Use this quick route when a request is about runtime or command generation boundaries.
+Use this reference when Kraken Futures work crosses into runtime or command-generation boundaries.
 
 ## Scope
 

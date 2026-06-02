@@ -1,6 +1,6 @@
 # Class Refactor Patterns
 
-Use this route for repeated layout or macro breakages.
+Use this reference when repeated layout or macro breakages require a class-side refactor.
 
 - keep a minimal diff
 - avoid global reformatting for one document family

@@ -1,5 +1,7 @@
 # Org and LaTeX Preservation Notes
 
+Use this reference when Org or LaTeX source contains structural markup, raw export blocks, macros, or class-specific conventions.
+
 ## What to preserve
 
 - heading hierarchy

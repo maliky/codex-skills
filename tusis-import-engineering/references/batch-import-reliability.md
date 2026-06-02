@@ -1,6 +1,6 @@
 # Batch Import Reliability
 
-Use this for large imports where one bad row can block confidence.
+Use this reference when large imports need bounded batches, rollback thinking, and confidence checks.
 
 - use small bounded batches first
 - keep reject logs stable and reproducible

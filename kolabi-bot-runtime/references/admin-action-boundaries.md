@@ -1,6 +1,6 @@
 # Admin Actions and Safety Boundaries
 
-Use this when adjusting run-once/run cleanup and admin destructive actions.
+Use this reference when adjusting run-once cleanup or other admin/destructive runtime actions.
 
 ## Core Constraints
 

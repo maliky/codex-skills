@@ -1,5 +1,7 @@
 # DOCX Ingestion Notes
 
+Use this reference when DOCX is the source and structure must be inspected before flattening.
+
 ## Inspect before flattening
 
 When DOCX is the source, inspect:

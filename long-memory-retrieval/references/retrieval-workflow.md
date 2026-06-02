@@ -1,5 +1,7 @@
 # Retrieval Workflow
 
+Use this reference when searching local Codex history and narrowing from indexes to transcript files.
+
 ## Default search order
 
 1. `session_index.jsonl`

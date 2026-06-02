@@ -1,5 +1,7 @@
 # Description Reconciliation
 
+Use this reference when comparing course-description entries against curriculum table facts.
+
 ## Description Facts
 
 Extract course-description entries separately from curriculum tables.

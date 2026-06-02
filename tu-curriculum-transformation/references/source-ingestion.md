@@ -1,5 +1,7 @@
 # Source Ingestion
 
+Use this reference when turning raw ODT, DOCX, or imported curriculum text into a clean Org working source.
+
 ## Goal
 
 Turn raw curriculum source material into a clean Org working file without changing the document's meaning.

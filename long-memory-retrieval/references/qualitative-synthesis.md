@@ -1,5 +1,7 @@
 # Qualitative Synthesis
 
+Use this reference when clustering many local session traces into recurring workflow or skill candidates.
+
 ## Goal
 
 Turn many local session traces into a stable summary of recurring work in the active Codex environment.

@@ -1,6 +1,6 @@
 # Curriculum Resolution
 
-Use this when mapping source entries to existing course or curriculum identifiers.
+Use this reference when mapping import source entries to existing course, curriculum, department, or section identifiers.
 
 - prefer exact identifier matches before fuzzy matching
 - record ambiguous mappings rather than forcing one

@@ -1,6 +1,6 @@
 # Private Feed Reconciliation
 
-Use this route when private feed payloads lose fields or create false status differences.
+Use this reference when private feed payloads lose fields or create false status differences.
 
 ## Likely gaps
 

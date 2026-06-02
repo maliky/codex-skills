@@ -1,4 +1,4 @@
 interface:
   display_name: "TUSIS Import Engineering"
-  short_description: "Stabilize TUSIS import flows, parsing, mapping, and duplicate handling."
-  default_prompt: "Use $tusis-import-engineering to design and debug deterministic TUSIS import parsing, batch workflows, mapping, and reconciliation."
+  short_description: "Stabilize TUSIS import pipelines"
+  default_prompt: "Use $tusis-import-engineering to debug TUSIS import parsing, mapping, duplicates, batch reliability, and validation."

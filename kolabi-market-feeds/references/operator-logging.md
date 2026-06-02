@@ -1,6 +1,6 @@
 # Operator Logging
 
-Use this route when feed behavior affects operator trust.
+Use this reference when feed behavior affects operator trust or console action visibility.
 
 ## Logging guidance
 

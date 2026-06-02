@@ -1,5 +1,7 @@
 # Runtime Boundaries
 
+Use this reference when deciding which kolabi runtime layer should own a behavior.
+
 This reference keeps runtime changes scoped to deterministic transitions.
 
 - Keep `State + Event -> State + Commands` at the core.

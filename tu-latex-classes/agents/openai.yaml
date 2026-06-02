@@ -1,4 +1,4 @@
 interface:
   display_name: "TU LaTeX Classes"
-  short_description: "Maintain and validate TU LaTeX classes across policy, memo, minutes, form, and curriculum documents."
-  default_prompt: "Use $tu-latex-classes to maintain TU .cls/.sty class behavior, repair export regressions, and validate Org/LaTeX contract changes."
+  short_description: "Maintain TU LaTeX class behavior"
+  default_prompt: "Use $tu-latex-classes to maintain TU .cls/.sty behavior, repair Org export regressions, and validate class-side fixes."

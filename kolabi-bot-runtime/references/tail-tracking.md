@@ -1,5 +1,7 @@
 # Tail Tracking and Tail Trail State
 
+Use this reference when implementing or debugging tail lifecycle, no-widen behavior, or tail command generation.
+
 This reference summarizes durable tail concerns for the kolabi runtime.
 
 - Keep tail references stable across state transitions.

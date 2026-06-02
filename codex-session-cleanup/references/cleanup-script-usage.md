@@ -1,5 +1,7 @@
 # Cleanup Script Usage
 
+Use this reference when running or validating the deterministic session cleanup script.
+
 ## Primary Tool
 
 The deterministic cleanup tool is usually:
