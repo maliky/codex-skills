@@ -6,7 +6,7 @@ Use this reference when the task merges XML-derived curriculum facts with ODS or
 
 ## Preferred Inputs
 
-Common witness pairs on this host:
+Common witness pairs:
 - XML-derived course definitions or course references
 - original ODS or TSV extracted from content sources
 - compiled or reconciled ODS tables used for manual review
@@ -33,5 +33,5 @@ Common witness pairs on this host:
 
 ## Outputs
 
-- Save a merged TSV or ODS with explicit status columns such as `credit_mismatch`, `title_matched`, or equivalent task-local flags.
+- Save a merged TSV or ODS with explicit status columns such as `credit_mismatch`, `title_matched`, or equivalent audit flags.
 - Print counts for matched, unmatched, and flagged rows so the reconciliation can be reviewed quickly.

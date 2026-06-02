@@ -20,7 +20,7 @@ This skill is for:
 This is not for:
 - command surface redesign (use `kolabi-kraken-futures`)
 - runtime transition refactor (use `kolabi-bot-runtime`)
-- exchange credential setup unless feed behavior is blocked by auth context
+- exchange account setup unless feed behavior is blocked by account context
 
 ## Workflow
 
@@ -85,7 +85,7 @@ This is not for:
   2. add compact operator traces for visibility-critical paths
   3. avoid noisy status lines that reduce signal
 
-## House Rules For This Host
+## Operating Rules
 
 - Keep feed changes observable without requiring broad runtime introspection.
 - Do not claim feed correctness from sample output alone; reconcile by multiple channels.

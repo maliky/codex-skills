@@ -159,7 +159,7 @@ These should not consume active attention unless the user asks directly:
 - abandoned approaches after the user explicitly said to drop them
 - transient LibreOffice, GUI, package, or environment debugging unless the task is office-output debugging
 - one-off MyGrade/Flask deployment setup until it repeats
-- one-off PDF password batching until it repeats
+- one-off protected PDF batching until it repeats
 - MOU class work as a standalone skill; keep it under =tu-latex-classes= for now
 - plugin/system skill details unless the user asks about plugin behavior
 - older one-off import-debug naming (=tusis-import-debugging=); use =tusis-import-engineering= when import work is recurring
@@ -186,7 +186,7 @@ Use these seven clusters when grouping long-term work:
 
 * Notes
 
-- File-based memory retrieval is more immediately useful than SQLite archaeology for this host.
+- File-based memory retrieval is usually more immediately useful than SQLite archaeology.
 - Session ids are more stable than thread names; thread names should be treated as mutable labels.
 - =sessions/...jsonl= files are high-fidelity evidence, but should be opened only after lightweight indexes identify candidates.
 - Do not delete raw Codex history or session transcripts as a substitute for better retrieval discipline.

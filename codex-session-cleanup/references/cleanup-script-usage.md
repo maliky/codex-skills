@@ -2,16 +2,16 @@
 
 ## Primary Tool
 
-The deterministic local cleanup tool is:
-- `/home/mlk/.codex/scripts/remove_codex_session.py`
+The deterministic cleanup tool is usually:
+- `$CODEX_HOME/scripts/remove_codex_session.py`
 
 ## Supported Invocation
 
 Use exactly one of:
 
 ```bash
-python3 /home/mlk/.codex/scripts/remove_codex_session.py --session-id SESSION_ID
-python3 /home/mlk/.codex/scripts/remove_codex_session.py --name THREAD_ALIAS
+python3 "$CODEX_HOME/scripts/remove_codex_session.py" --session-id SESSION_ID
+python3 "$CODEX_HOME/scripts/remove_codex_session.py" --name THREAD_ALIAS
 ```
 
 ## What It Removes

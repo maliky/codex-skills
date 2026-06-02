@@ -119,17 +119,17 @@ This skill is not for:
   3. use ODT/DOCX/PDF outputs as validation witnesses, not as the canonical source
   4. move course reconciliation into `tu-curriculum-audit` when it becomes the main task
 
-## Local Sources To Respect
+## Project Sources To Respect
 
-Prefer these local sources when they exist:
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/AGENTS.md`
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/README.org`
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/tuclgcurri.cls`
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/tuunivcurri.cls`
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/orgtbl_curri_helpers.el`
+Prefer these project-local sources when they exist:
+- `AGENTS.md`
+- `README.org`
+- `tuclgcurri.cls`
+- `tuunivcurri.cls`
+- `orgtbl_curri_helpers.el`
 - `Archives/ContentSource/*.odt`
 
-## House Rules For This Host
+## Operating Rules
 
 - Preserve wording from the source unless there is an obvious import artifact or obvious spelling break.
 - If the wording is in doubt, check the ODT source before changing it.

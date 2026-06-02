@@ -58,7 +58,7 @@ This skill is not for:
    - Document operator commands where the user will actually look for them.
 
 7. Patch conservatively and re-check the operator path.
-   - Keep command names short and task-shaped.
+   - Keep command names short and task focused.
    - After a contract or CLI change, re-check help text, smoke flows, or documented commands.
    - Prefer one canonical option over parallel aliases when both express the same behavior.
 
@@ -97,7 +97,7 @@ This skill is not for:
   3. keep naming and module layout coherent
   4. re-check importability and documented entrypoints
 
-## House Rules For This Host
+## Operating Rules
 
 - Prefer short runnable commands over abstract descriptions.
 - Keep the local command surface obvious through `--help`, `MAN.org`, or adjacent repo docs.

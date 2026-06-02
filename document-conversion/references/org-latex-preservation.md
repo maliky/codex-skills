@@ -40,6 +40,6 @@ Do not treat them as purely cosmetic.
 - convert metadata macros into explicit labeled content
 - keep unresolved macro meaning in comments rather than dropping it silently
 
-## Special note from this host's history
+## Practical Note
 
 Some local Org workflows intentionally use native LaTeX lines or blocks in ways that are valid in export even when they look unconventional. Inspect the actual export behavior before “cleaning up” those constructs.

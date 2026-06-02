@@ -27,8 +27,8 @@ When radio tables are used:
 
 ## Shared helper workflow
 
-The local reference helper source is:
-- `/mnt/backup/Jobs/TU/Academics/Curriculum/orgtbl_curri_helpers.el`
+The reference helper source is usually:
+- `orgtbl_curri_helpers.el` in the TU curriculum repository root
 
 Be comfortable with:
 - `orgtbl` formatter functions

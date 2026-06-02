@@ -1,6 +1,6 @@
 # Sources
 
-## Primary file-based memory sources on this host
+## Primary File-Based Memory Sources
 
 ### `history.jsonl`
 

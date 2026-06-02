@@ -127,7 +127,7 @@ This skill is not for:
   4. append missing prerequisite or corequisite information without crushing non-empty values
   5. save merged outputs with flags for credit disagreements and unresolved joins
 
-## House Rules For This Host
+## Operating Rules
 
 - Org is the maintained source once it exists.
 - Table facts and course-description facts are separate witnesses until reconciled.

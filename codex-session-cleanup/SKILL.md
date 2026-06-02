@@ -8,7 +8,7 @@ metadata:
 
 # Codex Session Cleanup
 
-Use this skill when the user explicitly wants local Codex sessions removed from this host rather than merely suppressed from retrieval.
+Use this skill when the user explicitly wants local Codex sessions removed from the active Codex environment rather than merely suppressed from retrieval.
 
 This skill is for:
 - removing a session by exact session id
@@ -33,9 +33,9 @@ This skill is not for:
    - Check `history.jsonl`, `session_index.jsonl`, `sessions/...jsonl`, and `state_5.sqlite`.
    - Confirm whether the target has transcript rows, index aliases, rollout files, and thread rows.
 
-3. Use the local cleanup script.
-   - The host-level deterministic tool is:
-     - `/home/mlk/.codex/scripts/remove_codex_session.py`
+3. Use the environment cleanup script when available.
+   - The recommended deterministic tool path is:
+     - `$CODEX_HOME/scripts/remove_codex_session.py`
    - Use it as the primary cleanup path rather than ad hoc manual edits.
 
 4. Verify after deletion.
@@ -67,7 +67,7 @@ This skill is not for:
   3. remove them one by one or in a bounded batch
   4. verify the batch with post-cleanup queries
 
-## House Rules For This Host
+## Operating Rules
 
 - Deletion is destructive. Use this skill only when the user clearly asked for cleanup.
 - Prefer the deterministic Python cleanup script over direct SQL or manual JSONL surgery.

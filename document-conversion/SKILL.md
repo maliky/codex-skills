@@ -10,7 +10,7 @@ metadata:
 
 Use this skill when the user wants higher-fidelity document conversion than plain Pandoc usually gives, especially where structure and house style matter more than raw text extraction.
 
-This skill is designed for the local Codex host at `/home/mlk/.codex/skills`. It works best when `pandoc`, `soffice` or `libreoffice`, `unzip`, `zip`, `mutool`, `pdfinfo`, and a TeX engine such as `lualatex` or `pdflatex` are available. Network access is not required.
+This skill works best when `pandoc`, `soffice` or `libreoffice`, `unzip`, `zip`, `mutool`, `pdfinfo`, and a TeX engine such as `lualatex` or `pdflatex` are available. Network access is not required.
 
 This skill is for:
 - Org or LaTeX source that must become DOCX
@@ -107,7 +107,7 @@ Prefer these local tools when available:
 
 Use scripts later if the workflow becomes repetitive. For now this skill is instruction-led.
 
-## House Rules For This Host
+## Operating Rules
 
 - Respect local LaTeX class and style files. They are part of the document model, not decoration.
 - When working with Org export pipelines, check whether raw LaTeX is embedded via native lines, export blocks, or source blocks used as raw emitters in the local workflow.

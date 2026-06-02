@@ -79,7 +79,7 @@ This skill is not for:
   2. verify rejects and duplicates before full re-run
   3. report unresolved items in a clean handoff format
 
-## House Rules For This Host
+## Operating Rules
 
 - Do not silently coerce ambiguous IDs into existing records.
 - Keep parser-specific logic isolated from business normalization rules.

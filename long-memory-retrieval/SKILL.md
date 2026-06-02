@@ -1,6 +1,6 @@
 ---
 name: long-memory-retrieval
-description: Recover previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before on this host, which sessions or thread names covered a topic, what prior decisions should be reused, what repeated workflows should become skills, or what should be suppressed to free attention. Handle session renames by treating thread names in session_index.jsonl as aliases for the same session id. Ignore SQLite for this skill.
+description: Recover previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before in the active Codex environment, which sessions or thread names covered a topic, what prior decisions should be reused, what repeated workflows should become skills, or what should be suppressed to free attention. Handle session renames by treating thread names in session_index.jsonl as aliases for the same session id. Ignore SQLite for this skill.
 metadata:
   author: local-codex
   maturity: draft
@@ -8,14 +8,14 @@ metadata:
 
 # Long Memory Retrieval
 
-Use this skill when the user wants to recover what happened previously on this host from the local Codex repository, especially from session history and transcript files.
+Use this skill when the user wants to recover what happened previously in the active Codex environment, especially from session history and transcript files.
 
 This skill is for:
 - finding sessions related to a topic
 - mapping topic -> session ids -> thread names
 - reconstructing prior decisions or prior plans
 - identifying recurring workflows that should become skills
-- summarizing what kinds of work have already been done on this host
+- summarizing what kinds of work have already been done in the active Codex environment
 - deciding what prior material should be suppressed, down-ranked, or kept only as reference
 
 This skill is not for:
@@ -61,10 +61,10 @@ This skill is not for:
 Use these patterns to start fast:
 
 ```bash
-rg -n -i "policy|curriculum|irb|skills" /home/mlk/.codex/history.jsonl
-rg -n '"id":"SESSION_ID"|\"thread_name\"' /home/mlk/.codex/session_index.jsonl
-rg -n -i "search phrase" /home/mlk/.codex/sessions
-sed -n 'START,ENDp' /home/mlk/.codex/history.jsonl
+rg -n -i "policy|curriculum|irb|skills" "$CODEX_HOME/history.jsonl"
+rg -n '"id":"SESSION_ID"|\"thread_name\"' "$CODEX_HOME/session_index.jsonl"
+rg -n -i "search phrase" "$CODEX_HOME/sessions"
+sed -n 'START,ENDp' "$CODEX_HOME/history.jsonl"
 ```
 
 Typical sequence:
@@ -133,12 +133,12 @@ Ignore for this skill:
 - `state_5.sqlite`
 - `logs_1.sqlite`
 
-## House Rules For This Host
+## Operating Rules
 
 - Treat local files as evidence, not memory in the human sense.
 - Prefer retrieval from `history.jsonl` and `session_index.jsonl` before loading full transcripts.
 - Do not claim a skill exists just because a topic appeared once.
-- When the user asks about “skills done on this host”, look for repeated task families, explicit skill discussions, and recurring implementation patterns.
+- When the user asks about skills created in the active environment, look for repeated task families, explicit skill discussions, and recurring implementation patterns.
 - Keep retrieval grounded in file paths and session ids where possible.
 - If `session_index.jsonl` shows more than one thread name for the same session id, treat the newest thread name as the current label and older names as aliases.
 - Forgetting means attention hygiene first: suppress or down-rank noise before considering deletion.

@@ -82,7 +82,7 @@ This skill is not for:
   2. preserve bot-mediated destructive actions in the runtime contract
   3. ensure cancel/all lifecycle semantics remain coherent with current operator constraints
 
-## House Rules For This Host
+## Operating Rules
 
 - Keep project symbols that carry stable meaning.
 - Document transition changes with expected command traces.

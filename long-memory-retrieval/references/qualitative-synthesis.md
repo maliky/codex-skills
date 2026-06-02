@@ -2,7 +2,7 @@
 
 ## Goal
 
-Turn many local session traces into a stable summary of recurring work on this host.
+Turn many local session traces into a stable summary of recurring work in the active Codex environment.
 
 ## What counts as a candidate skill
 

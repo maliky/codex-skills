@@ -25,11 +25,11 @@ When asked about a domain such as policy, curriculum, forms, or skills:
 ## Useful commands
 
 ```bash
-rg -n -i "topic words here" /home/mlk/.codex/history.jsonl
-rg -n '"session_id":"SESSION_ID"' /home/mlk/.codex/history.jsonl
-rg -n '"id":"SESSION_ID"|\"thread_name\"' /home/mlk/.codex/session_index.jsonl
-rg -n -i "topic words here" /home/mlk/.codex/sessions
-sed -n 'N,Mp' /home/mlk/.codex/history.jsonl
+rg -n -i "topic words here" "$CODEX_HOME/history.jsonl"
+rg -n '"session_id":"SESSION_ID"' "$CODEX_HOME/history.jsonl"
+rg -n '"id":"SESSION_ID"|\"thread_name\"' "$CODEX_HOME/session_index.jsonl"
+rg -n -i "topic words here" "$CODEX_HOME/sessions"
+sed -n 'N,Mp' "$CODEX_HOME/history.jsonl"
 ```
 
 Use these as a progression, not all at once.

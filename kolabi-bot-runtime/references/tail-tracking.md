@@ -1,6 +1,6 @@
 # Tail Tracking and Tail Trail State
 
-This reference summarizes durable tail concerns in this host.
+This reference summarizes durable tail concerns for the kolabi runtime.
 
 - Keep tail references stable across state transitions.
 - Preserve rule of no widening when constraints apply.

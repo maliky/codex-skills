@@ -78,7 +78,7 @@ This skill is not for:
   2. keep old behavior stable unless intentionally breaking
   3. document fallback if old exports rely on legacy layout
 
-## House Rules For This Host
+## Operating Rules
 
 - Prefer class-level fixes over post-export hacks.
 - Keep document-specific overrides out of classes unless explicitly part of house policy.
