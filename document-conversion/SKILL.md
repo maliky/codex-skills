@@ -1,7 +1,6 @@
 ---
 name: document-conversion
 description: Convert between Org, LaTeX, DOCX, and PDF while preserving structure and formatting intent. Use when a task involves org/tex to docx, docx to org/latex, Pandoc-like conversion with better fidelity, LaTeX class/style support, PDF-backed recovery, or round-tripping academic/policy/curriculum documents.
-compatibility: Designed for the local Codex host at /home/mlk/.codex/skills. Works best when pandoc, soffice/libreoffice, unzip/zip, mutool, pdfinfo, and a TeX engine such as lualatex or pdflatex are available. Network access is not required.
 metadata:
   author: local-codex
   maturity: draft
@@ -10,6 +9,8 @@ metadata:
 # Document Conversion
 
 Use this skill when the user wants higher-fidelity document conversion than plain Pandoc usually gives, especially where structure and house style matter more than raw text extraction.
+
+This skill is designed for the local Codex host at `/home/mlk/.codex/skills`. It works best when `pandoc`, `soffice` or `libreoffice`, `unzip`, `zip`, `mutool`, `pdfinfo`, and a TeX engine such as `lualatex` or `pdflatex` are available. Network access is not required.
 
 This skill is for:
 - Org or LaTeX source that must become DOCX

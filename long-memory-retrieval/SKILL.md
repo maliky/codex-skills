@@ -1,7 +1,6 @@
 ---
 name: long-memory-retrieval
-description: Recover previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before on this host, which sessions or thread names covered a topic, what prior decisions should be reused, or what repeated workflows on this host should become skills. Handle session renames by treating thread names in session_index.jsonl as aliases for the same session id. Ignore SQLite for this skill.
-compatibility: Designed for the local Codex host at /home/mlk/.codex/skills. Works best when rg, sed, and basic shell tools are available. Network access is not required. This first draft intentionally ignores SQLite and focuses on file-based memory sources.
+description: Recover previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl. Use when a task asks what was done before on this host, which sessions or thread names covered a topic, what prior decisions should be reused, what repeated workflows should become skills, or what should be suppressed to free attention. Handle session renames by treating thread names in session_index.jsonl as aliases for the same session id. Ignore SQLite for this skill.
 metadata:
   author: local-codex
   maturity: draft
@@ -17,12 +16,14 @@ This skill is for:
 - reconstructing prior decisions or prior plans
 - identifying recurring workflows that should become skills
 - summarizing what kinds of work have already been done on this host
+- deciding what prior material should be suppressed, down-ranked, or kept only as reference
 
 This skill is not for:
 - SQLite inspection or database forensics
 - recovering information not grounded in local files
 - generic web research
 - full-text document conversion
+- deleting raw session or history files as a shortcut for attention management
 
 ## Workflow
 
@@ -44,7 +45,12 @@ This skill is not for:
    - `skills/README.org` describes the current local candidate skill catalog.
    - If those summaries conflict with the raw session files, trust the raw files.
 
-5. Report recovered memory with source and confidence.
+5. Run a forgetting pass before reporting.
+   - Mark each candidate as `promote`, `reference`, `suppress`, or `archive-candidate`.
+   - Suppress duplicate prompts, abandoned attempts, failed intermediate commands, and one-off work that does not affect the current task.
+   - Preserve raw memory by default; deletion requires explicit user intent.
+
+6. Report recovered memory with source and confidence.
    - Exact evidence from `history.jsonl`
    - Indexed evidence from `session_index.jsonl`
    - Richer reconstructed evidence from `sessions/...jsonl`
@@ -86,6 +92,7 @@ Typical sequence:
 
 - Start by reading:
   - [qualitative synthesis](references/qualitative-synthesis.md)
+  - [forgetting and suppression](references/forgetting-and-suppression.md)
   - [reporting rules](references/reporting-rules.md)
 
 - Default route:
@@ -101,6 +108,17 @@ Typical sequence:
   - tool usage patterns
   - explicit tradeoffs
   - evidence that a skill or workflow was actually practiced, not only mentioned
+
+### Free attention by suppressing stale material
+
+- Start by reading:
+  - [forgetting and suppression](references/forgetting-and-suppression.md)
+
+- Default route:
+  1. identify candidate sessions or artifacts with the normal retrieval route
+  2. separate reusable decisions from noise
+  3. label each item `promote`, `reference`, `suppress`, or `archive-candidate`
+  4. recommend cleanup only for generated or backup artifacts, not raw history files
 
 ## Local Sources
 
@@ -123,6 +141,7 @@ Ignore for this skill:
 - When the user asks about “skills done on this host”, look for repeated task families, explicit skill discussions, and recurring implementation patterns.
 - Keep retrieval grounded in file paths and session ids where possible.
 - If `session_index.jsonl` shows more than one thread name for the same session id, treat the newest thread name as the current label and older names as aliases.
+- Forgetting means attention hygiene first: suppress or down-rank noise before considering deletion.
 
 ## Deliverables
 
@@ -130,6 +149,7 @@ When using this skill, the output should usually include:
 - matching session ids and thread names when available
 - a short summary of the recovered theme
 - a note on which source types were used
+- suppression or promotion labels when the user asks what to forget, keep, or turn into skills
 - clear separation between exact evidence and inference
 
 ## References
@@ -137,4 +157,5 @@ When using this skill, the output should usually include:
 - [sources](references/sources.md)
 - [retrieval workflow](references/retrieval-workflow.md)
 - [qualitative synthesis](references/qualitative-synthesis.md)
+- [forgetting and suppression](references/forgetting-and-suppression.md)
 - [reporting rules](references/reporting-rules.md)

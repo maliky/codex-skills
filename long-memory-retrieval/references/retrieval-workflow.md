@@ -19,7 +19,8 @@ When asked about a domain such as policy, curriculum, forms, or skills:
 2. collect candidate session ids
 3. resolve thread names via `session_index.jsonl`
 4. if needed, open one or more `sessions/...jsonl` files for the best candidates
-5. summarize the result with confidence labels
+5. run a forgetting pass to suppress duplicates, abandoned attempts, and one-off noise
+6. summarize the result with confidence labels
 
 ## Useful commands
 
@@ -54,3 +55,4 @@ Do not start there unless the compact sources are insufficient.
 - search multiple near-synonyms when the user may not remember exact wording
 - keep a list of candidate session ids before opening transcripts
 - stop expanding context once the answer is stable
+- do not let one very long renamed session dominate the answer unless it is clearly the best source

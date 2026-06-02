@@ -17,6 +17,7 @@ A workflow is a good skill candidate when:
 - a one-off request
 - a topic mentioned once without repeated execution
 - a broad theme with no clear workflow
+- a failed intermediate technique that the later session explicitly replaced
 
 ## Clustering rule
 
@@ -30,6 +31,14 @@ Examples:
 - document conversion
 
 Do not over-split early. Prefer one stable skill over several tiny overlapping ones.
+
+## Attention hygiene
+
+After clustering, classify each cluster:
+- promote repeated stable workflows
+- keep useful but narrow traces as references
+- suppress duplicates, abandoned approaches, and non-recurring work
+- mark generated backups or scratch files as archive candidates instead of treating them as knowledge
 
 ## Evidence types
 

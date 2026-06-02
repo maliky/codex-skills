@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kolabi Kraken Futures"
+  short_description: "Operate and extend the kolabi Kraken Futures path"
+  default_prompt: "Use $kolabi-kraken-futures to debug or extend the local kolabi Kraken Futures CLI, order handling, smoke flows, and packaging path."

@@ -26,6 +26,7 @@ A good retrieval answer usually contains:
 - current thread names when available
 - older thread-name aliases when the same session was renamed
 - notable repeated workflows
+- what to promote, keep as reference, suppress, or mark as an archive candidate when relevant
 - brief note on evidence quality
 
 ## Guardrails
@@ -34,6 +35,7 @@ A good retrieval answer usually contains:
 - do not claim a skill is already implemented if only discussed
 - when the raw files and a summary file disagree, trust the raw files
 - keep the answer grounded in the local repository, not generic expectations
+- do not recommend deleting raw memory unless the user explicitly asks for destructive cleanup
 
 ## Rename-aware reporting
 

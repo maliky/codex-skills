@@ -1,91 +1,139 @@
-#+TITLE: Local Skill Backlog
+* Local Skill Backlog
 
-  1. Policy Design And Formatting
-     For policy structure, standalone policies, manuals, procedures, guides, and IRB/policy formatting work.
-  2. Curriculum Transformation And Typesetting
-     For curriculum cleanup, ODT-to-Org wrangling, radio tables, course descriptions, and curriculum LaTeX workflows.
-  3. Tusis Data Imports And Admin Engineering
-     For Tusis import/export, resources, widgets, managers, fuzzy matching, admin fixes, and academic data pipelines.
-  4. Crypto And Experimental Coding
-     For finnoise, crypto-related prototypes, and adjacent exploratory coding sessions.
-  5. Schedule Conflict Analysis And Visualization
-     For the Flask schedule-checker app, Excel parsing, conflict detection, and timetable/chart work.
-  6. Institutional Templates And LaTeX Tooling
-     For tumemo, tuletter, tuminutes, tuform, tuprocedures, Beamer/template work, and class-level formatting outside the main policy/curriculum streams.
-  7. Codex Meta Memory And Skillcraft
+This folder is the local skill workspace for this Codex host.
 
-
-  
-This folder is the local skill workspace for this host.
-
-I reviewed:
-- the Agent Skills specification at =agentskills.io/specification=
-- the OpenAI Codex skills documentation
-- the =openai/skills= catalog
-- the past Codex session history stored on this machine
-
-The main constraints repeated by the upstream spec are:
+The practical rules for this workspace are:
 - each skill lives in its own directory
-- each skill must contain a =SKILL.md=
-- the =SKILL.md= must start with YAML frontmatter with at least =name= and =description=
-- optional material should stay in =references/=, =scripts/=, =assets/=, and optionally =agents/openai.yaml=
-- skill descriptions must say both what the skill does and when it should trigger
-- skills should use progressive disclosure: keep =SKILL.md= lean and move detail to references
+- each skill must contain a =SKILL.md= with YAML frontmatter
+- optional material belongs in =references/=, =scripts/=, =assets/=, or =agents/openai.yaml=
+- skill descriptions must make trigger conditions clear
+- detailed procedures should use progressive disclosure through reference files
+- repeated workflows become skills; one-off work stays as retrievable memory
+- forgetting means suppressing noisy material from active attention, not deleting raw history by default
 
-* Candidate Skills From Past Work On This Host
+* Active Local Skills
 
-The interaction history on this host suggests a stable set of reusable skills.
+** =long-memory-retrieval=
 
-** TODO 0. =long-memory-retrieval=
 Purpose:
-- recover prior work, decisions, and recurring workflows from this Codex repository
-- use =history.jsonl=, =session_index.jsonl=, and =sessions/...jsonl=
-- identify candidate skills and prior session clusters from local evidence
-- handle thread-name changes by treating repeated session ids as rename history, not different sessions
-
-Why it is a good candidate:
-- repeated need to recover prior policy, curriculum, and tooling decisions
-- repeated need to identify session ids and thread names tied to a topic
-- repeated need to reconstruct what kinds of skills have already been practiced on this host
+- recover prior work, decisions, recurring workflows, session ids, and thread-name aliases
+- use =history.jsonl=, =session_index.jsonl=, and selected =sessions/...jsonl=
+- identify what to promote into skills and what to suppress from active attention
 
 Status:
-- drafted in this folder
+- drafted
+- updated with forgetting and suppression guidance
 
-** TODO 1. =document-conversion=
+** =codex-session-cleanup=
+
 Purpose:
-- extended document conversion beyond plain pandoc
-- org/tex -> docx
-- docx -> org/latex
-- support for =.cls=, =.sty=, and PDF reference material
-
-Why it is a good candidate:
-- repeated work on Org, LaTeX, PDF, class files, and export cleanup
-- repeated need to preserve structure rather than only plain text
-- repeated need to round-trip between authoring formats
+- remove explicitly targeted local Codex sessions by exact id or exact alias
+- clean rollout files, history/index rows, and thread state consistently
 
 Status:
-- drafted in this folder
+- drafted
+- wraps the deterministic local cleanup script in =scripts/remove_codex_session.py=
 
-** TODO 3. =tu-curriculum-transformation=
+** =document-conversion=
+
 Purpose:
-- transform messy ODT or imported text into normalized Org/LaTeX curriculum sources
+- extended conversion between Org, LaTeX, DOCX, and PDF
+- support local =.cls=, =.sty=, PDF witnesses, and structure-preserving conversion
 
-Why it is a good candidate:
-- repeated curriculum cleanup for CAFS, CAS, CBA, and other colleges
-- recurring grammar questions, table normalization, course description restructuring, and cross-file consistency work
+Status:
+- drafted
+- remains instruction-led; no current script reference is recorded in this skill
 
-Likely scope:
-- heading normalization
-- table family selection
-- course description macro conversion
-- structure-preserving cleanup from ODT residue
+** =tu-curriculum-transformation=
 
-** TODO 2. =tu-policy-authoring=
+Purpose:
+- transform messy ODT, DOCX, or imported curriculum text into normalized Org/LaTeX curriculum sources
+- handle course-description macros, radio tables, Emacs Lisp helpers, and Org -> TeX -> PDF export checks
+
+Status:
+- drafted
+- updated to point audit-heavy reconciliation work to =tu-curriculum-audit=
+- includes catalog-production guidance where catalog work remains part of curriculum source production
+
+** =tu-curriculum-audit=
+
+Purpose:
+- extract, compare, and reconcile TU curriculum/course catalog facts
+- handle 3-column course lists, 6-column semester tables, course descriptions, aliases, duplicates, credit mismatches, TSV audit reports, spreadsheet reconciliation, and gcode/key regeneration plans
+
+Status:
+- drafted
+- promoted from repeated recent curriculum audit and catalog reconciliation work
+- updated to keep the focus on deterministic audit and reconciliation rather than XML-heavy extraction
+
+** =kolabi-bot-runtime=
+
+Purpose:
+- keep typed runtime logic explicit between events, state transitions, and command generation
+- preserve =Chronos= / =StrategyRuntime= / =Ogun= role separation
+- debug tail-tracking semantics, living-tail lifecycle, and interrupt cleanup behavior
+
+Status:
+- drafted
+- promoted from repeated runtime refactor and bot lifecycle sessions
+- used when runtime-level behavior, not CLI, is the main task
+
+** =kolabi-market-feeds=
+
+Purpose:
+- maintain public and private Kraken feed handling for order/state visibility
+- trace missing cancel fields, private balance updates, and subscription gaps
+- normalize feed-driven updates into stable domain state and operator logs
+
+Status:
+- drafted
+- promoted from repeated feed coverage and private-feed logging work
+- used when feed behavior, not CLI shape, is the primary issue
+
+** =kolabi-kraken-futures=
+
+Purpose:
+- build, debug, and operate the local =kolabi= Kraken Futures workflow
+- handle CLI commands, order-contract coverage, smoke flows, cancel/close/list operations, packaging, and codebase cleanup with project-specific naming constraints
+
+Status:
+- drafted
+- promoted from repeated recent =kolaBiBot= / =kolabi= Kraken Futures work
+- captures the durable Python-side workflow rather than the older Haskell exploration
+
+** =tu-latex-classes=
+
+Purpose:
+- maintain TU LaTeX classes and styles used by policy, memo, minutes, forms, and curriculum families
+- keep class-level fixes scoped to the class family and target source export chain
+- preserve Org-to-LaTeX export expectations across local TU repos
+
+Status:
+- drafted
+- promoted from repeated class-level edits and export stability work
+- preferred home for future MOU and new TU policy-form classes
+
+** =tusis-import-engineering=
+
+Purpose:
+- stabilize TUSIS import/export workflows in Django code
+- model batch imports, duplicates, resolution logic, and deterministic parser behavior
+- support new curriculum/academic structures through generic parsing and normalization
+
+Status:
+- drafted
+- promoted from recurring import-session work, parsing fixes, and schedule/course resolution patterns
+- kept distinct from curriculum source transformation and audit skill families
+
+* Candidate Skills
+
+** TODO =tu-policy-authoring=
+
 Purpose:
 - maintain Tubman University standalone policies, manuals, procedures, guides, and annexes in Org/LaTeX
 
 Why it is a good candidate:
-- long sequence of sessions on research policy, IRB policy, policy manuals, numbering, formatting, and guide/procedure distinctions
+- repeated work on research policy, IRB policy, policy manuals, numbering, formatting, and guide/procedure distinctions
 
 Likely scope:
 - policy framing and named blocks
@@ -93,49 +141,52 @@ Likely scope:
 - PDF inclusion versus source inclusion decisions
 - terminology standardization
 
-** TODO 4. =tu-latex-classes=
+** TODO =tu-catalog-production=
+
 Purpose:
-- maintain and extend institution-specific LaTeX classes and style files such as =tupolicy.cls=, =tupolicymanual.cls=, =tuprocedures.cls=, =tuform.cls=, =tumemo.cls=, =tuminutes.cls=, and curriculum classes
+- produce full TU catalog/manual outputs from Org plus DOCX/ODT content sources
 
-Why it is a good candidate:
-- repeated class-level edits across memo, minutes, forms, policies, and curriculum work
-- recurring concerns about spacing, headings, metadata blocks, footer/header layout, and Org export compatibility
+Current decision:
+- do not create yet
+- curriculum-relevant parts are referenced from =tu-curriculum-transformation=
+- promote later only if catalog production continues as a stable repeated workflow distinct from curriculum transformation and document conversion
 
-** TODO 5. =research-irb-forms=
-Purpose:
-- maintain IRB and research forms in Org/LaTeX with reusable class-based rendering
+* Suppressed Or Reference-Only Topics
 
-Why it is a good candidate:
-- repeated work on =forms-irb.org=, IRB cover letter, protocol submission checklist, and class/header parity
+These should not consume active attention unless the user asks directly:
+- duplicate user prompts in =history.jsonl=
+- failed Perl or regex extraction attempts that were later replaced by a working pattern
+- abandoned approaches after the user explicitly said to drop them
+- transient LibreOffice, GUI, package, or environment debugging unless the task is office-output debugging
+- one-off MyGrade/Flask deployment setup until it repeats
+- one-off PDF password batching until it repeats
+- MOU class work as a standalone skill; keep it under =tu-latex-classes= for now
+- plugin/system skill details unless the user asks about plugin behavior
+- older one-off import-debug naming (=tusis-import-debugging=); use =tusis-import-engineering= when import work is recurring
+- standalone IRB-forms lane unless it repeats independently from =tu-latex-classes= and =tu-policy-authoring=
 
-** TODO 7. =tusis-import-debugging=
-Purpose:
-- debug academic import/export pipelines in the Tusis Django codebase
+Cleanup candidates:
+- =#README.org#= appears to be an older Emacs backup of this file; ignore it in retrieval and delete only with explicit cleanup permission
 
-Why it is a good candidate:
-- repeated sessions on import-export, CSV canonicalization, curriculum/course lookup, circular imports, and typed manager fixes
+* Recommended Backlog Order
 
-** COMMENT 8. =schedule-conflict-analysis=
-Purpose:
-- debug and improve the schedule conflict checker and its timetable visualizations
+1. =tu-policy-authoring=
+2. =tu-catalog-production=, only if it remains distinct and repeated
 
-Why it is a good candidate:
-- repeated work on uploaded Excel schedules, parsing problems, visualization logic, and conflict reporting
+* Session Cluster Names
 
-* Backlog Order
-
-Recommended implementation order:
-1. =long-memory-retrieval=
-2. =document-conversion=
-3. =tu-curriculum-transformation=
-4. =tu-policy-authoring=
-5. =tu-latex-classes=
-6. =research-irb-forms=
+Use these seven clusters when grouping long-term work:
+1. Policy Design And Formatting
+2. Curriculum Transformation And Typesetting
+3. Tusis Data Imports And Admin Engineering
+4. Crypto And Experimental Coding
+5. Schedule Conflict Analysis And Visualization
+6. Institutional Templates And LaTeX Tooling
+7. Codex Meta Memory And Skillcraft
 
 * Notes
 
-- The first drafted skill should stay instruction-heavy and script-light.
-- For this host, file-based memory retrieval is more immediately useful than SQLite archaeology.
-- Session ids are more stable than thread names; thread names should be treated as labels that may change over time.
-- Once the workflow stabilizes, the next step is to add deterministic helpers in =scripts/= for XML unzip/inspect, Pandoc pipelines, and PDF extraction.
-- The local Codex installation in this environment already exposes skills from =/home/mlk/.codex/skills=, so this directory is the practical working catalog for this host.
+- File-based memory retrieval is more immediately useful than SQLite archaeology for this host.
+- Session ids are more stable than thread names; thread names should be treated as mutable labels.
+- =sessions/...jsonl= files are high-fidelity evidence, but should be opened only after lightweight indexes identify candidates.
+- Do not delete raw Codex history or session transcripts as a substitute for better retrieval discipline.

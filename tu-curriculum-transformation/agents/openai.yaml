@@ -1,0 +1,4 @@
+interface:
+  display_name: "TU Curriculum Transformation"
+  short_description: "Extract and normalize TU curricula into Org"
+  default_prompt: "Use $tu-curriculum-transformation to extract, clean, and normalize Tubman University curriculum documents from ODT or DOCX into Org sources that work with the TU curriculum classes and export chain."
