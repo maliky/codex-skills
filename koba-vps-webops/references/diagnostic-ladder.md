@@ -1,0 +1,62 @@
+# Diagnostic Ladder
+
+## DNS
+
+Check the public name first when the user reports browser failures:
+
+```bash
+host example.koba.sarl
+host example.koba.sarl 1.1.1.1
+host example.koba.sarl 8.8.8.8
+```
+
+If DNS points elsewhere, fix DNS before changing Nginx or app code.
+
+## Nginx
+
+Inspect the app's generated deploy file and the host-enabled file. Validate before reload:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+When a public site returns 404 but the container is healthy, suspect server_name, enabled vhost, proxy_pass, or path/root mismatches.
+
+## TLS
+
+For certificate name errors, check both the certificate file and what the public socket serves:
+
+```bash
+sudo openssl x509 -in /etc/letsencrypt/live/HOST/fullchain.pem -text -noout
+echo | openssl s_client -connect HOST:443 -servername HOST 2>/dev/null | openssl x509 -noout -subject -issuer -ext subjectAltName
+```
+
+If the served certificate is wrong but the file is right, suspect the active Nginx server block.
+
+## Docker Compose
+
+Run from the app wrapper directory:
+
+```bash
+docker-compose ps
+docker-compose logs -f SERVICE
+docker-compose up -d --force-recreate SERVICE
+```
+
+Use the compose file named by the app notes. For TUSIS preprod, include `-f docker-compose-preprod.yml`.
+
+## Container-To-Host Networking
+
+Inside containers, `127.0.0.1` means the container, not the host.
+
+Check whether the compose file uses `host.docker.internal`, `extra_hosts`, or a fixed bridge gateway. For PostgreSQL, also check `pg_hba.conf` allows the container subnet.
+
+Use app-native probes when possible:
+
+```bash
+docker-compose exec -T php php -r 'echo file_get_contents("http://HOST_OR_GATEWAY:11434/api/tags");'
+docker-compose exec -T php php -r 'var_dump(pg_connect("host=HOST dbname=DB user=USER password=PASSWORD"));'
+```
+
+Avoid hardcoding a new subnet until you inspect the current compose network.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "TUSIS Admin UI Engineering"
+  short_description: "Audit and fix TUSIS admin UI workflows"
+  default_prompt: "Use $tusis-admin-ui-engineering to audit and fix a TUSIS Django admin workflow."
