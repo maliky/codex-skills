@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kolabi Multi-Exchange Adapters"
+  short_description: "Operate Kolabi cross-exchange adapter work"
+  default_prompt: "Use $kolabi-multi-exchange-adapters to plan or debug a Kolabi cross-exchange derivatives adapter workflow."

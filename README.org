@@ -82,6 +82,7 @@ Contents:
 - =references/parser-and-normalization.md= covers row parsing, normalization, and mapping rules.
 - =references/curriculum-resolution.md= covers CurriculumCourse, Section, and related reconciliation.
 - =references/batch-import-reliability.md= covers duplicate handling, logging, and import-output validation.
+- =references/truth-rebuilds.md= covers SmartSchool truth rebuilds, source priority, alias collisions, and transaction-failure triage.
 
 ** =tusis-admin-ui-engineering=
 
@@ -90,6 +91,7 @@ Audits and fixes TUSIS Django admin and website UI workflows, including click au
 Contents:
 - =references/admin-ui-workflow.md= covers admin filters, actions, role dashboards, and audit file handling.
 - =references/browser-and-preprod-checks.md= covers Selenium, chromedriver, preprod routes, and 500-error triage.
+- =references/finance-registration-workflows.md= covers finance officer dashboards, payments, invoices, registration status, and role-specific checks.
 
 ** =koba-vps-webops=
 
@@ -99,6 +101,7 @@ Contents:
 - =references/deployment-map.md= records host paths, app names, and service boundaries.
 - =references/diagnostic-ladder.md= gives the DNS -> Nginx -> TLS -> Docker -> app-log diagnostic order.
 - =references/app-notes.md= captures TULearn, TUWP, and TUSIS preprod command routes.
+- =references/app-nginx-services.md= captures small-app Nginx files, exact host matching, service wrappers, and 502-after-reboot checks.
 
 ** =kolabi-bot-runtime=
 
@@ -109,6 +112,15 @@ Contents:
 - =references/tail-tracking.md= covers head/tail lifecycle and tracking details.
 - =references/runtime-boundaries.md= describes component responsibilities.
 - =references/admin-action-boundaries.md= covers operator/admin action boundaries.
+- =references/live-runtime-lessons.md= captures gate readiness, latent heads, stale stop cleanup, and compact live-test logging.
+
+** =kolabi-multi-exchange-adapters=
+
+Builds, debugs, and operates =kolabi= exchange adapters across Binance, BitMEX, Kraken, and similar derivatives/perpetual platforms.
+
+Contents:
+- =references/adapter-workflow.md= covers exchange-neutral runtime boundaries, adapter capability checks, and implementation procedure.
+- =references/demo-and-tsv.md= covers demo/sandbox guardrails, compact TSV grammar, MWE runs, and operator reporting.
 
 ** =kolabi-market-feeds=
 

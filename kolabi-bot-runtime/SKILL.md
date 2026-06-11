@@ -1,6 +1,6 @@
 ---
 name: kolabi-bot-runtime
-description: "Use when work touches typed kolabi runtime internals, including state-event-command transitions, pair-cycle lifecycle, tail tracking, Chronos dedupe, StrategyRuntime boundaries, Horus command generation, or Ogun execution boundaries."
+description: "Use when work touches typed kolabi runtime internals, including state-event-command transitions, pair-cycle lifecycle, tail tracking, live gate readiness, latent heads, Chronos dedupe, StrategyRuntime boundaries, Horus command generation, or Ogun execution boundaries."
 ---
 
 # Kolabi Bot Runtime
@@ -34,6 +34,7 @@ Keep runtime work inside typed state transitions and explicit command boundaries
 - **Runtime placement**: read [runtime boundaries](references/runtime-boundaries.md).
 - **Tail behavior**: read [tail tracking](references/tail-tracking.md).
 - **Admin action safety**: read [admin action boundaries](references/admin-action-boundaries.md).
+- **Live/demo runtime lessons**: read [live runtime lessons](references/live-runtime-lessons.md).
 
 ## Output Expectations
 
@@ -45,3 +46,4 @@ Report the runtime boundary touched, the state/event cases covered, tests run, a
 - [runtime boundaries](references/runtime-boundaries.md)
 - [tail tracking](references/tail-tracking.md)
 - [admin action boundaries](references/admin-action-boundaries.md)
+- [live runtime lessons](references/live-runtime-lessons.md)

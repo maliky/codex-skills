@@ -1,6 +1,6 @@
 ---
 name: tusis-import-engineering
-description: "Use when building or debugging TUSIS and Django import pipelines for curriculum, course, student, grade, or schedule data, including parser normalization, mapping resolution, duplicate handling, batch reliability, CurriculumCourse or Section reconciliation, and import-output validation."
+description: "Use when building or debugging TUSIS and Django import pipelines for curriculum, course, student, grade, schedule, SmartSchool truth rebuild, or legacy data reconciliation, including parser normalization, mapping resolution, duplicate handling, batch reliability, CurriculumCourse or Section reconciliation, and import-output validation."
 ---
 
 # TUSIS Import Engineering
@@ -36,6 +36,7 @@ Keep import work traceable from source rows through normalized parser output, ma
 - **Parser shape**: read [parser and normalization](references/parser-and-normalization.md).
 - **Mapping resolution**: read [curriculum resolution](references/curriculum-resolution.md).
 - **Batch safety**: read [batch import reliability](references/batch-import-reliability.md).
+- **Truth rebuilds**: read [truth rebuilds](references/truth-rebuilds.md).
 
 ## Output Expectations
 
@@ -46,3 +47,4 @@ Report source files, parser/mapping changes, rows imported or skipped, duplicate
 - [parser and normalization](references/parser-and-normalization.md)
 - [curriculum resolution](references/curriculum-resolution.md)
 - [batch import reliability](references/batch-import-reliability.md)
+- [truth rebuilds](references/truth-rebuilds.md)

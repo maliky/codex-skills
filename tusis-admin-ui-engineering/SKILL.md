@@ -1,6 +1,6 @@
 ---
 name: tusis-admin-ui-engineering
-description: "Use when designing, auditing, debugging, or fixing TUSIS Django admin and website UI workflows, including admin click audits, Selenium or chromedriver checks, chained filters, admin actions, changelist performance, 500 errors from admin views, UX/admin-click-audit.org triage, P0/P1 interface bugs, and role-specific dashboard or permission visibility issues."
+description: "Use when designing, auditing, debugging, or fixing TUSIS Django admin and website UI workflows, including finance officer dashboards, registration and payment visibility, admin click audits, Selenium or chromedriver checks, chained filters, admin actions, changelist performance, 500 errors from admin views, UX/admin-click-audit.org triage, P0/P1 interface bugs, and role-specific dashboard or permission visibility issues."
 ---
 
 # TUSIS Admin UI Engineering
@@ -29,3 +29,4 @@ Do not use it for import parser normalization, curriculum resolution, duplicate 
 
 - Read [admin-ui-workflow](references/admin-ui-workflow.md) for admin filters, actions, role dashboards, and click-audit handling.
 - Read [browser-and-preprod-checks](references/browser-and-preprod-checks.md) for Selenium, preprod, and 500-error triage patterns.
+- Read [finance-registration-workflows](references/finance-registration-workflows.md) for finance officer, payment, invoice, registration, and role-specific workflow checks.
