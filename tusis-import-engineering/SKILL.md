@@ -1,6 +1,6 @@
 ---
 name: tusis-import-engineering
-description: "Use when building or debugging TUSIS and Django import pipelines for curriculum, course, student, grade, schedule, SmartSchool truth rebuild, or legacy data reconciliation, including parser normalization, mapping resolution, duplicate handling, batch reliability, CurriculumCourse or Section reconciliation, and import-output validation."
+description: "Use for TUSIS/Django import pipelines: SmartSchool truth rebuilds, curriculum/course/student/grade/schedule imports, normalization, mapping, duplicates, and validation."
 ---
 
 # TUSIS Import Engineering

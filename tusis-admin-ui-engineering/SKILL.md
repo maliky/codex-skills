@@ -1,6 +1,6 @@
 ---
 name: tusis-admin-ui-engineering
-description: "Use when designing, auditing, debugging, or fixing TUSIS Django admin and website UI workflows, including finance officer dashboards, registration and payment visibility, admin click audits, Selenium or chromedriver checks, chained filters, admin actions, changelist performance, 500 errors from admin views, UX/admin-click-audit.org triage, P0/P1 interface bugs, and role-specific dashboard or permission visibility issues."
+description: "Use for TUSIS Django admin and website UI work: role dashboards, finance and registration workflows, permissions, filters, Selenium checks, 500s, and browser-visible UX bugs."
 ---
 
 # TUSIS Admin UI Engineering

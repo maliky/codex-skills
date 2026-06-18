@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kolabi Run Analysis"
+  short_description: "Analyze Kolabi bot run outcomes"
+  default_prompt: "Use $kolabi-run-analysis to inspect a Kolabi bot run and summarize terminated pairs in an Org table."

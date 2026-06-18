@@ -1,6 +1,6 @@
 ---
 name: kolabi-bot-runtime
-description: "Use when work touches typed kolabi runtime internals, including state-event-command transitions, pair-cycle lifecycle, tail tracking, live gate readiness, latent heads, Chronos dedupe, StrategyRuntime boundaries, Horus command generation, or Ogun execution boundaries."
+description: "Use for typed kolabi runtime work: state/event/command transitions, pair lifecycle, tail tracking, live gate readiness, Chronos, Horus, Ogun, and runtime boundary decisions."
 ---
 
 # Kolabi Bot Runtime

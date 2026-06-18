@@ -114,6 +114,13 @@ Contents:
 - =references/admin-action-boundaries.md= covers operator/admin action boundaries.
 - =references/live-runtime-lessons.md= captures gate readiness, latent heads, stale stop cleanup, and compact live-test logging.
 
+** =kolabi-run-analysis=
+
+Analyzes =kolabi= bot runs and produces operator-facing reports for current or stopped runs, terminated pairs, fills, amendments, slippage, and balances.
+
+Contents:
+- =references/run-reporting.md= covers run boundaries, source priority, terminated-pair Org tables, gross/net/cumulative estimates, maker/taker interpretation, and anomaly checks.
+
 ** =kolabi-multi-exchange-adapters=
 
 Builds, debugs, and operates =kolabi= exchange adapters across Binance, BitMEX, Kraken, and similar derivatives/perpetual platforms.

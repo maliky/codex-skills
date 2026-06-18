@@ -1,6 +1,6 @@
 ---
 name: kolabi-multi-exchange-adapters
-description: "Use when building, planning, or debugging kolabi exchange adapters beyond a single Kraken path, including Binance, BitMEX, and Kraken derivatives or perpetual workflows, DB-grounded exchange switching, demo API setup, cross-exchange MWE runs, adapter capability comparisons, and TSV or CLI grammar changes needed for multi-exchange operation."
+description: "Use for kolabi cross-exchange adapter work: Binance, BitMEX, Kraken, demo/live setup, DB-backed exchange switching, adapter comparisons, MWE runs, and TSV or CLI grammar changes."
 ---
 
 # Kolabi Multi-Exchange Adapters
