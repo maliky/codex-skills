@@ -1,6 +1,6 @@
 ---
 name: tu-latex-classes
-description: "Use when maintaining Tubman University LaTeX class or style files, including .cls and .sty behavior, Org-to-LaTeX export regressions, class inventories, TU house formatting, macro refactors, header spacing, memo or letter alignment, forms, minutes, policies, and curriculum class compatibility."
+description: "Use when maintaining Tubman University LaTeX class or style files, including .cls and .sty behavior, Org-to-LaTeX export regressions, class inventories, TU house formatting, macro refactors, header spacing, memo or letter alignment, forms, minutes, policies, transcripts, and curriculum class compatibility."
 ---
 
 # TU LaTeX Classes
@@ -12,6 +12,7 @@ Keep TU class edits scoped, class-aware, and export-tested. Prefer class-level f
 - Modify TU `.cls` or `.sty` files.
 - Fix Org-to-LaTeX export regressions tied to TU class behavior.
 - Align memo, letter, policy, form, minutes, beamer, or curriculum formatting.
+- Tune transcript package layout, duplex back matter, geometry branches, detail fonts, and column rules.
 - Decide which class-local `tucommon.sty` or macro layer owns a fix.
 
 ## Avoid When
@@ -33,6 +34,7 @@ Keep TU class edits scoped, class-aware, and export-tested. Prefer class-level f
 - **Class ownership**: read [class inventory](references/class-inventory.md).
 - **Macro/layout refactor**: read [class refactor patterns](references/class-refactor-patterns.md).
 - **Export regression**: read [export compatibility](references/export-compatibility.md).
+- **Transcript layout**: read [transcript layout](references/transcript-layout.md).
 
 ## Output Expectations
 
@@ -43,3 +45,4 @@ Report files changed, class family affected, validation route, compile/export re
 - [class inventory](references/class-inventory.md)
 - [class refactor patterns](references/class-refactor-patterns.md)
 - [export compatibility](references/export-compatibility.md)
+- [transcript layout](references/transcript-layout.md)

@@ -4,16 +4,22 @@ Use this reference when running or validating the deterministic session cleanup 
 
 ## Primary Tool
 
-The deterministic cleanup tool is usually:
-- `$CODEX_HOME/scripts/remove_codex_session.py`
+The deterministic shared cleanup tool is the script bundled with this skill:
+- `codex-session-cleanup/scripts/remove_codex_session.py`
+
+When the skill is installed under `$CODEX_HOME/skills`, that is usually:
+- `$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.py`
+
+Treat `$CODEX_HOME/scripts/remove_codex_session.py` as a host-local convenience copy, not the shared source of truth.
 
 ## Supported Invocation
 
 Use exactly one of:
 
 ```bash
-python3 "$CODEX_HOME/scripts/remove_codex_session.py" --session-id SESSION_ID
-python3 "$CODEX_HOME/scripts/remove_codex_session.py" --name THREAD_ALIAS
+python3 "$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.py" --codex-home "$CODEX_HOME" --session-id SESSION_ID --dry-run
+python3 "$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.py" --codex-home "$CODEX_HOME" --session-id SESSION_ID
+python3 "$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.py" --codex-home "$CODEX_HOME" --name THREAD_ALIAS
 ```
 
 ## What It Removes

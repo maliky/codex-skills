@@ -1,6 +1,6 @@
 ---
 name: tusis-admin-ui-engineering
-description: "Use for TUSIS Django admin and website UI work: role dashboards, finance and registration workflows, permissions, filters, Selenium checks, 500s, and browser-visible UX bugs."
+description: "Use for TUSIS Django admin and website UI work: account-profile pages, role dashboards, finance and registration workflows, permissions, filters, Selenium checks, 500s, and browser-visible UX bugs."
 ---
 
 # TUSIS Admin UI Engineering
@@ -18,6 +18,7 @@ Do not use it for import parser normalization, curriculum resolution, duplicate 
    - frontend/admin JavaScript or CSS
    - browser navigation and 500 errors
    - performance or query explosion
+   - read-only account profile presentation and missing-field visibility
 3. Prefer small, local fixes that preserve the existing admin patterns.
 4. For browser-facing work, verify with the narrowest practical check:
    - Django unit/admin tests for code paths
@@ -28,5 +29,6 @@ Do not use it for import parser normalization, curriculum resolution, duplicate 
 ## References
 
 - Read [admin-ui-workflow](references/admin-ui-workflow.md) for admin filters, actions, role dashboards, and click-audit handling.
+- Read [account-profile-ui](references/account-profile-ui.md) for self-service profile layout, missing-value display, focused checks, and VPS visibility.
 - Read [browser-and-preprod-checks](references/browser-and-preprod-checks.md) for Selenium, preprod, and 500-error triage patterns.
 - Read [finance-registration-workflows](references/finance-registration-workflows.md) for finance officer, payment, invoice, registration, and role-specific workflow checks.
