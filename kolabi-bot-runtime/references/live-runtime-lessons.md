@@ -20,6 +20,13 @@ Use this reference when live or demo kolabi runs expose readiness, tail, stale-o
 - If a run appears to execute only one pair, check strategy parsing and runtime scheduling before changing exchange adapters. The runtime should handle as many pairs as the strategy defines.
 - Interpret `cancel-all` output against canonical state and the exchange response shape. A response listing already-canceled orders does not prove those orders were still live on the book.
 
+## Adaptive Strategy Functions
+
+- Keep strategy helper code in the existing helper modules when they already express repeated pairs or row expansion; avoid creating a parallel helper layer for one strategy file.
+- For ROI-driven tuning, distinguish timeout outcomes from positive or negative pair ROI before changing `tOut`, `hPrice`, or quantity.
+- Use short strategy-call names when the Org/TSV row is dense, but keep the Python function names specific enough to expose the behavior.
+- When tuning variants such as S1/S3/S4, update the small strategy fixture first and verify the generated rows before broadening to a live file.
+
 ## Operator Logs
 
 - Keep logs compact enough for live monitoring, but include a legend or stable event names for order lifecycle, readiness gates, feed deltas, and admin actions.

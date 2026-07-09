@@ -27,7 +27,8 @@ Known recurring issues:
 - PHP extensions missing from the image.
 - Moodledata ownership or writeability.
 - Host PostgreSQL access from the PHP container.
-- Host Ollama access from the PHP container.
+- Host Ollama access from the PHP container. On this host the working bridge route has been `http://172.31.240.1:11434`; verify `/api/tags` from inside PHP before changing Moodle code.
+- Moodle outbound mail: distinguish missing sendmail fallback from configured SMTP. Check live `smtphosts`, `smtpsecure`, `smtpauthtype`, `smtpuser`, and the real host identity before editing Postfix or Dovecot.
 - Nginx rewrite cycles or wrong document root.
 
 ## TUWP / WordPress
@@ -53,7 +54,7 @@ Recurring tasks:
 - Nginx publication for `tuwp.koba.sarl`.
 - WP-CLI user/page/menu setup.
 - Theme activation and lightweight TU institutional styling.
-- Checking broken theme assets through the public hostname.
+- Checking broken theme assets through the public hostname. If theme asset URLs return 403, prefer uploaded media URLs for public page images.
 
 ## TUSIS Preprod
 

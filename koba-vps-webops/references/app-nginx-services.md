@@ -6,8 +6,10 @@ Use this reference for small app deployments on the Koba VPS, especially Flask/s
 
 - Prefer app-specific deploy notes and `deploy/nginx/` templates when they exist, but avoid keeping duplicate conflicting config files.
 - Use an exact `server_name` for the hostname; do not rely on wildcard matches for production-facing subdomains.
+- For host cutovers, inspect the active enabled site first; fix Docker/app canonical host settings only when the app, not Nginx, is producing the redirect.
 - When binding upstreams, use the host IP or expected bridge/gateway address from local notes instead of guessing that `127.0.0.1` works from every context.
 - Run `nginx -t` before reloads and verify the exact public hostname after changes.
+- For Observable/static JSON sharing, use a narrow `/static/observable/` location with CORS headers and verify both `GET` and `OPTIONS`.
 
 ## 502 After Reboot
 

@@ -30,6 +30,7 @@ Treat `AGENTS.md` as the repo-level contract. It includes file boundaries, lint 
 - Check group/role membership, model permissions, and view-level permission gates separately.
 - For visibility bugs, inspect both the template condition and the backend queryset/view logic.
 - When the user reports that a role can or cannot see a link, verify as that role when practical instead of assuming from the template alone.
+- If an admin page loads but an autocomplete or related-object chooser is empty, check the related model's `view_*` permission and the live user's effective permissions before changing admin queryset code.
 
 ## Click Audit Handling
 

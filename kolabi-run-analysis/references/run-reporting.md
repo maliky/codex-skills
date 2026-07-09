@@ -68,6 +68,13 @@ Check these before proposing code changes:
 - DB locks or skipped telemetry/audit rows
 - UI-visible orders that are stale, already cancelled, or display artifacts
 
+## Chain-Gated Legs
+
+- For rebound or chained strategies, prove whether the upstream tail closed before calling the downstream leg late or blocked.
+- Treat `LEASE_CLOSED` followed by `CHAIN_READY` as the key release sequence; narrow to exact pair ids and timestamps before summarizing.
+- Check for `COOL`, `cooldown`, or `ORDER_SAFETY_BLOCKED` in the decisive window, but do not infer a cooldown block when those markers are absent.
+- Prefer tight `nl -ba log | sed -n ...` slices once broad `rg`/`awk` searches become noisy.
+
 ## Report Shape
 
 1. Scope: strategy, log, run window, exchange, symbol, environment.

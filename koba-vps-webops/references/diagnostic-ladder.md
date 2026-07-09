@@ -1,5 +1,9 @@
 # Diagnostic Ladder
 
+## Disk Pressure
+
+When the host is nearly full, start with `df -h` and targeted `du -h -d 1` on `/home/jil`, `/var/log`, and known cache roots. Prefer deleting confirmed caches or oversized logs after the user picks the target.
+
 ## DNS
 
 Check the public name first when the user reports browser failures:
