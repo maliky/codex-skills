@@ -28,6 +28,7 @@ Remove only local Codex session records the user explicitly targets. Treat delet
 3. Prefer the bundled cleanup script over manual JSONL or SQL edits.
 4. Probe SQLite schema before touching optional tables.
 5. Verify after deletion and report any residual references that belong to other sessions.
+6. Keep the skill-local cleanup script canonical; root-level copies under `$CODEX_HOME/scripts` are host-local conveniences.
 
 ## Scripts
 
@@ -45,6 +46,7 @@ Default `--codex-home` is `$CODEX_HOME` or `~/.codex`.
 
 - **Exact session removal**: read [cleanup script usage](references/cleanup-script-usage.md), dry-run the script, run it, then verify all stores.
 - **Empty-session cleanup**: read [cleanup heuristics](references/cleanup-heuristics.md), list ids first, delete in a bounded batch, then verify counts.
+- **Script sharing or sync**: read [script sharing](references/script-sharing.md) before comparing root-local and skill-local copies.
 - **Manual recovery**: inspect stores directly only when the script is missing or fails; keep edits schema-aware and minimal.
 
 ## Output Expectations
@@ -55,3 +57,4 @@ Report removed session ids, removed aliases, rollout/history/index/thread-row co
 
 - [cleanup script usage](references/cleanup-script-usage.md)
 - [cleanup heuristics](references/cleanup-heuristics.md)
+- [script sharing](references/script-sharing.md)

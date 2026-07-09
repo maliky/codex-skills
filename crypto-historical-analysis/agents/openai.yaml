@@ -1,0 +1,4 @@
+interface:
+  display_name: "Crypto Historical Analysis"
+  short_description: "Download crypto history and analyze log-bps amplitude"
+  default_prompt: "Use $crypto-historical-analysis to route crypto historical price downloads through historical_prices and amplitude reports through beast_variation.py."
