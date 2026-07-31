@@ -2,7 +2,26 @@
 
 ## Disk Pressure
 
-When the host is nearly full, start with `df -h` and targeted `du -h -d 1` on `/home/jil`, `/var/log`, and known cache roots. Prefer deleting confirmed caches or oversized logs after the user picks the target.
+When the host is nearly full, refresh live sizes before answering. Start small and resumable:
+
+```bash
+df -hT
+docker system df -v
+journalctl --disk-usage
+du -h -d 1 /home/jil /var/log 2>/dev/null
+```
+
+Rank concrete reclaim targets sized to the user's goal. Common buckets on this host include unused Docker images, `/home/jil/.ollama`, `/home/jil/.codex`, `/home/jil/.pyenv`, `/var/cache/apt/archives`, and large files under `/var/log`. Do not delete caches, images, logs, or volumes until the user chooses the target or explicitly authorizes cleanup.
+
+For per-account space questions, distinguish host free space from quota:
+
+```bash
+findmnt -no SOURCE,FSTYPE,OPTIONS /
+quota -s -u USER
+sudo -n du -x -s -h /home/USER
+```
+
+Use read-only `sudo -n` first. If quota applies, answer with quota, current usage, and remaining quota rather than only global filesystem free space.
 
 ## DNS
 

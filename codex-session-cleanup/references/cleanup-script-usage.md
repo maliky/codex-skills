@@ -24,6 +24,7 @@ python3 "$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.p
 
 ## What It Removes
 
+- Before mutation, a recoverable snapshot is written under `$CODEX_HOME/backups/session-cleanup/`.
 - rollout transcript file under `sessions/...`
 - matching rows in `history.jsonl`
 - matching rows in `session_index.jsonl`
@@ -33,6 +34,7 @@ python3 "$CODEX_HOME/skills/codex-session-cleanup/scripts/remove_codex_session.p
 ## Verification
 
 After the script runs, confirm:
+- the reported backup directory contains the affected JSONL, SQLite, and rollout files
 - no `threads.id = SESSION_ID`
 - no matching rows remain in `history.jsonl`
 - no matching rows remain in `session_index.jsonl`

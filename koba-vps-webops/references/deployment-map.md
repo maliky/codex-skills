@@ -3,7 +3,7 @@
 ## Host Notes
 
 Start with:
-- `/home/jil/Sysadmin/README.org`
+- relevant `.org` notes under `/home/jil/sysadmin`
 - `/home/jil/tulearn/README.org`
 - `/home/jil/tuwp/README.org`
 - `/home/jil/Tusis/Tusis_app/README.org`
@@ -16,7 +16,7 @@ These files contain host-specific command reminders and deployment assumptions. 
 - Moodle/TULearn wrapper: `/home/jil/tulearn`
 - Moodle upstream checkout: `/home/jil/tulearn/moodle`
 - WordPress/TUWP: `/home/jil/tuwp`
-- General sysadmin notes: `/home/jil/Sysadmin`
+- General sysadmin notes: `/home/jil/sysadmin`
 
 ## Common Services
 

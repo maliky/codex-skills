@@ -46,9 +46,14 @@
         (let ((default-directory
                 (or (file-name-directory tex-file) default-directory))
               (tex-base (file-name-nondirectory tex-file)))
-          (dotimes (_ 2)
-            (call-process "lualatex" nil "*tu-curriculum-lualatex*" t
-                          "-interaction=nonstopmode" tex-base))
+          (dotimes (pass 2)
+            (let ((status
+                   (call-process "lualatex" nil "*tu-curriculum-lualatex*" t
+                                 "-interaction=nonstopmode" tex-base)))
+              (unless (and (integerp status) (zerop status))
+                (message "lualatex pass %d failed with status %s; log: %s"
+                         (1+ pass) status "*tu-curriculum-lualatex*")
+                (kill-emacs 1))))
           (message "Compile log buffer: *tu-curriculum-lualatex*"))))))
 
 (tu-curriculum-export-main)

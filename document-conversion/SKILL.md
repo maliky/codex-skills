@@ -7,13 +7,6 @@ description: "Use when converting between Org, LaTeX, DOCX, ODT, PDF, and plain 
 
 Convert documents by preserving structure first, styling second, and raw text last. Prefer the maintained source when one exists, and use generated files as evidence rather than truth.
 
-## When to Use
-
-- Convert Org or LaTeX sources to DOCX, ODT, PDF, or cleaner text.
-- Recover structure from DOCX, ODT, or PDF-backed sources.
-- Preserve custom class behavior, metadata blocks, policy sections, curriculum tables, forms, and course descriptions.
-- Diagnose conversion routes before committing to Pandoc, LibreOffice, TeX, or XML-level repair.
-
 ## Avoid When
 
 - The task is trivial plain-text extraction.
@@ -49,9 +42,3 @@ The script inventories tools and source signals; it does not replace conversion 
 ## Output Expectations
 
 Return the converted artifact path, route used, skipped or unavailable tools, validation notes, and any source elements that could not be preserved safely.
-
-## References
-
-- [conversion matrix](references/conversion-matrix.md)
-- [docx ingestion](references/docx-ingestion.md)
-- [org and latex preservation](references/org-latex-preservation.md)

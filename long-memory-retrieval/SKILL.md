@@ -7,13 +7,6 @@ description: "Use when recovering previous Codex work from history.jsonl, sessio
 
 Recover prior work from local file evidence. Search lightweight indexes first, open transcripts only when needed, and keep exact evidence separate from inference.
 
-## When to Use
-
-- Find sessions related to a topic, project, file, or prior decision.
-- Map session ids to current and previous thread names.
-- Reconstruct plans, tradeoffs, commands, or repeated workflows.
-- Decide what should become a skill, remain reference-only, or be suppressed from attention.
-
 ## Avoid When
 
 - The request is to delete sessions; use `codex-session-cleanup`.
@@ -49,11 +42,3 @@ The script searches `history.jsonl` and attaches aliases from `session_index.jso
 ## Output Expectations
 
 Include session ids, thread names or aliases, source files used, a short recovered theme, and promotion/suppression labels when requested.
-
-## References
-
-- [sources](references/sources.md)
-- [retrieval workflow](references/retrieval-workflow.md)
-- [qualitative synthesis](references/qualitative-synthesis.md)
-- [forgetting and suppression](references/forgetting-and-suppression.md)
-- [reporting rules](references/reporting-rules.md)

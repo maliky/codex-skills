@@ -4,7 +4,7 @@ Use this reference when the user asks for current TU programs, offerings by coll
 
 ## Source Order
 
-1. Work in the active curriculum checkout, usually `/mnt/backup/Jobs/TU/Curriculum`.
+1. Work in the active curriculum checkout at `/home/jil/tucurricula`.
 2. Use `Audit/programs.org` first when present; it is a fast index, not final authority.
 3. Verify against current top-level Org headings before answering. Prior archive summaries can guide the search but should not override maintained sources.
 

@@ -7,13 +7,6 @@ description: "Use when work touches kolabi public or private feed ingestion, pri
 
 Treat feeds as state evidence. Preserve useful operator visibility while suppressing noisy balance or notice chatter unless the user asks for it.
 
-## When to Use
-
-- Parse, normalize, or reconcile public/private websocket payloads.
-- Debug feed-derived order, account, fill, cancel, or trigger visibility.
-- Enrich sparse private deltas from canonical account state.
-- Adjust operator logs produced by feed events.
-
 ## Avoid When
 
 - The task is a pure reducer/runtime transition; use `kolabi-bot-runtime`.
@@ -37,9 +30,3 @@ Treat feeds as state evidence. Preserve useful operator visibility while suppres
 ## Output Expectations
 
 Report payload shapes handled, visibility or logging changes, tests or fixtures added, and any intentionally suppressed noisy feed output.
-
-## References
-
-- [private feed reconciliation](references/private-feed-reconciliation.md)
-- [public feed handling](references/public-feed-handling.md)
-- [operator logging](references/operator-logging.md)

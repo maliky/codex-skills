@@ -7,14 +7,6 @@ description: "Use for TUSIS/Django import pipelines: SmartSchool truth rebuilds,
 
 Keep import work traceable from source rows through normalized parser output, mapping resolution, database writes, and batch validation.
 
-## When to Use
-
-- Build or debug repeated TUSIS/Django import pipelines.
-- Normalize messy curriculum, course, student, grade, schedule, or section data.
-- Resolve mappings to existing courses, curricula, departments, or sections.
-- Investigate duplicates, failed joins, or batch import reliability.
-- Validate importer results against source spreadsheets or cleaned witnesses.
-
 ## Avoid When
 
 - The task is a one-off spreadsheet cleanup with no import pipeline implication.
@@ -41,10 +33,3 @@ Keep import work traceable from source rows through normalized parser output, ma
 ## Output Expectations
 
 Report source files, parser/mapping changes, rows imported or skipped, duplicate/unresolved categories, validation commands, and environment assumptions.
-
-## References
-
-- [parser and normalization](references/parser-and-normalization.md)
-- [curriculum resolution](references/curriculum-resolution.md)
-- [batch import reliability](references/batch-import-reliability.md)
-- [truth rebuilds](references/truth-rebuilds.md)

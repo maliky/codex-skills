@@ -1,149 +1,30 @@
 * Codex Skills
 
-This repository is the personal skill collection for this Codex host. It is checked out at =~/.codex/skills= so Codex can discover the skills directly after restart.
+This repository is the personal skill collection installed at =~/.codex/skills=.
+The tracked skill folders are portable; =.system/= contains built-in Codex skills and is intentionally ignored.
 
-The tracked folders are portable skills that can be shared across hosts with Git. The local =.system/= folder contains built-in Codex skills and is intentionally not tracked by this repository.
+* Layout
 
-* Directory Layout
+- =<skill>/SKILL.md=: required metadata and concise workflow.
+- =<skill>/agents/openai.yaml=: UI metadata.
+- =<skill>/references/=: guidance loaded only when relevant.
+- =<skill>/scripts/=: deterministic helpers for repeated or fragile work.
 
-- =<skill>/SKILL.md=: required skill entrypoint with YAML =name= and =description= frontmatter plus concise operating instructions.
-- =<skill>/agents/openai.yaml=: UI metadata such as display name, short description, and default prompt.
-- =<skill>/references/=: progressively loaded guidance for detailed workflows, edge cases, source priorities, and command routes.
-- =<skill>/scripts/=: deterministic helpers for repeated or fragile operations.
-- =.system/=: local built-in skills supplied by Codex; do not commit this directory here.
+* Personal Skills
 
-* Skills
-
-** =long-memory-retrieval=
-
-Recovers prior Codex work from =history.jsonl=, =session_index.jsonl=, and =sessions/...jsonl=.
-
-Contents:
-- =references/sources.md= and =references/retrieval-workflow.md= describe where to search and in what order.
-- =references/qualitative-synthesis.md=, =references/forgetting-and-suppression.md=, and =references/reporting-rules.md= guide promotion, suppression, and evidence reporting.
-- =scripts/find_sessions.py= provides a reusable local search helper.
-
-** =codex-session-cleanup=
-
-Removes exact local Codex sessions or low-value blank sessions from transcript and thread-state stores.
-
-Contents:
-- =scripts/remove_codex_session.py= performs deterministic cleanup.
-- =references/cleanup-heuristics.md= explains what is safe to clean.
-- =references/cleanup-script-usage.md= documents the script route and expected checks.
-
-** =document-conversion=
-
-Converts between Org, LaTeX, DOCX, ODT, PDF, and plain text while preserving structure and house style.
-
-Contents:
-- =references/conversion-matrix.md= chooses routes by source and target format.
-- =references/docx-ingestion.md= covers DOCX to structured source recovery.
-- =references/org-latex-preservation.md= covers Org/LaTeX class-aware conversion.
-- =scripts/inspect_document_stack.py= inspects local conversion tooling.
-
-** =tu-curriculum-transformation=
-
-Transforms Tubman University curriculum sources from ODT, DOCX, or imported text into normalized Org/LaTeX sources.
-
-Contents:
-- =references/source-ingestion.md= handles source cleanup and structural triage.
-- =references/curriculum-grammar.md= describes the target Org curriculum grammar.
-- =references/course-descriptions.md= covers course-description normalization.
-- =references/tables-and-batch-export.md= covers radio tables, helpers, and export checks.
-- =references/catalog-production.md= keeps catalog-related output guidance within the curriculum workflow.
-- =scripts/export_org_curriculum.el= supports repeatable Org export checks.
-
-** =tu-curriculum-audit=
-
-Audits and reconciles TU curriculum and course-catalog data across Org, converted text, tables, descriptions, and spreadsheets.
-
-Contents:
-- =references/course-extraction.md= and =references/course-reference-extraction.md= guide code/title/credit/prerequisite extraction.
-- =references/description-reconciliation.md= covers duplicate and mismatched descriptions.
-- =references/gcode-and-aliases.md= covers course keys, aliases, and regeneration planning.
-- =references/spreadsheet-reconciliation.md= covers spreadsheet witnesses.
-- =scripts/extract_course_refs.py= provides deterministic extraction support.
-
-** =tu-latex-classes=
-
-Maintains TU LaTeX class and style behavior for curriculum, forms, policies, minutes, memos, and Org-to-LaTeX exports.
-
-Contents:
-- =references/class-inventory.md= records local class/style families.
-- =references/class-refactor-patterns.md= captures safe class-level refactor patterns.
-- =references/export-compatibility.md= defines export and compile expectations.
-
-** =tusis-import-engineering=
-
-Builds and debugs TUSIS/Django import pipelines for curriculum, course, student, grade, schedule, and related data.
-
-Contents:
-- =references/parser-and-normalization.md= covers row parsing, normalization, and mapping rules.
-- =references/curriculum-resolution.md= covers CurriculumCourse, Section, and related reconciliation.
-- =references/batch-import-reliability.md= covers duplicate handling, logging, and import-output validation.
-- =references/truth-rebuilds.md= covers SmartSchool truth rebuilds, source priority, alias collisions, and transaction-failure triage.
-
-** =tusis-admin-ui-engineering=
-
-Audits and fixes TUSIS Django admin and website UI workflows, including click audits, chained filters, admin actions, role dashboards, Selenium checks, and browser-visible 500 errors.
-
-Contents:
-- =references/admin-ui-workflow.md= covers admin filters, actions, role dashboards, and audit file handling.
-- =references/browser-and-preprod-checks.md= covers Selenium, chromedriver, preprod routes, and 500-error triage.
-- =references/finance-registration-workflows.md= covers finance officer dashboards, payments, invoices, registration status, and role-specific checks.
-
-** =koba-vps-webops=
-
-Operates and debugs Koba/TU VPS web deployments across DNS, Nginx, TLS, Docker Compose, container networking, Moodle/TULearn, WordPress/TUWP, and TUSIS preprod.
-
-Contents:
-- =references/deployment-map.md= records host paths, app names, and service boundaries.
-- =references/diagnostic-ladder.md= gives the DNS -> Nginx -> TLS -> Docker -> app-log diagnostic order.
-- =references/app-notes.md= captures TULearn, TUWP, and TUSIS preprod command routes.
-- =references/app-nginx-services.md= captures small-app Nginx files, exact host matching, service wrappers, and 502-after-reboot checks.
-
-** =kolabi-bot-runtime=
-
-Maintains typed =kolabi= runtime internals around state-event-command transitions, pair lifecycle, tail tracking, Chronos, StrategyRuntime, Horus, and Ogun boundaries.
-
-Contents:
-- =references/state-event-loop.md= documents the core runtime transition model.
-- =references/tail-tracking.md= covers head/tail lifecycle and tracking details.
-- =references/runtime-boundaries.md= describes component responsibilities.
-- =references/admin-action-boundaries.md= covers operator/admin action boundaries.
-- =references/live-runtime-lessons.md= captures gate readiness, latent heads, stale stop cleanup, and compact live-test logging.
-
-** =kolabi-run-analysis=
-
-Analyzes =kolabi= bot runs and produces operator-facing reports for current or stopped runs, terminated pairs, fills, amendments, slippage, and balances.
-
-Contents:
-- =references/run-reporting.md= covers run boundaries, source priority, terminated-pair Org tables, gross/net/cumulative estimates, maker/taker interpretation, and anomaly checks.
-
-** =kolabi-multi-exchange-adapters=
-
-Builds, debugs, and operates =kolabi= exchange adapters across Binance, BitMEX, Kraken, and similar derivatives/perpetual platforms.
-
-Contents:
-- =references/adapter-workflow.md= covers exchange-neutral runtime boundaries, adapter capability checks, and implementation procedure.
-- =references/demo-and-tsv.md= covers demo/sandbox guardrails, compact TSV grammar, MWE runs, and operator reporting.
-
-** =kolabi-market-feeds=
-
-Maintains =kolabi= public/private feed ingestion, private payload reconciliation, order/account visibility, and operator action logging.
-
-Contents:
-- =references/public-feed-handling.md= covers public market data handling.
-- =references/private-feed-reconciliation.md= covers private websocket/order/account reconciliation.
-- =references/operator-logging.md= covers feed-driven logs and operator visibility.
-
-** =kolabi-kraken-futures=
-
-Builds, debugs, and operates the local =kolabi= Kraken Futures workflow, including CLI behavior, order contracts, smoke/probe commands, packaging, and command-surface maintenance.
-
-Contents:
-- =references/cli-and-operations.md= covers command routes and operator flows.
-- =references/order-contract.md= defines order-contract expectations.
-- =references/packaging-and-cleanup.md= covers editable installs, package structure, and cleanup.
-- =references/runtime-boundaries.md= keeps CLI work aligned with runtime ownership.
+- =codex-session-cleanup=: remove exact local sessions with backup and verification.
+- =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
+- =crypto-historical-analysis=: acquire and analyze historical crypto prices.
+- =document-conversion=: preserve structure across Org, LaTeX, office, PDF, and text formats.
+- =koba-vps-webops=: diagnose Koba/TU DNS, Nginx, TLS, containers, and web services.
+- =kolabi-bot-runtime=: maintain typed runtime transitions and lifecycle boundaries.
+- =kolabi-kraken-futures=: operate and debug the Kraken Futures command surface.
+- =kolabi-market-feeds=: reconcile public and private feed-derived state.
+- =kolabi-multi-exchange-adapters=: maintain exchange-neutral and exchange-specific adapter boundaries.
+- =kolabi-run-analysis=: produce operator reports and bot-run forensics.
+- =long-memory-retrieval=: recover prior local Codex session evidence.
+- =tu-curriculum-audit=: reconcile curriculum tables, descriptions, aliases, and witnesses.
+- =tu-curriculum-transformation=: normalize curriculum sources into maintained Org.
+- =tu-latex-classes=: maintain TU LaTeX classes and export compatibility.
+- =tusis-admin-ui-engineering=: fix TUSIS admin, permissions, and browser-visible workflows.
+- =tusis-import-engineering=: stabilize TUSIS import parsing, mapping, and validation.

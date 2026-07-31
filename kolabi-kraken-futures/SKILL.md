@@ -7,13 +7,6 @@ description: "Use when building, debugging, or operating the local kolabi Kraken
 
 Work from the repo's actual CLI grammar and order contract. Prefer concrete smoke commands and local code evidence over generic exchange advice.
 
-## When to Use
-
-- Build or debug Kraken Futures CLI commands and operator workflows.
-- Fix order-contract alignment between CLI, runtime, and Kraken adapter calls.
-- Investigate `open-orders`, `trigger-orders`, `cancel-all`, `close-all`, or `run-once`.
-- Repair editable installs, package entrypoints, or command-surface cleanup.
-
 ## Avoid When
 
 - The task is internal reducer/runtime design; use `kolabi-bot-runtime`.
@@ -38,10 +31,3 @@ Work from the repo's actual CLI grammar and order contract. Prefer concrete smok
 ## Output Expectations
 
 Lead with the exact command or code path when asked, then report assumptions, safety constraints, tests or probes run, and any branch/remote details relevant to deployment.
-
-## References
-
-- [cli and operations](references/cli-and-operations.md)
-- [order contract](references/order-contract.md)
-- [packaging and cleanup](references/packaging-and-cleanup.md)
-- [runtime boundaries](references/runtime-boundaries.md)

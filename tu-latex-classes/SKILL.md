@@ -7,14 +7,6 @@ description: "Use when maintaining Tubman University LaTeX class or style files,
 
 Keep TU class edits scoped, class-aware, and export-tested. Prefer class-level fixes over generated-output patches.
 
-## When to Use
-
-- Modify TU `.cls` or `.sty` files.
-- Fix Org-to-LaTeX export regressions tied to TU class behavior.
-- Align memo, letter, policy, form, minutes, beamer, or curriculum formatting.
-- Tune transcript package layout, duplex back matter, geometry branches, detail fonts, and column rules.
-- Decide which class-local `tucommon.sty` or macro layer owns a fix.
-
 ## Avoid When
 
 - The task is document conversion without class changes; use `document-conversion`.
@@ -39,10 +31,3 @@ Keep TU class edits scoped, class-aware, and export-tested. Prefer class-level f
 ## Output Expectations
 
 Report files changed, class family affected, validation route, compile/export results, and any legacy fallback that stayed in place.
-
-## References
-
-- [class inventory](references/class-inventory.md)
-- [class refactor patterns](references/class-refactor-patterns.md)
-- [export compatibility](references/export-compatibility.md)
-- [transcript layout](references/transcript-layout.md)

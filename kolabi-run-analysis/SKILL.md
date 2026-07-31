@@ -7,13 +7,6 @@ description: "Use for Kolabi bot run forensics and operator reports: analyze cur
 
 Analyze Kolabi bot runs from logs, DB-backed order state, and operator observations. Keep this skill focused on reporting and forensics; use `kolabi-bot-runtime` when changing reducer/runtime code.
 
-## When To Use
-
-- Summarize a current, recent, or stopped Kolabi run.
-- Produce an Org-mode table for terminated pairs.
-- Explain head/tail fills, maker/taker status, amendments, delta, gross/net, cumulative result, slippage, and tOut behavior.
-- Compare platform-visible orders with runtime logs and canonical DB state.
-
 ## Workflow
 
 1. Identify the run boundary, strategy file, symbol, exchange, environment, and log path.
@@ -30,7 +23,3 @@ Analyze Kolabi bot runs from logs, DB-backed order state, and operator observati
 ## Output Expectations
 
 Lead with the run scope, then provide the table, then list anomalies and confidence. Include which source was used: log lines, DB rows, exchange response, or user observation.
-
-## References
-
-- [run reporting](references/run-reporting.md)

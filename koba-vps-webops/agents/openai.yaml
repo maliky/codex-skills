@@ -1,4 +1,4 @@
 interface:
   display_name: "Koba VPS WebOps"
-  short_description: "Operate Koba web apps, DNS, and Nginx"
-  default_prompt: "Use $koba-vps-webops to debug or update a Koba VPS web deployment."
+  short_description: "Operate Koba web apps, storage, and Nginx"
+  default_prompt: "Use $koba-vps-webops to debug a Koba VPS web deployment, host wiring issue, or disk/quota problem."

@@ -7,13 +7,6 @@ description: "Use when removing local Codex sessions by exact session id or exac
 
 Remove only local Codex session records the user explicitly targets. Treat deletion as destructive and keep reusable skill files separate from raw transcript cleanup.
 
-## When to Use
-
-- Delete one session by exact id or exact `session_index.jsonl` alias.
-- Clean bounded dot-only, blank-title, or test sessions after listing ids.
-- Reconcile file-based session records with `state_5.sqlite`.
-- Verify that a cleanup removed transcript, history, index, and thread rows together.
-
 ## Avoid When
 
 - The user only wants memory retrieval or prior-session context; use `long-memory-retrieval`.
@@ -51,10 +44,4 @@ Default `--codex-home` is `$CODEX_HOME` or `~/.codex`.
 
 ## Output Expectations
 
-Report removed session ids, removed aliases, rollout/history/index/thread-row counts, and residual references intentionally left because they belong to another session.
-
-## References
-
-- [cleanup script usage](references/cleanup-script-usage.md)
-- [cleanup heuristics](references/cleanup-heuristics.md)
-- [script sharing](references/script-sharing.md)
+Report removed session ids, removed aliases, backup location, rollout/history/index/thread-row counts, and residual references intentionally left because they belong to another session.

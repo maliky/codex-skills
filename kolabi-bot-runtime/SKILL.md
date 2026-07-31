@@ -7,13 +7,6 @@ description: "Use for typed kolabi runtime work: state/event/command transitions
 
 Keep runtime work inside typed state transitions and explicit command boundaries. Separate domain decisions from adapter calls and operator-facing CLI behavior.
 
-## When to Use
-
-- Change reducer state, event handling, command generation, or lifecycle transitions.
-- Debug tail tracking, market-tick reactions, or no-widen tail semantics.
-- Adjust Chronos dedupe, StrategyRuntime flow, Horus translation, or Ogun execution boundaries.
-- Review whether a behavior belongs in the reducer, runtime coordinator, CLI, or exchange adapter.
-
 ## Avoid When
 
 - The request is only about Kraken CLI usage or operator commands; use `kolabi-kraken-futures`.
@@ -39,11 +32,3 @@ Keep runtime work inside typed state transitions and explicit command boundaries
 ## Output Expectations
 
 Report the runtime boundary touched, the state/event cases covered, tests run, and any operator-facing behavior that intentionally stayed unchanged.
-
-## References
-
-- [state and event loop](references/state-event-loop.md)
-- [runtime boundaries](references/runtime-boundaries.md)
-- [tail tracking](references/tail-tracking.md)
-- [admin action boundaries](references/admin-action-boundaries.md)
-- [live runtime lessons](references/live-runtime-lessons.md)

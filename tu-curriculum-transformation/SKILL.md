@@ -7,13 +7,6 @@ description: "Use when extracting and normalizing Tubman University curriculum d
 
 Turn raw curriculum material into maintained Org sources while preserving meaning, local vocabulary, and TU curriculum export contracts.
 
-## When to Use
-
-- Convert ODT, DOCX, or imported curriculum text into clean Org.
-- Normalize program structure, semester tables, course-description sections, and shared college descriptions.
-- Maintain radio tables, orgtbl helpers, and curriculum export helpers.
-- Verify Org to TeX to PDF behavior for TU curriculum classes.
-
 ## Avoid When
 
 - The task is mainly audit/reconciliation after sources exist; use `tu-curriculum-audit`.
@@ -51,11 +44,3 @@ Interactive Emacs export remains the reference behavior when local configuration
 ## Output Expectations
 
 Return maintained Org source paths, normalized macro/table changes, export validation notes, and unresolved audit questions that should be handled separately.
-
-## References
-
-- [source ingestion](references/source-ingestion.md)
-- [curriculum grammar](references/curriculum-grammar.md)
-- [course descriptions](references/course-descriptions.md)
-- [tables and batch export](references/tables-and-batch-export.md)
-- [catalog production](references/catalog-production.md)

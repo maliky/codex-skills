@@ -10,8 +10,10 @@ import re
 import sqlite3
 import sys
 import tempfile
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from pathlib import Path
+from shutil import copy2
 from typing import Any, Callable
 
 
@@ -33,6 +35,15 @@ class Target:
     session_id: str
     aliases: tuple[str, ...]
     rollout_path: Path | None
+
+
+@dataclass(frozen=True)
+class Snapshot:
+    directory: Path
+    history: Path
+    session_index: Path
+    state_db: Path | None
+    rollout: Path | None
 
 
 def default_codex_home() -> Path:
@@ -144,7 +155,19 @@ def rollout_from_db(paths: Paths, session_id: str, tables: set[str]) -> Path | N
             (session_id,),
         ).fetchone()
     if row and row[0]:
-        return Path(row[0]).expanduser()
+        rollout = Path(row[0]).expanduser().resolve()
+        sessions_dir = paths.sessions_dir.resolve()
+        try:
+            rollout.relative_to(sessions_dir)
+        except ValueError as exc:
+            raise CleanupError(
+                f"Refusing rollout path outside sessions directory: {rollout}"
+            ) from exc
+        if session_id not in rollout.name:
+            raise CleanupError(
+                f"Refusing rollout path that does not contain the session id: {rollout}"
+            )
+        return rollout
     return None
 
 
@@ -173,9 +196,10 @@ def resolve_target(paths: Paths, args: argparse.Namespace, tables: set[str]) -> 
     )
 
 
-def rewrite_jsonl_excluding(path: Path, predicate: Callable[[dict[str, Any]], bool]) -> int:
+def stage_jsonl_excluding(
+    path: Path, predicate: Callable[[dict[str, Any]], bool]
+) -> tuple[Path, int]:
     removed = 0
-    tmp_path: Path | None = None
     with path.open("r", encoding="utf-8") as src, tempfile.NamedTemporaryFile(
         "w", delete=False, encoding="utf-8", dir=path.parent
     ) as tmp:
@@ -183,15 +207,58 @@ def rewrite_jsonl_excluding(path: Path, predicate: Callable[[dict[str, Any]], bo
         for line in src:
             text = line.strip()
             if not text:
+                tmp.write(line)
                 continue
             row = json.loads(text)
             if isinstance(row, dict) and predicate(row):
                 removed += 1
                 continue
-            tmp.write(json.dumps(row, ensure_ascii=False))
-            tmp.write("\n")
-    os.replace(tmp_path, path)
-    return removed
+            tmp.write(line)
+    return tmp_path, removed
+
+
+def backup_sqlite(source: Path, destination: Path) -> None:
+    with sqlite3.connect(source) as src, sqlite3.connect(destination) as dst:
+        src.backup(dst)
+
+
+def create_snapshot(paths: Paths, target: Target) -> Snapshot:
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    directory = (
+        paths.codex_home / "backups" / "session-cleanup" / f"{stamp}-{target.session_id}"
+    )
+    directory.mkdir(parents=True, mode=0o700, exist_ok=False)
+    os.chmod(directory, 0o700)
+
+    history = directory / "history.jsonl"
+    session_index = directory / "session_index.jsonl"
+    copy2(paths.history, history)
+    copy2(paths.session_index, session_index)
+
+    state_db: Path | None = None
+    if paths.state_db.exists():
+        state_db = directory / "state_5.sqlite"
+        backup_sqlite(paths.state_db, state_db)
+
+    rollout: Path | None = None
+    if target.rollout_path is not None and target.rollout_path.exists():
+        rollout = directory / target.rollout_path.name
+        copy2(target.rollout_path, rollout)
+
+    for file_path in directory.iterdir():
+        if file_path.is_file():
+            os.chmod(file_path, 0o600)
+    return Snapshot(directory, history, session_index, state_db, rollout)
+
+
+def restore_snapshot(paths: Paths, target: Target, snapshot: Snapshot) -> None:
+    copy2(snapshot.history, paths.history)
+    copy2(snapshot.session_index, paths.session_index)
+    if snapshot.state_db is not None:
+        backup_sqlite(snapshot.state_db, paths.state_db)
+    if snapshot.rollout is not None and target.rollout_path is not None:
+        target.rollout_path.parent.mkdir(parents=True, exist_ok=True)
+        copy2(snapshot.rollout, target.rollout_path)
 
 
 def count_jsonl(path: Path, predicate: Callable[[dict[str, Any]], bool]) -> int:
@@ -221,7 +288,8 @@ def cleanup_db(paths: Paths, session_id: str, tables: set[str]) -> dict[str, int
                 "SELECT COUNT(*) FROM stage1_outputs WHERE thread_id = ?",
                 (session_id,),
             ).fetchone()[0]
-        with conn:
+        conn.execute("BEGIN IMMEDIATE")
+        try:
             if "thread_spawn_edges" in tables:
                 counts["thread_spawn_edges"] = conn.execute(
                     "DELETE FROM thread_spawn_edges "
@@ -238,6 +306,10 @@ def cleanup_db(paths: Paths, session_id: str, tables: set[str]) -> dict[str, int
                     "DELETE FROM threads WHERE id = ?",
                     (session_id,),
                 ).rowcount
+        except Exception:
+            conn.rollback()
+            raise
+        conn.commit()
     return counts
 
 
@@ -294,13 +366,21 @@ def verify(paths: Paths, target: Target, tables: set[str]) -> None:
         raise CleanupError(f"Verification failed: database rows remain: {live_remaining}")
 
 
-def print_report(target: Target, history: int, index: int, rollout: int, db: dict[str, int]) -> None:
+def print_report(
+    target: Target,
+    history: int,
+    index: int,
+    rollout: int,
+    db: dict[str, int],
+    backup_dir: Path | None = None,
+) -> None:
     print(f"session_id: {target.session_id}")
     print("aliases: " + (", ".join(target.aliases) if target.aliases else "<none>"))
     print(f"rollout_file: {target.rollout_path if target.rollout_path else '<none>'}")
     print(f"rollout_files_removed: {rollout}")
     print(f"history_rows: {history}")
     print(f"session_index_rows: {index}")
+    print(f"backup_dir: {backup_dir if backup_dir else '<none>'}")
     print("state_rows: " + ", ".join(f"{key}={db[key]}" for key in sorted(db)))
 
 
@@ -308,31 +388,64 @@ def main() -> int:
     args = parse_args()
     paths = build_paths(args.codex_home)
 
+    snapshot: Snapshot | None = None
+    target: Target | None = None
+    staged: list[Path] = []
     try:
         tables = sqlite_tables(paths.state_db)
         target = resolve_target(paths, args, tables)
+        history_count = count_jsonl(
+            paths.history,
+            lambda row: str(row.get("session_id", "")) == target.session_id,
+        )
+        index_count = count_jsonl(
+            paths.session_index,
+            lambda row: str(row.get("id", "")) == target.session_id,
+        )
+        rollout_count = int(
+            target.rollout_path is not None and target.rollout_path.exists()
+        )
+        db_counts = matching_db_counts(paths, target.session_id, tables)
+        if not (history_count or index_count or rollout_count or any(db_counts.values())):
+            raise CleanupError(f"No records found for session id: {target.session_id}")
         if args.dry_run:
-            history = count_jsonl(paths.history, lambda row: str(row.get("session_id", "")) == target.session_id)
-            index = count_jsonl(paths.session_index, lambda row: str(row.get("id", "")) == target.session_id)
-            rollout = int(target.rollout_path is not None and target.rollout_path.exists())
-            print_report(target, history, index, rollout, matching_db_counts(paths, target.session_id, tables))
+            print_report(
+                target, history_count, index_count, rollout_count, db_counts
+            )
             return 0
 
-        history = rewrite_jsonl_excluding(
+        snapshot = create_snapshot(paths, target)
+        history_tmp, history = stage_jsonl_excluding(
             paths.history, lambda row: str(row.get("session_id", "")) == target.session_id
         )
-        index = rewrite_jsonl_excluding(
+        staged.append(history_tmp)
+        index_tmp, index = stage_jsonl_excluding(
             paths.session_index, lambda row: str(row.get("id", "")) == target.session_id
         )
+        staged.append(index_tmp)
+        os.replace(history_tmp, paths.history)
+        staged.remove(history_tmp)
+        os.replace(index_tmp, paths.session_index)
+        staged.remove(index_tmp)
         rollout = 0
         if target.rollout_path is not None and target.rollout_path.exists():
             target.rollout_path.unlink()
             rollout = 1
         db = cleanup_db(paths, target.session_id, tables)
         verify(paths, target, tables)
-        print_report(target, history, index, rollout, db)
+        print_report(target, history, index, rollout, db, snapshot.directory)
         return 0
     except (CleanupError, OSError, sqlite3.Error) as exc:
+        for staged_path in staged:
+            staged_path.unlink(missing_ok=True)
+        if snapshot is not None and target is not None:
+            try:
+                restore_snapshot(paths, target, snapshot)
+            except (OSError, sqlite3.Error) as restore_exc:
+                print(
+                    f"Error restoring backup {snapshot.directory}: {restore_exc}",
+                    file=sys.stderr,
+                )
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 

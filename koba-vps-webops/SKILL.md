@@ -1,6 +1,6 @@
 ---
 name: koba-vps-webops
-description: "Use when operating, debugging, or updating Koba VPS web deployments and host wiring, including koba.sarl subdomains, Nginx vhosts, small app service wrappers, certbot or Let's Encrypt certificates, DNS or CNAME/A-record checks, Docker Compose web apps, host-to-container networking, PostgreSQL access from containers, Moodle/TULearn, WordPress/TUWP, TUSIS preprod deployment status, and public 404/500/SSL failures."
+description: "Use when operating, debugging, or updating Koba VPS web deployments and host wiring, including koba.sarl subdomains, Nginx vhosts, small app service wrappers, certbot or Let's Encrypt certificates, DNS or CNAME/A-record checks, Docker Compose web apps, host-to-container networking, PostgreSQL access from containers, Moodle/TULearn, WordPress/TUWP, TUSIS preprod deployment status, disk or quota triage, and public 404/500/SSL failures."
 ---
 
 # Koba VPS WebOps
@@ -13,7 +13,7 @@ Do not use it as the primary skill for application-domain fixes inside TUSIS, Ko
 
 1. Identify the app and hostname: TUSIS/preprod, TULearn/Moodle, TUWP/WordPress, or a general `koba.sarl` service.
 2. Check local project notes before editing:
-   - `/home/jil/Sysadmin/README.org`
+   - relevant notes under `/home/jil/sysadmin`
    - app-specific `README.org`
    - app-specific deploy or compose files
 3. Diagnose in layers:
@@ -29,6 +29,6 @@ Do not use it as the primary skill for application-domain fixes inside TUSIS, Ko
 ## References
 
 - Read [deployment-map](references/deployment-map.md) for host paths, app names, and common command routes.
-- Read [diagnostic-ladder](references/diagnostic-ladder.md) for DNS, Nginx, TLS, Docker, and container networking checks.
+- Read [diagnostic-ladder](references/diagnostic-ladder.md) for disk, quota, DNS, Nginx, TLS, Docker, and container networking checks.
 - Read [app-notes](references/app-notes.md) for Moodle/TULearn, WordPress/TUWP, and TUSIS preprod specifics.
 - Read [app-nginx-services](references/app-nginx-services.md) for small app Nginx files, exact host matching, service wrappers, and 502-after-reboot checks.

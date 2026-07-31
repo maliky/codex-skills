@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSRS Report Engineering"
+  short_description: "Build and deploy CSRS Django React workflows"
+  default_prompt: "Use $csrs-report-engineering to work on the CSRS Django/React app, deployment, or psiaka bootstrap flow."

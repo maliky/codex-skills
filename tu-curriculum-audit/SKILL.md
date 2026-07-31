@@ -7,15 +7,6 @@ description: "Use when auditing or reconciling Tubman University curriculum and 
 
 Extract facts before editing sources. Keep visible course strings separate from normalized comparison keys, and prefer reviewable TSV/report outputs before source patches.
 
-## When to Use
-
-- Extract course codes, titles, credits, descriptions, prerequisites, corequisites, semester hints, or program labels.
-- Produce current program inventories or deduplicated offerings by college from maintained Org sources.
-- Compare curriculum tables against course-description sections.
-- Detect duplicate codes, aliases, title variants, credit mismatches, renames, or missing entries.
-- Merge spreadsheet, TSV, XML-derived, or extracted-text witnesses.
-- Plan safe course-key, alias, or gcode regeneration.
-
 ## Avoid When
 
 - The task is first-pass curriculum source cleanup; use `tu-curriculum-transformation`.
@@ -54,12 +45,3 @@ The script extracts candidate course references. It does not decide aliases, cre
 ## Output Expectations
 
 Report source sections audited, extraction counts, mismatch categories, TSV/report paths, and explicit assumptions for aliases, duplicates, and generated keys.
-
-## References
-
-- [course extraction](references/course-extraction.md)
-- [program inventory](references/program-inventory.md)
-- [course reference extraction](references/course-reference-extraction.md)
-- [description reconciliation](references/description-reconciliation.md)
-- [gcode and aliases](references/gcode-and-aliases.md)
-- [spreadsheet reconciliation](references/spreadsheet-reconciliation.md)
