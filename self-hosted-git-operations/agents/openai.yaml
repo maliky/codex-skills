@@ -1,0 +1,4 @@
+interface:
+  display_name: "Self-Hosted Git Operations"
+  short_description: "Operate self-hosted Git remotes safely"
+  default_prompt: "Use $self-hosted-git-operations to diagnose and safely synchronize this repository with its SSH-hosted Git remote."

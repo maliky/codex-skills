@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cuisine Book Engineering"
+  short_description: "Operate Cuisine OCR and storyboard production"
+  default_prompt: "Use $cuisine-book-engineering to continue Cuisine OCR or claimed storyboard production with durable review and recovery."

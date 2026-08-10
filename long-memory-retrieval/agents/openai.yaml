@@ -1,4 +1,4 @@
 interface:
   display_name: "Long Memory Retrieval"
-  short_description: "Recover prior Codex session evidence"
-  default_prompt: "Use $long-memory-retrieval to find prior local sessions, decisions, aliases, recurring workflows, and suppression candidates."
+  short_description: "Audit history and active Codex rollouts"
+  default_prompt: "Use $long-memory-retrieval to search prior sessions, inventory active rollouts, or audit recurring workflows for skill candidates."

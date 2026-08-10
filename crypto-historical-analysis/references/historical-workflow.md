@@ -40,7 +40,9 @@ Prefer the provider path that gives the deepest precise history available, with 
 
 ## Commands And Checks
 
-- `beast_variation.py` is the current entry point for `ingest`, `summary`, `freq`, `tail`, `threshold`, and `report`.
+- `beast_variation.py`, installed as `bv`, is the current entry point. Read `README.org` and `bv --help` for the live command inventory; `freq` was removed and must not be suggested.
+- The CSV trees remain durable source history. `market_analysis.sqlite` is a persistent normalized query database, not an in-memory cache. Check each command's documented source because prediction commands may still read and deduplicate CSVs directly.
+- Use `bv update` for incremental source/database refresh when supported instead of reingesting every historical file.
 - If compile/import checks hit a cache path failure in `MarketAnalysis`, set `PYTHONPYCACHEPREFIX=/tmp/...`.
 - If an ad-hoc direct import fails while logic looks correct, retry with the module inserted into `sys.modules` before changing analysis code.
 
@@ -49,3 +51,4 @@ Prefer the provider path that gives the deepest precise history available, with 
 - Do not collapse historical fetchers into `kolaBiBot/tree`; that boundary was explicitly rejected.
 - If `git -C DataFetchers/historical_prices` says it is not a Git repository, inspect the folder directly because it may sit outside the current checkout root.
 - If `--window 1min` yields no samples on one-minute bars, check whether rolling logic still requires two samples; one-bar amplitude windows need `min_periods=1`.
+- Do not interpret full-history association tables as predictive evidence. Use chronologically purged holdout results for claims about unseen data.

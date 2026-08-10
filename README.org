@@ -14,15 +14,17 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 
 - =codex-session-cleanup=: remove exact local sessions with backup and verification.
 - =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
-- =crypto-historical-analysis=: acquire and analyze historical crypto prices.
-- =document-conversion=: preserve structure across Org, LaTeX, office, PDF, and text formats.
+- =crypto-historical-analysis=: acquire historical prices and analyze market structure and public instrument universes.
+- =cuisine-book-engineering=: maintain the Cuisine OCR corpus and resumable culinary storyboard production.
+- =document-conversion=: preserve structure across scans, Org, LaTeX, office, PDF, and text formats.
 - =koba-vps-webops=: diagnose Koba/TU DNS, Nginx, TLS, containers, and web services.
 - =kolabi-bot-runtime=: maintain typed runtime transitions and lifecycle boundaries.
 - =kolabi-kraken-futures=: operate and debug the Kraken Futures command surface.
 - =kolabi-market-feeds=: reconcile public and private feed-derived state.
 - =kolabi-multi-exchange-adapters=: maintain exchange-neutral and exchange-specific adapter boundaries.
 - =kolabi-run-analysis=: produce operator reports and bot-run forensics.
-- =long-memory-retrieval=: recover prior local Codex session evidence.
+- =long-memory-retrieval=: recover and audit prior local Codex session evidence.
+- =self-hosted-git-operations=: diagnose and synchronize non-GitHub SSH remotes safely.
 - =tu-curriculum-audit=: reconcile curriculum tables, descriptions, aliases, and witnesses.
 - =tu-curriculum-transformation=: normalize curriculum sources into maintained Org.
 - =tu-latex-classes=: maintain TU LaTeX classes and export compatibility.

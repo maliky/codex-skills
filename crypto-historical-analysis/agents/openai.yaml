@@ -1,4 +1,4 @@
 interface:
   display_name: "Crypto Historical Analysis"
-  short_description: "Analyze crypto history and threshold reports"
-  default_prompt: "Use $crypto-historical-analysis to route crypto historical downloads, manalysis threshold reports, and log-bps amplitude analysis."
+  short_description: "Analyze crypto history and market structure"
+  default_prompt: "Use $crypto-historical-analysis to run historical analysis or build correctly scoped Kraken and CoinGecko ranked reports."
