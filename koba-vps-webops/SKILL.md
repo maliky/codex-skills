@@ -1,6 +1,6 @@
 ---
 name: koba-vps-webops
-description: "Use when operating, debugging, or updating Koba VPS web deployments and host wiring, including koba.sarl subdomains, Nginx vhosts, small app service wrappers, certbot or Let's Encrypt certificates, DNS or CNAME/A-record checks, Docker Compose web apps, host-to-container networking, PostgreSQL access from containers, Moodle/TULearn, WordPress/TUWP, TUSIS preprod deployment status, disk or quota triage, and public 404/500/SSL failures."
+description: "Use when operating, debugging, or updating Koba VPS web deployments and host wiring, including koba.sarl subdomains, OVH DNS records, Nginx vhosts, small app service wrappers, certbot or Let's Encrypt certificates, DNS or CNAME/A-record checks, Docker Compose web apps, host-to-container networking, PostgreSQL access from containers, account-owned deployment retirement, Moodle/TULearn, WordPress/TUWP, TUSIS preprod deployment status, disk or quota triage, and public 404/500/SSL failures."
 ---
 
 # Koba VPS WebOps
@@ -14,6 +14,7 @@ Do not use it as the primary skill for application-domain fixes inside TUSIS, Ko
 1. Identify the app and hostname: TUSIS/preprod, TULearn/Moodle, TUWP/WordPress, or a general `koba.sarl` service.
 2. Check local project notes before editing:
    - relevant notes under `/home/jil/sysadmin`
+   - `/home/jil/sysadmin/users.org` for account-owned service cleanup
    - app-specific `README.org`
    - app-specific deploy or compose files
 3. Diagnose in layers:

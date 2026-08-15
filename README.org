@@ -13,6 +13,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 * Personal Skills
 
 - =codex-session-cleanup=: remove exact local sessions with backup and verification.
+- =csrs-ent-engineering=: maintain CSRS ENT/PENT Django-Odoo architecture, tests, promotion, and deployment.
 - =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
 - =crypto-historical-analysis=: acquire historical prices and analyze market structure and public instrument universes.
 - =cuisine-book-engineering=: maintain the Cuisine OCR corpus and resumable culinary storyboard production.

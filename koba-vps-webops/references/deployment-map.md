@@ -4,6 +4,7 @@
 
 Start with:
 - relevant `.org` notes under `/home/jil/sysadmin`
+- `/home/jil/sysadmin/users.org` when account ownership or user deletion is involved
 - `/home/jil/tulearn/README.org`
 - `/home/jil/tuwp/README.org`
 - `/home/jil/Tusis/Tusis_app/README.org`
@@ -25,6 +26,19 @@ These files contain host-specific command reminders and deployment assumptions. 
 - TULearn runs PHP-FPM through Docker Compose and uses host PostgreSQL.
 - TUWP runs WordPress through Docker Compose and uses WP-CLI through the compose stack.
 - Some container-to-host flows use fixed bridge/gateway IPs rather than `127.0.0.1`.
+
+## Account-Owned Deployments
+
+Before removing a local account or account-owned app, audit:
+
+- `systemctl` user/app services
+- running processes
+- `/srv/apps/<user-or-app>`
+- Nginx enabled and available vhosts
+- certificates and renewal config
+- quotas, cron, logs, repositories, and exposed ports
+
+Remove only resources owned by the targeted account or app. `userdel --remove` is not sufficient by itself and must not replace the dependency audit.
 
 ## Safety
 

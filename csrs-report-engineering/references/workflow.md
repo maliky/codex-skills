@@ -15,6 +15,15 @@
 - Optimistic concurrency uses revision checks; treat `409 stale_revision` as expected behavior.
 - Preserve weekly reporting and primary-manager validation rules unless the user explicitly changes product scope.
 
+## User Administration
+
+- `POST /api/v1/users/bulk-action/` routes to transactional `bulk_manage_users`.
+- Lock accounts, validate `state_token`, and process the batch atomically; a concurrent update cancels the whole batch with HTTP 409.
+- Disabling preserves accounts, affiliations, and history.
+- Deletion requires a previously disabled account with no technical rights, groups, permissions, affiliations, or other persistent data, plus a reason and exact `SUPPRIMER` confirmation.
+- `HistoricalUser` should retain actor and reason.
+- The React page is `/app/administration/utilisateurs`; synchronize OpenAPI/TypeScript and test both `frontend/src/features/users/UserManagementPage.tsx` and `tests/test_user_management.py`.
+
 ## Development And Validation
 
 - Prefer `pyenv activate csrs` or the repository `.python-version` before Python commands.
@@ -29,6 +38,9 @@
 - Preserve the database container when rebuilding web/notifier services.
 - Verify public HTTPS `/app/`, React assets, and authenticated API behavior after deployment.
 - To sync `dev`, fetch the remote, inspect `git rev-list --left-right --count dev...origin/dev`, then use `git merge --ff-only origin/dev` only when behind.
+- For the isolated preprod stack, verify the current path before acting; observed names include `/srv/apps/csrs-preprod/app` and later durable-path work around `/srv/apps/csrs-report-preprod`.
+- The isolated preprod deployment used Compose project `csrs_preprod`, web port `127.0.0.1:18008`, and public host `preprod.report.ent.koba.sarl`; recheck current values before deployment.
+- Validate healthy web, `api:user-bulk-action`, authenticated HTTP 200 with `batch_capabilities` and `state_token`, HTTPS `/connexion/` 200, and a React asset 200.
 
 ## Bootstrap Scripts
 

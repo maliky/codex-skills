@@ -35,6 +35,18 @@ host example.koba.sarl 8.8.8.8
 
 If DNS points elsewhere, fix DNS before changing Nginx or app code.
 
+For OVH `koba.sarl` records, `subDomain` is relative to the zone. Use labels such as `app.ent.csrs`, not full FQDNs. After updates or creates, refresh the zone and query authoritative and public resolvers:
+
+```bash
+sudo ovhcloud domain-zone refresh koba.sarl
+host LABEL.koba.sarl dns200.anycast.me
+host LABEL.koba.sarl ns200.anycast.me
+host LABEL.koba.sarl 1.1.1.1
+host LABEL.koba.sarl 8.8.8.8
+```
+
+`ent.koba.sarl` may be a CNAME to `koba.sarl.` while deeper names are DNS-only A records. DNS success does not configure Nginx, TLS, WebSocket forwarding, or the app.
+
 ## Nginx
 
 Inspect the app's generated deploy file and the host-enabled file. Validate before reload:

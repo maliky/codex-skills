@@ -1,6 +1,6 @@
 ---
 name: csrs-report-engineering
-description: "Use when working on the CSRS Report Django/React app or psiaka deployment workflow, including /home/jil/csrs_report, classic-Django-to-React migration, /app/ and /api/v1/ behavior, session/CSRF APIs, pyenv csrs, Vite/WhiteNoise builds, Docker Compose deployment, branch synchronization, and bootstrap_env.sh or bootstrap_env.ps1 discovery."
+description: "Use when working on the CSRS Report Django/React app or psiaka/preprod deployment workflow, including /home/jil/csrs_report, classic-Django-to-React migration, /app/ and /api/v1/ behavior, session/CSRF APIs, bulk user account actions, pyenv csrs, Vite/WhiteNoise builds, Docker Compose deployment, branch synchronization, bootstrap_env.sh or bootstrap_env.ps1 discovery, and preprod.report.ent.koba.sarl."
 ---
 
 # CSRS Report Engineering
@@ -20,7 +20,8 @@ Keep CSRS product behavior, deployment state, and branch state tied together. In
 4. Preserve adopted rules: one primary manager edits and validates, secondary supervisors view/comment, reporting is weekly, 100% requires manager validation, ownership transfers automatically, and competencies stay outside MVP unless reopened.
 5. Use the repo Python environment: `pyenv activate csrs` or the checked-in `.python-version`.
 6. Before deploy or browser-heavy validation, check disk pressure and remove only agreed temporary build/browser artifacts.
-7. For branch sync, fetch first, inspect divergence, then use fast-forward merge only when the tree and branch relationship allow it.
+7. For user administration, keep batch actions transactional and preserve history.
+8. For branch sync, fetch first, inspect divergence, then use fast-forward merge only when the tree and branch relationship allow it.
 
 ## Routes
 
@@ -28,4 +29,4 @@ Keep CSRS product behavior, deployment state, and branch state tied together. In
 
 ## Output Expectations
 
-Report the path, branch, environment, product rule touched, validation commands, deployed service changes, and any public HTTPS or authenticated API checks performed.
+Report the path, branch, environment, product rule touched, validation commands, deployed service changes, and any public HTTPS, authenticated API, or batch action checks performed.

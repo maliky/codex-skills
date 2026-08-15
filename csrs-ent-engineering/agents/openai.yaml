@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSRS ENT Engineering"
+  short_description: "Build CSRS ENT Django Odoo workflows"
+  default_prompt: "Use $csrs-ent-engineering to work on CSRS ENT/PENT Django-Odoo architecture, deployment, or promotion."
