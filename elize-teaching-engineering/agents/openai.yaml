@@ -1,0 +1,4 @@
+interface:
+  display_name: "Elize Teaching Engineering"
+  short_description: "Build and validate Elize teaching material"
+  default_prompt: "Use $elize-teaching-engineering to update an Elize progression or lesson from protected programme sources and validate its Org and PDF output."

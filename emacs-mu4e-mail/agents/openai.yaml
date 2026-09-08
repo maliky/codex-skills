@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emacs Mu4e Mail"
+  short_description: "Search, draft, and repair OrgMime mail"
+  default_prompt: "Use $emacs-mu4e-mail to search local mail, prepare or edit an unsent OrgMime draft, and verify the result."

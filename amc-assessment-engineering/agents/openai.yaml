@@ -1,0 +1,4 @@
+interface:
+  display_name: "AMC Assessment Engineering"
+  short_description: "Author native AMC exams and question sources"
+  default_prompt: "Use $amc-assessment-engineering to edit a native AMC assessment and verify its questions, scoring, and rendered subject and correction."

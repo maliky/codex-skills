@@ -1,6 +1,6 @@
 ---
 name: long-memory-retrieval
-description: "Use when recovering previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl, inventorying recently active root or subagent rollouts, identifying prior decisions, mapping thread names and workspaces, searching short codes without substring noise, finding repeated workflows for skills, or deciding what local memory evidence should be promoted, referenced, suppressed, or archived."
+description: "Use when recovering previous Codex work from history.jsonl, session_index.jsonl, and sessions/...jsonl, inventorying recent rollouts, diagnosing missing conversations after workspace renames, mapping thread names and workspaces, or auditing recurring workflows for skills."
 ---
 
 # Long Memory Retrieval
@@ -37,6 +37,7 @@ python3 scripts/inventory_rollouts.py --codex-home "$CODEX_HOME" --modified-sinc
 ## Routes
 
 - **Find prior or active work**: read [sources](references/sources.md) and [retrieval workflow](references/retrieval-workflow.md).
+- **Missing resume entries or renamed workspaces**: read [resume and workspace paths](references/resume-and-workspace-paths.md).
 - **Infer or audit skills**: read [qualitative synthesis](references/qualitative-synthesis.md), then [forgetting and suppression](references/forgetting-and-suppression.md).
 - **Report recovered evidence**: read [reporting rules](references/reporting-rules.md).
 
