@@ -1,11 +1,13 @@
 ---
 name: codex-session-cleanup
-description: "Use when removing local Codex sessions by exact session id or exact thread-name alias, cleaning blank or nearly empty sessions, or reconciling history.jsonl, session_index.jsonl, sessions/...jsonl, and state_5.sqlite without touching skills, plugins, logs, or unrelated cache data."
+description: "Use when removing exact local Codex sessions, cleaning empty sessions, diagnosing session writer locks, or repairing session records across local indexes, rollouts, and SQLite stores."
 ---
 
 # Codex Session Cleanup
 
 Remove only local Codex session records the user explicitly targets. Treat deletion as destructive and keep reusable skill files separate from raw transcript cleanup.
+
+For an unlock or resume repair, use the lock-recovery route below; the removal script deletes conversation records and is not an unlock operation.
 
 ## Avoid When
 
@@ -37,6 +39,7 @@ Default `--codex-home` is `$CODEX_HOME` or `~/.codex`.
 
 ## Routes
 
+- **Locked session or failed resume**: read [session lock recovery](references/session-lock-recovery.md).
 - **Exact session removal**: read [cleanup script usage](references/cleanup-script-usage.md), dry-run the script, run it, then verify all stores.
 - **Empty-session cleanup**: read [cleanup heuristics](references/cleanup-heuristics.md), list ids first, delete in a bounded batch, then verify counts.
 - **Script sharing or sync**: read [script sharing](references/script-sharing.md) before comparing root-local and skill-local copies.

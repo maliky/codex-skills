@@ -13,7 +13,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 * Personal Skills
 
 - =amc-assessment-engineering=: author native AMC assessments, validate scoring, and define AMC-source conversion boundaries.
-- =codex-session-cleanup=: remove exact local sessions with backup and verification.
+- =codex-session-cleanup=: diagnose session writer locks and remove exact local sessions with backup and verification.
 - =csrs-ent-engineering=: maintain CSRS ENT/PENT Django-Odoo architecture, tests, promotion, and deployment.
 - =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
 - =crypto-historical-analysis=: acquire historical prices and analyze market structure and public instrument universes.
@@ -21,6 +21,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 - =document-conversion=: preserve structure across scans, Org, LaTeX, office, PDF, and text formats.
 - =elize-teaching-engineering=: build programme-grounded Elize progressions, lessons, assessments, and validated exports.
 - =emacs-mu4e-mail=: search local mail, edit OrgMime drafts, and maintain the Mu4e composition workflow.
+- =emacs-org-configuration=: maintain literate Emacs configuration, refile targets, and Org LaTeX registration.
 - =koba-vps-webops=: diagnose Koba/TU DNS, Nginx, TLS, containers, and web services.
 - =kolabi-bot-runtime=: maintain typed runtime transitions and lifecycle boundaries.
 - =kolabi-kraken-futures=: operate and debug the Kraken Futures command surface.

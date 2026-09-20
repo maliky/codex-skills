@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emacs Org Configuration"
+  short_description: "Maintain literate Emacs setup and Org export behavior"
+  default_prompt: "Use $emacs-org-configuration to inspect and update my literate Emacs configuration and verify the resulting behavior."

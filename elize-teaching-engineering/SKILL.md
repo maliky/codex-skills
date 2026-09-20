@@ -29,6 +29,7 @@ Build traceable teaching material from official programmes and maintained Org so
 - **Official programmes, capacity maps, and progressions**: read [programmes and progressions](references/programmes-and-progressions.md).
 - **Archive reuse, Qxx lessons, and assessments**: read [lessons and assessments](references/lessons-and-assessments.md).
 - **Shared manuals, class progress, hour selection, and export profiles**: read [sequence workflow](references/sequence-workflow.md).
+- **Authenticated worksheet statements and corrections**: read [resource retrieval](references/resource-retrieval.md).
 - **Native AMC questions, scoring, and project maintenance**: use `amc-assessment-engineering`; retain this skill for programme alignment.
 - **Org/LaTeX exports, repository boundaries, privacy, and Git**: read [exports and repository boundaries](references/exports-and-repository-boundaries.md).
 

@@ -28,6 +28,7 @@ python3 scripts/export-sequence.py 2de eleve --classe 211 --du H03-1A
 
 ## Authoring and Checks
 
+- For projection font changes, trace the effective value through Org options/properties, exporter defaults, generated `\\documentclass` options and preamble, and the installed class. A generated explicit size can override the class default. Keep the requested default in the maintained configuration and preserve explicit per-document overrides; inspect generated TeX and render a representative dense slide. Check the actual TeX class resolution before editing a template copy. Do not impose one font size on all profiles.
 - Keep shared Asymptote figures in discoverable asset files. Use supported Org figure/layout properties to control inclusion and column width; inspect the renderer's actual property names instead of inventing them.
 - Preserve semantic roles, explicit copy-to-notebook markers, lists, corrections, and student visibility. Do not infer a copy marker solely from a nearby heading or add it to every exercise.
 - Validate actual teaching time, phases, capacity coverage and first introduction, without changing the established subtheme order unless asked. Never invent textbook exercise statements or corrections when only their references are available.

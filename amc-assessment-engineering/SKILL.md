@@ -19,6 +19,7 @@ Keep assessments directly editable and usable in Auto Multiple Choice. Follow th
 
 - **Questions, archives, project settings, and scoring**: read [native projects](references/native-projects.md).
 - **AMC source and Haskell/GIFT conversion**: read [conversion boundary](references/conversion-boundary.md).
+- **Roster association and confidential gradebook imports**: read [rosters and grades](references/rosters-and-grades.md).
 - For Elize curriculum coverage, calendars, and lessons, use `elize-teaching-engineering`. Generic document conversion alone does not require this skill.
 
 ## Output Expectations

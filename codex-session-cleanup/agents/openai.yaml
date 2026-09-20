@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex Session Cleanup"
-  short_description: "Remove exact local Codex sessions safely"
-  default_prompt: "Use $codex-session-cleanup to remove local Codex sessions by exact id or alias with schema-aware verification."
+  short_description: "Repair session locks or remove exact local sessions"
+  default_prompt: "Use $codex-session-cleanup to inspect an exact local session and perform the requested repair or removal with verification."
