@@ -8,6 +8,7 @@ Start with:
 - `/home/jil/tulearn/README.org`
 - `/home/jil/tuwp/README.org`
 - `/home/jil/Tusis/Tusis_app/README.org`
+- `/home/jil/RCISouvenir/README.md`
 
 These files contain host-specific command reminders and deployment assumptions. Prefer them over generic package docs when the task is about this host.
 
@@ -17,6 +18,7 @@ These files contain host-specific command reminders and deployment assumptions. 
 - Moodle/TULearn wrapper: `/home/jil/tulearn`
 - Moodle upstream checkout: `/home/jil/tulearn/moodle`
 - WordPress/TUWP: `/home/jil/tuwp`
+- Koba Zo preprod prototype: `/home/jil/RCISouvenir`
 - General sysadmin notes: `/home/jil/sysadmin`
 
 ## Common Services
@@ -25,6 +27,7 @@ These files contain host-specific command reminders and deployment assumptions. 
 - TUSIS preprod uses `docker-compose-preprod.yml`.
 - TULearn runs PHP-FPM through Docker Compose and uses host PostgreSQL.
 - TUWP runs WordPress through Docker Compose and uses WP-CLI through the compose stack.
+- Koba Zo preprod uses Docker Compose v2 with project `kobazo_preprod`; do not replace the host's Compose v1 path used by older apps.
 - Some container-to-host flows use fixed bridge/gateway IPs rather than `127.0.0.1`.
 
 ## Account-Owned Deployments
