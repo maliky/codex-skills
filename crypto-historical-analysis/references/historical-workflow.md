@@ -2,6 +2,8 @@
 
 Use this reference for crypto historical download and amplitude-analysis work.
 
+For intrinsic-time/directional-change counts, use [intrinsic-time calibration](intrinsic-time-calibration.md) instead of the amplitude conventions below. That workflow reuses the `manalysis` inventory cache; it does not require a new downloader or high/low amplitude thresholds.
+
 ## Repo Boundary
 
 - `DataFetchers/historical_prices` is the active base for unified historical download work.
