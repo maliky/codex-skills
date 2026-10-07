@@ -1,11 +1,11 @@
 ---
 name: emacs-org-configuration
-description: "Maintain literate Emacs configuration in init.org, verify tangled Elisp and live settings, diagnose Org refile targets, and register Org LaTeX classes. Use for Emacs configuration work beyond mail-specific composition."
+description: "Maintain literate Emacs configuration in init.org, verify tangled Elisp and live settings, fix UTF-8 terminal and session locale problems, diagnose Org refile targets, and register Org LaTeX classes. Use for Emacs configuration work beyond mail-specific composition."
 ---
 
 # Emacs Org Configuration
 
-Inspect the running Emacs instance and the authoritative configuration before changing behavior. In this workspace, `/home/mlk/.emacs.d/init.org` is maintained source and `init.el` is tangled output; confirm this relationship and repository instructions on the current host.
+Inspect the running Emacs instance and the authoritative configuration before changing behavior. The usual maintained source is `~/.emacs.d/init.org`, with `init.el` as tangled output; confirm the actual home directory, source relationship, and repository instructions on the current host.
 
 ## Literate configuration
 
@@ -14,6 +14,10 @@ Inspect the running Emacs instance and the authoritative configuration before ch
 - For a behavior-preserving cleanup, compare tangled output before and after. Preserve active symbols, including apparent misspellings, until their callers and definitions establish that a rename is safe.
 - Run `check-parens` on generated Elisp, not the whole Org document. Load/test the changed definitions in an appropriate environment and inspect the effective value or command in the affected live buffer. Avoid loading the entire personal init merely for syntax checking when it launches services or changes unrelated state.
 - Keep Emacs configuration edits in their own repository. Unsaved live-buffer content may differ from disk; preserve it and use undoable edits when the task concerns that buffer.
+
+## UTF-8 terminal and session locales
+
+For garbled accents, ASCII terminal encoding, or locale warnings in Emacs and its surrounding shell or terminal multiplexer, read [references/utf8-terminals.md](references/utf8-terminals.md). Check both the inherited environment and live Emacs coding systems; a correct file encoding alone does not establish correct terminal input or output.
 
 ## Missing refile targets
 
