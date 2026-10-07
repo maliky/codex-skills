@@ -15,6 +15,13 @@
 - Allocate enough answer space for justifications and inspect the compiled subject and correction. Maintain smooth Asymptote curves where requested, with readable axes and consistent class variants.
 - Keep teacher scoring areas distinct from student response areas using the existing house labels and layout. Prefer targeted changes to the shared class/style for repeated formatting issues.
 
+## Comparable Elize Variants
+
+- When copying an assessment between classes, preserve the requested difficulty, question structure, printed numbering, and point total. Vary numerical data only as requested and recompute the correction from the new data. For cross-tables, verify all row/column totals, complements, and the denominators of conditional proportions with exact arithmetic; keep any user-fixed totals.
+- Inspect the current Elize project instructions and style before importing archive formatting. Preserve Elize geometry and per-question scores; do not add scores to section titles or replace printed `Question 1/2...` labels without a request. Use the project's `\unit` convention for quantities and percentages where specified.
+- For the Elize `Réservé` grids that omit a printed zero, retain positive credit tiers and verify that an unselected grid scores zero. A legacy test selecting a removed choice must be updated to match the real grid; only test multiple selections when more than one choice exists. Do not restore a zero box to satisfy an obsolete fixture.
+- When using the shared `elize@openlines` customization, check `lines=0` separately from positive line counts. Source-level arithmetic checks and a PDF compiled from an older dataset do not establish that the current subject/correction renders correctly. Report previews or compilation as unverified when the user declines those checks.
+
 ## Validation and Existing Exam Data
 
 - Read the current help and implementation of existing tools such as `scripts/export-evaluations.py`, `scripts/validate-amc.py`, and `scripts/test-amc-scoring.pl` before execution. Some validation commands invoke AMC preparation and write project data; they are not read-only diagnostics.

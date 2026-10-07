@@ -25,3 +25,15 @@ The local workflows have used `s-o s-m` for standard OrgMime editing and `s-o s-
 - Inspect a live index lock and its owner before considering cleanup. Do not delete locks, indexes, Maildir content, or account data without exact authorization and a recoverable plan.
 - Do not launch a full synchronization merely to improve search results or navigation. Run account or folder synchronization only when the user explicitly requests it and the impact is understood.
 - After a requested sync or index update, verify the specific account/folder result and distinguish server state, local Maildir state, and indexed visibility.
+
+## Blocked Updates and Authentication Prompts
+
+- Verify installed commands with `fboundp`/`commandp` and the live `mu4e-get-mail-command`; do not assume a command named `mu4e-update` exists. Trace the exact update process and children through mbsync, the credential helper, GnuPG, and pinentry to locate the wait.
+- Distinguish a wrong IMAP password from a failed/cancelled GnuPG passphrase prompt. Inspect exit status and redacted diagnostics, never the helper's secret output. A retry loop or pipeline that hides decryption failure can look like a hung update.
+- For an authorized repair, edit the authoritative helper/configuration source, preserve nonzero failure status, bound retries/waits, and keep manual unlock separate from unattended background sync. Choose supported options from the installed tools; do not document an unimplemented timeout or noninteractive helper as a working fix.
+- Verify cancellation, incorrect credentials, successful authentication, and the ability to start a later update, using mocks or an isolated helper test for failure cases where possible. Only stop a process tied to the blocked update; do not reset indexes or remove live locks to recover control.
+
+## Sent Copies and Main-View Labels
+
+- Before treating two messages as duplicates, compare Message-ID, folder, and context. Distinguish a local sent/Fcc copy from the provider's sent copy later downloaded by mbsync. Inspect `mu4e-sent-messages-behavior` and the sending account before changing retention; sending success does not prove the server copy is locally indexed.
+- For shortcut labels displaying long `<menu-bar> ...` sequences, inspect the installed main-view renderer and active keymaps. Confirm whether key-description discovery selected a menu binding instead of the intended key. Preserve shortcut actions, use a narrowly scoped rendering fix if needed, and verify the live main view after reload. Do not replace a binding or advise a global keymap change solely from the displayed label.

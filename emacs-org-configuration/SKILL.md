@@ -25,6 +25,8 @@ Inspect `buffer-file-name`, `org-refile-targets`, `org-refile-use-outline-path`,
 
 Customized `org-refile-targets` supersedes manual defaults. Do not promise all level-one headings without inspecting the effective configuration. Diagnose requests for an explanation without modifying configuration; when a fix is requested, change the smallest relevant selector and verify the target picker without moving entries as a test.
 
+Inspect `(org-refile-get-targets)` in the intended source buffer to distinguish a missing target from one hidden by completion. With `org-refile-use-outline-path` set to `file` and `org-outline-path-complete-in-steps` non-nil, select the file and press RET before selecting its heading. Setting the latter to nil displays the full path at once, if that behavior is requested. Check `org-refile-use-cache` before blaming a stale cache; a valid tagged target need not require any selector change.
+
 ## Org LaTeX registration
 
 Trace the Org class name through `org-latex-classes`, export options, generated TeX, and the class found by `kpsewhich`. Existing helpers such as `mk/register-org-latex-class` may centralize registration; inspect their current definitions before extending them.

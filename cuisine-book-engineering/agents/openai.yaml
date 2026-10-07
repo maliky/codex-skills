@@ -1,4 +1,4 @@
 interface:
   display_name: "Cuisine Book Engineering"
-  short_description: "Operate Cuisine OCR and native panel production"
-  default_prompt: "Use $cuisine-book-engineering to resume Cuisine OCR or native per-panel storyboard production from authoritative queues and durable receipts."
+  short_description: "Maintain Cuisine corpus, panels, and catalog imports"
+  default_prompt: "Use $cuisine-book-engineering to maintain Cuisine recipes, storyboard production, or validated catalog imports from authoritative Org sources and manifests."

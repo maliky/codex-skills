@@ -13,8 +13,10 @@ Resolve the exact session and obtain the resume error before choosing a repair. 
 
 Prefer the installed product's supported release/close mechanism. If the exact owner is an obsolete process and stopping it is within the requested repair, close it gracefully; shared servers may own unrelated sessions and need narrower handling.
 
+For a suspended owner (`T` in the host process state), first map all its thread locks and helper processes, including Guardian review threads. Recheck PID identity, start time, and lock ownership immediately before signaling; never reuse a PID from a prior report. A stopped process may need TERM followed by CONT to handle termination. Signal only the verified owner, wait a bounded interval, and inspect its exit and remaining holders. Do not kill a shared server or escalate to KILL merely because it also owns the target lock.
+
 Do not unlink or rename a potentially held lock: the existing owner can retain the old inode while a second writer locks a new file at the same path. Removing an empty lock is not proof of unlocking. If a previous attempt already unlinked it, investigate remaining open/deleted handles before permitting another writer.
 
 Only perform a filesystem cleanup when ownership and the implementation's lock semantics establish that it is necessary and safe. Keep conversation records intact. Probe database schemas and back up affected records before any independently justified database repair; do not rewrite history merely to clear a runtime lock.
 
-Verify by successfully opening/resuming the exact session through the supported interface without submitting work. If this cannot be tested, report the precise repair and that resume remains unverified. Do not claim success from file absence alone.
+Verify by successfully opening/resuming the exact session through the supported interface without submitting work. Select its existing workspace and reach the loaded conversation/input screen; a working-directory chooser or loading screen alone is not a successful resume. Close the verification client normally, then recheck ownership; a shared daemon may retain loaded threads, so distinguish a compatible daemon-owned session from a stale incompatible writer. If this cannot be tested, report the precise repair and that resume remains unverified. Do not claim success from file absence alone.
