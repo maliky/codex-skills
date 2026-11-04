@@ -32,6 +32,7 @@ Keep runtime work inside typed state transitions and explicit command boundaries
 - **Uncertain order state or family holds**: read [private feed reconciliation](../kolabi-market-feeds/references/private-feed-reconciliation.md) alongside the relevant runtime transition code.
 - **Admin action safety**: read [admin action boundaries](references/admin-action-boundaries.md).
 - **Live/demo runtime lessons**: read [live runtime lessons](references/live-runtime-lessons.md).
+- **Launcher changes, feeder restarts, or shared-account runs**: read [launch modes and shared accounts](references/live-runtime-lessons.md#launch-modes-and-shared-accounts).
 
 ## Output Expectations
 

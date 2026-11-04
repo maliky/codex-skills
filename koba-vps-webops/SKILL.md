@@ -1,6 +1,6 @@
 ---
 name: koba-vps-webops
-description: "Operate Koba VPS deployments and host wiring: koba.sarl DNS, OVH, Nginx, TLS/Certbot, Docker Compose, container networking/PostgreSQL, account retirement, Moodle/TULearn, WordPress/TUWP, TUSIS and Koba Zo preproduction, graph-bo-math static releases, host/container PHP maintenance, storage cleanup, quotas, and public HTTP failures."
+description: "Operate Koba VPS deployments and host wiring: koba.sarl DNS, OVH, Nginx, TLS/Certbot, Docker Compose, container networking/PostgreSQL, account retirement, Moodle/TULearn, WordPress/TUWP, TUSIS and Koba Zo preproduction, graph-bo-math site/API releases, host/container PHP maintenance, storage cleanup, quotas, and public HTTP failures."
 ---
 
 # Koba VPS WebOps
@@ -33,6 +33,6 @@ Do not use it as the primary skill for application-domain fixes inside TUSIS, Ko
 - Read [diagnostic-ladder](references/diagnostic-ladder.md) for disk, quota, DNS, Nginx, TLS, Docker, and container networking checks.
 - Read [app-notes](references/app-notes.md) for Moodle/TULearn, WordPress/TUWP, and TUSIS preprod specifics.
 - Read [app-nginx-services](references/app-nginx-services.md) for small app Nginx files, exact host matching, service wrappers, and 502-after-reboot checks.
-- Read [graph-bo-math releases](references/graph-bo-math.md) for explicit static-site publication, manifest checks and rollback. Use `graph-bo-math-engineering` for the standalone app and `elize-teaching-engineering` for Elize source progressions.
+- Read [graph-bo-math releases](references/graph-bo-math.md) for site/API publication, library preservation, readiness checks and coordinated rollback. Use `graph-bo-math-engineering` for the standalone app and `elize-teaching-engineering` for Elize source progressions.
 - Read [PHP maintenance](references/php-maintenance.md) for runtime inventory, scoped patching, customised Moodle/WordPress preservation and post-patch proof.
 - Read [storage maintenance](references/storage-maintenance.md) for exact cleanup candidates, dependency checks, log retention and measured reclamation.

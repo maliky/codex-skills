@@ -1,6 +1,6 @@
 ---
 name: elize-teaching-engineering
-description: "Use for Elize mathematics-teaching sources, protected French programmes, progressions, lessons, assessments, Org/LaTeX exports and reusable Asymptote figures, or the standalone graph-bo-math BO/Progressions data and interface."
+description: "Use for Elize mathematics-teaching sources, protected French programmes, progressions, lessons, assessments, Org/LaTeX exports and reusable Asymptote figures. Use graph-bo-math-engineering for the standalone graph application."
 ---
 
 # Elize Teaching Engineering
@@ -11,12 +11,13 @@ Build traceable teaching material from official programmes and maintained Org so
 
 - The task is generic document conversion outside the Elize teaching workflow; use `document-conversion`.
 - The task only maintains a TU class or curriculum; use the relevant `tu-*` skill.
+- The task concerns the standalone graph application, its imports, editor or library; use [graph-bo-math-engineering](../graph-bo-math-engineering/SKILL.md). Use this skill alongside it only for requested changes to Elize teaching sources.
 - The task is only self-hosted Git synchronization; use `self-hosted-git-operations`.
 - The user asks for a current regulatory fact but has not supplied the current source; verify it before treating a repository copy as current.
 
 ## Workflow
 
-1. Resolve the real repository root, then read its current `AGENTS.md`, branch, worktree state, `.DEV.org`, `.dir-locals.el`, and the instructions nearest the requested files when present. For standalone `graph-bo-math`, follow the graph route below; do not read or synchronize the separate Elize checkout automatically.
+1. Resolve the real repository root, then read its current `AGENTS.md`, branch, worktree state, `.DEV.org`, `.dir-locals.el`, and the instructions nearest the requested files when present.
 2. Classify every input as protected official source, read-only archive evidence, maintained Org, derived teaching material, confidential administration, or generated output before editing.
 3. Select the actual level, class, group, and time window from current repository evidence such as `edt.org`; do not carry snapshot-specific rosters, dates, counts, or programme status forward from memory.
 4. Derive progressions, lessons, exercises, and assessments through explicit programme-capacity links. Keep facts, archive observations, pedagogical choices, and unresolved questions distinguishable.
@@ -29,7 +30,6 @@ Build traceable teaching material from official programmes and maintained Org so
 - **Official programmes, capacity maps, and progressions**: read [programmes and progressions](references/programmes-and-progressions.md).
 - **Archive reuse, Qxx lessons, and assessments**: read [lessons and assessments](references/lessons-and-assessments.md).
 - **Shared manuals, class progress, hour selection, and export profiles**: read [sequence workflow](references/sequence-workflow.md).
-- **Standalone BO/Progressions graph, explicit imports, and interface validation**: read [BO and progressions graph](references/bo-progressions-graph.md). For web publication, also use `koba-vps-webops`.
 - **Authenticated worksheet statements and corrections**: read [resource retrieval](references/resource-retrieval.md).
 - **Native AMC questions, scoring, and project maintenance**: use `amc-assessment-engineering`; retain this skill for programme alignment.
 - **Org/LaTeX exports, repository boundaries, privacy, and Git**: read [exports and repository boundaries](references/exports-and-repository-boundaries.md).

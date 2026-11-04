@@ -16,7 +16,7 @@ Use this reference for Org strategy parsing, typed units, virtual execution, and
 - Use `exchg`, `qty`, `oType`, `tType`, `hDelta`, `tDelta`, `pGate`, `hPrice`, `tPrice`, `tUblk`, and `wUblk` with the parser's exact spelling. Scheduling and dependency fields include `tps_run`, `essais`, `tOut`, `pause`, `cool`, and `hook`; policy/repetition fields include `rFunc`, `cFunc`, `tFunc`, `repeat`, and `maxClones`.
 - Legacy columns such as `atype`, `quantity`, `exchange`, `oDelta`, and lower-case `hprice` are rejected. Do not reintroduce them to repair an old example. Check whether the task concerns a historical checkout before migrating a legacy file.
 - Resolve inherited Org properties before judging a blank cell. Preserve the required `pGate` and `hPrice` header columns even when their cells are blank; blank values can intentionally disable a gate or satisfy a market-order contract.
-- Parse the whole strategy and resolve its exchange/product/symbol routes before starting feeders, purging local rows, or executing orders. `scripts/kolabi-fresh-run` performs route validation before those side effects; keep that ordering.
+- Parse the whole strategy and resolve its exchange/product/symbol routes before starting feeders, purging local rows, or executing orders. `scripts/kolabi-fresh-run` performs route validation before those side effects; keep that ordering. Check [launch modes and shared accounts](../../kolabi-bot-runtime/references/live-runtime-lessons.md#launch-modes-and-shared-accounts) when existing bots or listeners are present.
 
 ## Virtual Execution
 

@@ -2,6 +2,8 @@
 
 Use this reference when the task is mainly about the operator-facing command path.
 
+For `scripts/kolabi-fresh-run`, `--no-purge` or adding another symbol to an active account, read [launch modes and shared accounts](../../kolabi-bot-runtime/references/live-runtime-lessons.md#launch-modes-and-shared-accounts) before suggesting a command.
+
 ## Stable patterns captured from recent work
 
 - Keep commands runnable from the repo without extra orchestration.

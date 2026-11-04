@@ -1,6 +1,6 @@
 ---
 name: kolabi-run-analysis
-description: "Use for Kolabi run forensics and operator reports: accepted strategy revisions, MM attempt and execution scope, seeded-cycle signals, votes/triggers/fills/cancellations, head-fill recovery, reconciliation/timeouts, and instrument-aware gross/net, fees and exposure in Org tables."
+description: "Use for Kolabi run forensics and operator reports: strategy revisions, MM attempts and executions, cycle signals, reconciliation, instrument-aware PnL and exposure, and portfolio contributions per symbol valued at startup prices."
 ---
 
 # Kolabi Run Analysis
@@ -19,6 +19,7 @@ Analyze Kolabi bot runs from logs, DB-backed order state, and operator observati
 ## Routes
 
 - **Run reports, revision attribution, event evidence, and terminated-pair tables**: read [run reporting](references/run-reporting.md).
+- **Portfolio growth with prices held at startup values**: read [portfolio comparison](references/portfolio-comparison.md); report contributions per symbol and reconcile them to the account total.
 
 ## Output Expectations
 

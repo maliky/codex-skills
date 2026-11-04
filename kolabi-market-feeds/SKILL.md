@@ -1,6 +1,6 @@
 ---
 name: kolabi-market-feeds
-description: "Use when work touches kolabi public or private feed ingestion, uncertain order reconciliation, trigger-versus-fill evidence, feed-derived order or account visibility, sparse cancel or fill events, balance/noise suppression, and operator action logging."
+description: "Use for Kolabi public/private feed ingestion, public-price freshness, bounded DB snapshots and stale connections, uncertain order reconciliation, trigger-versus-fill evidence, sparse events, account visibility and operator logging."
 ---
 
 # Kolabi Market Feeds
@@ -24,7 +24,7 @@ Treat feeds as state evidence. Preserve useful operator visibility while suppres
 ## Routes
 
 - **Private payloads, uncertain outcomes, or trigger/child evidence**: read [private feed reconciliation](references/private-feed-reconciliation.md).
-- **Public feed handling**: read [public feed handling](references/public-feed-handling.md).
+- **Public-price freshness, latest-snapshot queries or stale DB connections**: read [public feed handling](references/public-feed-handling.md).
 - **Operator logs**: read [operator logging](references/operator-logging.md).
 
 ## Output Expectations

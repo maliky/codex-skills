@@ -31,5 +31,5 @@ Keep historical backfill and statistical analysis separate from live trading/run
 - **Kraken Futures inventory, CoinGecko rankings, and cross-instrument associations**: read [market universe analysis](references/market-universe-analysis.md).
 - **Intrinsic time, directional-change counts, and one-minute ADA delta calibration**: read [intrinsic-time calibration](references/intrinsic-time-calibration.md); distinguish the research plan from implemented commands and measured results.
 - **Quantile curves, percentile/duration slopes, linked explorer views, or report-reader provenance**: read [quantile explorer](references/quantile-explorer.md).
-- **Transfer a strategy's placements between instruments using empirical distributions**: read [strategy calibration](references/strategy-calibration.md).
+- **Transfer strategy placements or apply edited target percentiles, history bounds and rounding**: read [strategy calibration](references/strategy-calibration.md).
 - **Canonical strategies, shared cFunc modules, per-file Kolabi links, or cross-host path verification**: read [shared strategies](references/shared-strategies.md).

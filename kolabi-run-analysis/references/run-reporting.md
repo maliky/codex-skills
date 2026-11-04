@@ -30,6 +30,8 @@ If the user asks for "current run only", exclude older attempts and stale DB row
 - Call a reconciled attempt with confirmed zero execution a "tentative expirée sans exécution" (or "expired without execution" in English). Preserve exact log event names such as `HEAD_TIMEOUT` as evidence, but do not present these attempts as losing trades or execution errors. Keep failed submissions, genuinely unresolved attempts and partial fills distinct.
 - Query balance and position independently, with their own observation times and account scope. Label those figures account-wide; they cannot be attributed to the MM families merely because the run is current.
 
+For portfolio growth with market prices held at startup values, use [portfolio comparison](portfolio-comparison.md). That account comparison has its own symbol scope and baseline; it is not restricted to MM fills unless requested.
+
 ## Trigger, Fill, Cancellation And Vote Evidence
 
 | Claim | Evidence and limits |

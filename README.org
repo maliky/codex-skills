@@ -22,7 +22,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 - =cuisine-book-engineering=: maintain the Cuisine OCR corpus, storyboard production, recipe-image mappings, and validated catalog imports.
 - =cuisine-web-engineering=: maintain Africa Cook, reviewed colour artwork, resumable web-image batches, and guided mobile cooking.
 - =document-conversion=: preserve structure across scans, Org, LaTeX, office, PDF, and text formats.
-- =elize-teaching-engineering=: maintain Elize lessons, assessments, reusable figures and exports, plus standalone BO/Progressions graph sources.
+- =elize-teaching-engineering=: maintain Elize teaching sources, progressions, assessments, reusable figures and exports.
 - =emacs-mu4e-mail=: search local mail, edit OrgMime drafts, and maintain the Mu4e composition workflow.
 - =emacs-org-configuration=: maintain literate Emacs configuration, source-relative and empty-file refile targets, and Org LaTeX registration.
 - =genealogy-engineering=: maintain private source provenance, linked genealogy formats, explorer edits, and conflict-aware publication.
@@ -33,7 +33,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 - =kolabi-market-feeds=: reconcile feed-derived state while distinguishing triggers, fills, and uncertain outcomes.
 - =kolabi-multi-exchange-adapters=: maintain adapter boundaries and typed Org strategy grammar, virtual orders, and units.
 - =kolabi-okx-futures=: operate the explicit OKX Europe X-Perp route, contract units, portfolio evidence, and operator commands.
-- =kolabi-run-analysis=: trace strategy revisions and cycle signals, recover execution evidence, and report instrument-aware finance.
+- =kolabi-run-analysis=: trace run evidence, report instrument-aware finance, and compare portfolio contributions per symbol at startup prices.
 - =long-memory-retrieval=: recover and audit prior local Codex session evidence.
 - =self-hosted-git-operations=: diagnose and synchronize non-GitHub SSH remotes safely.
 - =tu-curriculum-audit=: reconcile curriculum tables, descriptions, aliases, and witnesses.
