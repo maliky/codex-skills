@@ -7,7 +7,7 @@ Use this reference when live or demo kolabi runs expose readiness, tail, stale-o
 - Keep `GATE_WAIT` and similar readiness waits configurable. The recent live-test preference was a five-minute gate interval, but avoid hardcoding that unless the surrounding runtime already treats it as policy.
 - Do not mark a pair ready only because one feed is quiet. Require enough public/private or canonical DB evidence to trust the runtime state.
 - When a live run stalls, distinguish exchange unavailability, sparse private payloads, missing account state, and genuine strategy gating.
-- Fresh-run requests often mean stopping bot/listener processes, purging local runtime DB files, and restarting only the services needed for the named strategy. Do not start every exchange DB when the strategy only targets one exchange or pair.
+- For an authorised fresh run, inspect `scripts/kolabi-fresh-run` and the active DB backend. Resolve strategy routes before scoped local-row cleanup or starting the required feeders; do not assume the backend consists of disposable SQLite files. Local reset does not cancel exchange orders or close positions.
 - Before live operation, report the selected DB/env labels, current position, current price, and whether open orders exist. Keep live cleanup explicit: cancel orders through the runtime path, and avoid closing positions unless the user asks.
 
 ## Latent Heads And Tail Updates
@@ -16,7 +16,7 @@ Use this reference when live or demo kolabi runs expose readiness, tail, stale-o
 - A tail update should unblock when private events or canonical account state prove the relevant order state changed.
 - Stale stop or tail orders should be cancelled through runtime-mediated commands, not direct adapter shortcuts.
 - Preserve no-widen and directional stop constraints when amending tails.
-- For repeated orders, keep `pause`, `tOut`, visibility/pruning, and pair concurrency distinct. A visibility timeout that is too short can cancel or recycle orders far earlier than the strategy's `tOut`.
+- For repeated orders, keep `pause`, `tOut`, visibility/pruning, and pair concurrency distinct. Sparse visibility is not proof of order termination; retain uncertain attempts and reserved successors. Use [timeouts and repetition](timeouts-and-repetition.md) for the four clocks and retirement rules.
 - If a run appears to execute only one pair, check strategy parsing and runtime scheduling before changing exchange adapters. The runtime should handle as many pairs as the strategy defines.
 - Interpret `cancel-all` output against canonical state and the exchange response shape. A response listing already-canceled orders does not prove those orders were still live on the book.
 
@@ -24,7 +24,7 @@ Use this reference when live or demo kolabi runs expose readiness, tail, stale-o
 
 - Keep strategy helper code in the existing helper modules when they already express repeated pairs or row expansion; avoid creating a parallel helper layer for one strategy file.
 - For ROI-driven tuning, distinguish timeout outcomes from positive or negative pair ROI before changing `tOut`, `hPrice`, or quantity.
-- Use short strategy-call names when the Org/TSV row is dense, but keep the Python function names specific enough to expose the behavior.
+- Use short strategy-call names when the Org row is dense, but keep the Python function names specific enough to expose the behavior.
 - When tuning variants such as S1/S3/S4, update the small strategy fixture first and verify the generated rows before broadening to a live file.
 
 ## Operator Logs
@@ -37,4 +37,4 @@ Use this reference when live or demo kolabi runs expose readiness, tail, stale-o
 
 ## Verification
 
-Prefer bounded live/demo probes, replay fixtures, or targeted command-log checks over broad unattended runs. Validate both the generated commands and the resulting state transitions.
+Start with replay fixtures or targeted state/command checks. Use bounded live/demo probes only within the authorised scope. Validate both the generated commands and the resulting state transitions.

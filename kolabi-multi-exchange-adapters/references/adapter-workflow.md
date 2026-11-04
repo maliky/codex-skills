@@ -31,6 +31,6 @@ Before changing code, identify the target exchange support for:
 ## Review Questions
 
 - Does the change preserve `State + Event -> State + Commands` ownership?
-- Does the adapter expose enough capability detail for the CLI or TSV layer to reject unsupported requests early?
+- Does the adapter expose enough capability detail for the CLI or Org strategy layer to reject unsupported requests early?
 - Does private/public feed reconciliation still have raw evidence for debugging?
 - Can the same MWE be run against another exchange by changing exchange configuration rather than rewriting strategy code?

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Runtime Recovery"
+  short_description: "Restore Codex startup, daemon, and SQLite runtime"
+  default_prompt: "Use $codex-runtime-recovery to diagnose this Codex startup failure and restore the requested fresh or resumed session with verification."

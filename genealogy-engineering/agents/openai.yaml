@@ -1,0 +1,4 @@
+interface:
+  display_name: "Genealogy Engineering"
+  short_description: "Maintain private genealogy data and explorer edits"
+  default_prompt: "Use $genealogy-engineering to update the private genealogy corpus or explorer while preserving provenance, linked formats, and online corrections."

@@ -11,6 +11,7 @@ For an unlock or resume repair, use the lock-recovery route below; the removal s
 
 ## Avoid When
 
+- Codex cannot initialize any session, or the problem concerns daemon readiness or shared-storage SQLite failures; use [Codex Runtime Recovery](../codex-runtime-recovery/SKILL.md).
 - The user only wants memory retrieval or prior-session context; use `long-memory-retrieval`.
 - The request is about suppressing low-value material without deleting raw records.
 - The target is fuzzy, guessed, or based only on a semantic similarity match.

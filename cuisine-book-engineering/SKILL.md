@@ -11,7 +11,7 @@ Treat reviewed Org sources, manifests, queues, and production receipts as operat
 
 - The task is generic document conversion outside the Cuisine repository; use `document-conversion`.
 - The task is a one-off image generation or edit with no Cuisine production state.
-- The task concerns unrelated web-application features outside Cuisine corpus, storyboard, or catalog-import workflows.
+- The task concerns the Africa Cook recipe website, its colour asset collections or mobile cooking UI; use [cuisine-web-engineering](../cuisine-web-engineering/SKILL.md). Original corpus and monochrome storyboard work remains here.
 
 ## Workflow
 

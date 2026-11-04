@@ -1,6 +1,6 @@
 ---
 name: kolabi-kraken-futures
-description: "Use when building, debugging, or operating the local kolabi Kraken Futures workflow, including CLI behavior, order contracts, smoke or probe commands, cancel/close/list operations, editable installs, packaging fixes, and command-surface maintenance."
+description: "Use when building, debugging, or operating the local kolabi Kraken Futures workflow, including CLI behavior, order contracts, uncertain order reconciliation, bounded status/history lookups, cancel/close/list operations, smoke probes, and packaging fixes."
 ---
 
 # Kolabi Kraken Futures
@@ -10,7 +10,7 @@ Work from the repo's actual CLI grammar and order contract. Prefer concrete smok
 ## Avoid When
 
 - The task is internal reducer/runtime design; use `kolabi-bot-runtime`.
-- The task is feed reconciliation or logging from websocket payloads; use `kolabi-market-feeds`.
+- The task is only websocket payload normalisation or feed logging; use `kolabi-market-feeds`. Use both skills when private evidence and Kraken REST verification interact.
 - The request concerns a different exchange adapter unless the Kraken path is the comparison baseline.
 
 ## Workflow
@@ -25,6 +25,7 @@ Work from the repo's actual CLI grammar and order contract. Prefer concrete smok
 
 - **CLI and operations**: read [cli and operations](references/cli-and-operations.md).
 - **Order contract**: read [order contract](references/order-contract.md).
+- **Uncertain placement, triggered children, missing amendment targets, or nonce rejection**: read [order reconciliation](references/order-reconciliation.md).
 - **Packaging/install fixes**: read [packaging and cleanup](references/packaging-and-cleanup.md).
 - **Runtime overlap**: read [runtime boundaries](references/runtime-boundaries.md) before moving behavior across layers.
 

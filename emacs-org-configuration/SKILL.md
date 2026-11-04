@@ -5,15 +5,15 @@ description: "Maintain literate Emacs configuration in init.org, verify tangled 
 
 # Emacs Org Configuration
 
-Inspect the running Emacs instance and the authoritative configuration before changing behavior. The usual maintained source is `~/.emacs.d/init.org`, with `init.el` as tangled output; confirm the actual home directory, source relationship, and repository instructions on the current host.
+Inspect the running Emacs instance and authoritative configuration before changing behavior. On this host the usual source is `/home/jil/.emacs.d/init.org`, with `init.el` as tangled output; confirm the active `user-init-file`, tangle headers, source relationship and repository instructions, especially on another host.
 
 ## Literate configuration
 
 - Read the affected Org blocks, tangle headers, load order, Custom settings, and buffer-local overrides. A file's value can differ from the active runtime value.
-- Edit the maintained source, then use the established tangle workflow and installed Org version. Do not hard-code an old package version from a transcript.
+- Edit the maintained source, then use the established tangle workflow and installed Org version. Compare source and existing output before a full tangle: if they diverge, preserve unrelated Elisp and make the requested change consistently in both, or reconcile the difference within the user's scope. Do not hard-code an old package version from a transcript.
 - For a behavior-preserving cleanup, compare tangled output before and after. Preserve active symbols, including apparent misspellings, until their callers and definitions establish that a rename is safe.
 - Run `check-parens` on generated Elisp, not the whole Org document. Load/test the changed definitions in an appropriate environment and inspect the effective value or command in the affected live buffer. Avoid loading the entire personal init merely for syntax checking when it launches services or changes unrelated state.
-- Keep Emacs configuration edits in their own repository. Unsaved live-buffer content may differ from disk; preserve it and use undoable edits when the task concerns that buffer.
+- Check whether the configuration has its own Git repository; do not treat the current project repository as its owner. Unsaved live-buffer content may differ from disk; preserve it and use undoable edits when the task concerns that buffer.
 
 ## UTF-8 terminal and session locales
 
@@ -26,6 +26,8 @@ Inspect `buffer-file-name`, `org-refile-targets`, `org-refile-use-outline-path`,
 Customized `org-refile-targets` supersedes manual defaults. Do not promise all level-one headings without inspecting the effective configuration. Diagnose requests for an explanation without modifying configuration; when a fix is requested, change the smallest relevant selector and verify the target picker without moving entries as a test.
 
 Inspect `(org-refile-get-targets)` in the intended source buffer to distinguish a missing target from one hidden by completion. With `org-refile-use-outline-path` set to `file` and `org-outline-path-complete-in-steps` non-nil, select the file and press RET before selecting its heading. Setting the latter to nil displays the full path at once, if that behavior is requested. Check `org-refile-use-cache` before blaming a stale cache; a valid tagged target need not require any selector change.
+
+For sibling `REFILE.org`, indirect buffers, or empty destinations, read [refile targets](references/refile-targets.md).
 
 ## Org LaTeX registration
 

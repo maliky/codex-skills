@@ -1,6 +1,6 @@
 ---
 name: kolabi-bot-runtime
-description: "Use for typed kolabi runtime work: state/event/command transitions, pair lifecycle, tail tracking, live gate readiness, Chronos, Horus, Ogun, and runtime boundary decisions."
+description: "Use for typed kolabi runtime work: state/event/command transitions, strategy revisions and attempt budgets, seeded activation cycles and unblocked tail-fill hooks, repetition and timeout clocks, pair lifecycle, tail tracking, Chronos, Horus, and Ogun."
 ---
 
 # Kolabi Bot Runtime
@@ -26,6 +26,10 @@ Keep runtime work inside typed state transitions and explicit command boundaries
 - **State/event work**: read [state and event loop](references/state-event-loop.md).
 - **Runtime placement**: read [runtime boundaries](references/runtime-boundaries.md).
 - **Tail behavior**: read [tail tracking](references/tail-tracking.md).
+- **Strategy reloads, frozen attempts, or revision budgets**: read [strategy revisions](references/strategy-revisions.md).
+- **Order timeouts, coexisting clones, or repeat signals**: read [timeouts and repetition](references/timeouts-and-repetition.md).
+- **Seeded dependency cycles, `-tuf`, or consumed/discarded admission signals**: read [seeded cycles](references/seeded-cycles.md).
+- **Uncertain order state or family holds**: read [private feed reconciliation](../kolabi-market-feeds/references/private-feed-reconciliation.md) alongside the relevant runtime transition code.
 - **Admin action safety**: read [admin action boundaries](references/admin-action-boundaries.md).
 - **Live/demo runtime lessons**: read [live runtime lessons](references/live-runtime-lessons.md).
 

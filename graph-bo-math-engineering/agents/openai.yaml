@@ -1,0 +1,4 @@
+interface:
+  display_name: "Graph BO Math Engineering"
+  short_description: "Maintain BO graphs and progression drafts"
+  default_prompt: "Use $graph-bo-math-engineering to update the Graph BO Math editor and verify its catalogue, saved drafts, tests, and publication state."

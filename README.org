@@ -13,21 +13,26 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 * Personal Skills
 
 - =amc-assessment-engineering=: author native AMC assessments, validate scoring, and define AMC-source conversion boundaries.
+- =codex-runtime-recovery=: restore local or SSH Codex startup, daemon readiness, and SQLite runtime operation.
 - =codex-session-cleanup=: diagnose session writer locks and remove exact local sessions with backup and verification.
+- =courses-budget-engineering=: maintain private receipt evidence, catalogue associations, financial rules, and typed Courses workflows.
 - =csrs-ent-engineering=: maintain CSRS ENT/PENT Django-Odoo architecture, tests, promotion, and deployment.
 - =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
-- =crypto-historical-analysis=: acquire historical prices, analyze market structure and instrument universes, and guide close-only intrinsic-time calibration.
+- =crypto-historical-analysis=: analyze historical markets, close-only intrinsic time, multiscale quantiles, and shared manalysis/Kolabi strategies.
 - =cuisine-book-engineering=: maintain the Cuisine OCR corpus, storyboard production, recipe-image mappings, and validated catalog imports.
+- =cuisine-web-engineering=: maintain Africa Cook, reviewed colour artwork, resumable web-image batches, and guided mobile cooking.
 - =document-conversion=: preserve structure across scans, Org, LaTeX, office, PDF, and text formats.
 - =elize-teaching-engineering=: maintain Elize lessons, assessments, reusable figures and exports, plus standalone BO/Progressions graph sources.
 - =emacs-mu4e-mail=: search local mail, edit OrgMime drafts, and maintain the Mu4e composition workflow.
-- =emacs-org-configuration=: maintain literate Emacs configuration, refile targets, and Org LaTeX registration.
-- =koba-vps-webops=: diagnose Koba/TU DNS, Nginx, TLS and web services, and verify explicitly requested app or graph-bo-math releases.
-- =kolabi-bot-runtime=: maintain typed runtime transitions and lifecycle boundaries.
-- =kolabi-kraken-futures=: operate and debug the Kraken Futures command surface.
-- =kolabi-market-feeds=: reconcile public and private feed-derived state.
-- =kolabi-multi-exchange-adapters=: maintain exchange-neutral and exchange-specific adapter boundaries.
-- =kolabi-run-analysis=: produce operator reports and bot-run forensics.
+- =emacs-org-configuration=: maintain literate Emacs configuration, source-relative and empty-file refile targets, and Org LaTeX registration.
+- =genealogy-engineering=: maintain private source provenance, linked genealogy formats, explorer edits, and conflict-aware publication.
+- =graph-bo-math-engineering=: maintain the standalone BO graph and progression editor, protected sources, immutable saves, and verified publication.
+- =koba-vps-webops=: operate Koba/TU web services, PHP runtimes, storage maintenance, DNS, Nginx, TLS, containers, and explicitly requested site releases.
+- =kolabi-bot-runtime=: maintain typed transitions, seeded cycles, strategy revisions, attempt budgets, timeout clocks, and repetition.
+- =kolabi-kraken-futures=: operate Kraken Futures commands and reconcile uncertain orders with bounded evidence.
+- =kolabi-market-feeds=: reconcile feed-derived state while distinguishing triggers, fills, and uncertain outcomes.
+- =kolabi-multi-exchange-adapters=: maintain adapter boundaries and typed Org strategy grammar, virtual orders, and units.
+- =kolabi-run-analysis=: trace strategy revisions and cycle signals, recover execution evidence, and report instrument-aware finance.
 - =long-memory-retrieval=: recover and audit prior local Codex session evidence.
 - =self-hosted-git-operations=: diagnose and synchronize non-GitHub SSH remotes safely.
 - =tu-curriculum-audit=: reconcile curriculum tables, descriptions, aliases, and witnesses.

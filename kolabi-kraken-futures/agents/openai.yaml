@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Kraken Futures"
   short_description: "Operate kolabi Kraken Futures workflows"
-  default_prompt: "Use $kolabi-kraken-futures to debug local Kraken Futures CLI commands, order contracts, smoke flows, and packaging."
+  default_prompt: "Use $kolabi-kraken-futures to debug local CLI and order contracts or trace uncertain orders through bounded Kraken status and history lookups."

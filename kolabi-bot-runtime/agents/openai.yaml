@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Bot Runtime"
-  short_description: "Maintain typed kolabi runtime transitions"
-  default_prompt: "Use $kolabi-bot-runtime to maintain kolabi State + Event -> Commands behavior, tail lifecycle transitions, and runtime boundaries."
+  short_description: "Maintain Kolabi revisions and order lifecycles"
+  default_prompt: "Use $kolabi-bot-runtime to maintain typed transitions, seeded cycles, unblocked tail-fill hooks, strategy revisions, budgets, and order clocks."

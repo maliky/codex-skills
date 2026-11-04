@@ -1,6 +1,6 @@
 ---
 name: kolabi-market-feeds
-description: "Use when work touches kolabi public or private feed ingestion, private payload reconciliation, feed-derived order or account visibility, sparse cancel or fill events, balance/noise suppression, and operator action logging driven by websocket events."
+description: "Use when work touches kolabi public or private feed ingestion, uncertain order reconciliation, trigger-versus-fill evidence, feed-derived order or account visibility, sparse cancel or fill events, balance/noise suppression, and operator action logging."
 ---
 
 # Kolabi Market Feeds
@@ -17,13 +17,13 @@ Treat feeds as state evidence. Preserve useful operator visibility while suppres
 
 1. Capture the exact payload shape or local log evidence.
 2. Identify whether the source is public feed, private feed, REST fallback, or canonical account state.
-3. Normalize sparse deltas without losing raw evidence needed for debugging.
+3. Normalize sparse deltas against the exact order/attempt without turning missing fields into zero fills or terminal status.
 4. Keep account/order visibility consistent across feed and command surfaces.
 5. Add tests or replay fixtures for the payload shapes that caused the issue.
 
 ## Routes
 
-- **Private payloads**: read [private feed reconciliation](references/private-feed-reconciliation.md).
+- **Private payloads, uncertain outcomes, or trigger/child evidence**: read [private feed reconciliation](references/private-feed-reconciliation.md).
 - **Public feed handling**: read [public feed handling](references/public-feed-handling.md).
 - **Operator logs**: read [operator logging](references/operator-logging.md).
 

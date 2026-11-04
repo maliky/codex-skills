@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cuisine Web Engineering"
+  short_description: "Maintain recipe website and reviewed colour artwork"
+  default_prompt: "Use $cuisine-web-engineering to update Africa Cook, resume reviewed colour artwork, or verify its mobile cooking and publication workflow."

@@ -1,6 +1,6 @@
 ---
 name: koba-vps-webops
-description: "Use when operating, debugging, or updating Koba VPS web deployments and host wiring, including koba.sarl subdomains, OVH DNS records, Nginx vhosts, small app service wrappers, certbot or Let's Encrypt certificates, DNS or CNAME/A-record checks, Docker Compose web apps, host-to-container networking, PostgreSQL access from containers, account-owned deployment retirement, Moodle/TULearn, WordPress/TUWP, TUSIS preprod deployment status, RCISouvenir/Koba Zo preproduction, graph-bo-math static releases, disk or quota triage, and public 404/500/SSL failures."
+description: "Operate Koba VPS deployments and host wiring: koba.sarl DNS, OVH, Nginx, TLS/Certbot, Docker Compose, container networking/PostgreSQL, account retirement, Moodle/TULearn, WordPress/TUWP, TUSIS and Koba Zo preproduction, graph-bo-math static releases, host/container PHP maintenance, storage cleanup, quotas, and public HTTP failures."
 ---
 
 # Koba VPS WebOps
@@ -33,4 +33,6 @@ Do not use it as the primary skill for application-domain fixes inside TUSIS, Ko
 - Read [diagnostic-ladder](references/diagnostic-ladder.md) for disk, quota, DNS, Nginx, TLS, Docker, and container networking checks.
 - Read [app-notes](references/app-notes.md) for Moodle/TULearn, WordPress/TUWP, and TUSIS preprod specifics.
 - Read [app-nginx-services](references/app-nginx-services.md) for small app Nginx files, exact host matching, service wrappers, and 502-after-reboot checks.
-- Read [graph-bo-math releases](references/graph-bo-math.md) for explicit static-site publication, manifest checks and rollback. Use `elize-teaching-engineering` for its BO/Progressions data or interface changes.
+- Read [graph-bo-math releases](references/graph-bo-math.md) for explicit static-site publication, manifest checks and rollback. Use `graph-bo-math-engineering` for the standalone app and `elize-teaching-engineering` for Elize source progressions.
+- Read [PHP maintenance](references/php-maintenance.md) for runtime inventory, scoped patching, customised Moodle/WordPress preservation and post-patch proof.
+- Read [storage maintenance](references/storage-maintenance.md) for exact cleanup candidates, dependency checks, log retention and measured reclamation.

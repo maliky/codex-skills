@@ -1,0 +1,4 @@
+interface:
+  display_name: "Courses Budget Engineering"
+  short_description: "Maintain private receipts and typed budget workflows"
+  default_prompt: "Use $courses-budget-engineering to implement a Courses change while preserving receipt evidence, financial rules, and space permissions."

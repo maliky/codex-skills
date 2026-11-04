@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Market Feeds"
   short_description: "Stabilize kolabi feed-derived state"
-  default_prompt: "Use $kolabi-market-feeds to debug public or private feed payloads, reconciliation gaps, and operator visibility logging."
+  default_prompt: "Use $kolabi-market-feeds to debug sparse payloads, distinguish triggers from fills, and reconcile uncertain order state without duplicate execution."

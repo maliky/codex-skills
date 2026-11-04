@@ -1,11 +1,11 @@
 ---
 name: crypto-historical-analysis
-description: "Use for crypto historical backfill and manalysis/bv statistics: amplitude thresholds, pipe/block prediction and associations, popular prices, Kraken Futures inventory, CoinGecko-ranked reports, volume interpretation, and one-minute close-only intrinsic-time/directional-change calibration. Keep this separate from live Kolabi runtime."
+description: "Use for crypto historical backfill and market statistics in hprices/manalysis: bv/beast_variation, amplitude thresholds, pipe/block prediction, cross-pipe association, popular-price analysis, instrument inventory, ranked Org reports, volume units, close-only intrinsic-time calibration, multiscale quantiles, and canonical strategy/cFunc files shared with Kolabi."
 ---
 
 # Crypto Historical Analysis
 
-Keep historical backfill and statistical analysis separate from live trading/runtime state. Use the downloader for datasets, then use analysis scripts for reports.
+Keep historical backfill and statistical analysis separate from live trading/runtime state. Use the downloader for datasets, then use analysis scripts for reports. For shared strategy ownership and links, follow the shared-strategies route; acquisition and statistical-analysis steps apply only when the task needs them.
 
 ## Avoid When
 
@@ -30,3 +30,5 @@ Keep historical backfill and statistical analysis separate from live trading/run
 - **Pipe prediction, distance, thresholds, and popular prices**: read [market structure analysis](references/market-structure-analysis.md).
 - **Kraken Futures inventory, CoinGecko rankings, and cross-instrument associations**: read [market universe analysis](references/market-universe-analysis.md).
 - **Intrinsic time, directional-change counts, and one-minute ADA delta calibration**: read [intrinsic-time calibration](references/intrinsic-time-calibration.md); distinguish the research plan from implemented commands and measured results.
+- **Quantile curves, percentile/duration slopes, linked explorer views, or report-reader provenance**: read [quantile explorer](references/quantile-explorer.md).
+- **Canonical strategies, shared cFunc modules, per-file Kolabi links, or cross-host path verification**: read [shared strategies](references/shared-strategies.md).

@@ -13,6 +13,8 @@ du -h -d 1 /home/jil /var/log 2>/dev/null
 
 Rank concrete reclaim targets sized to the user's goal. Common buckets on this host include unused Docker images, `/home/jil/.ollama`, `/home/jil/.codex`, `/home/jil/.pyenv`, `/var/cache/apt/archives`, and large files under `/var/log`. Do not delete caches, images, logs, or volumes until the user chooses the target or explicitly authorizes cleanup.
 
+For applying a selected cleanup, use [storage maintenance](storage-maintenance.md) to check exact objects, shared layers, active dependencies and post-cleanup continuity.
+
 For per-account space questions, distinguish host free space from quota:
 
 ```bash
