@@ -1,6 +1,6 @@
 ---
 name: kolabi-run-analysis
-description: "Use for Kolabi run forensics and operator reports: accepted strategy revisions, seeded-cycle signals, votes/triggers/fills/cancellations, head-fill recovery, reconciliation/timeouts, and instrument-aware gross/net, fees and exposure in Org tables."
+description: "Use for Kolabi run forensics and operator reports: accepted strategy revisions, MM attempt and execution scope, seeded-cycle signals, votes/triggers/fills/cancellations, head-fill recovery, reconciliation/timeouts, and instrument-aware gross/net, fees and exposure in Org tables."
 ---
 
 # Kolabi Run Analysis

@@ -32,6 +32,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 - =kolabi-kraken-futures=: operate Kraken Futures commands and reconcile uncertain orders with bounded evidence.
 - =kolabi-market-feeds=: reconcile feed-derived state while distinguishing triggers, fills, and uncertain outcomes.
 - =kolabi-multi-exchange-adapters=: maintain adapter boundaries and typed Org strategy grammar, virtual orders, and units.
+- =kolabi-okx-futures=: operate the explicit OKX Europe X-Perp route, contract units, portfolio evidence, and operator commands.
 - =kolabi-run-analysis=: trace strategy revisions and cycle signals, recover execution evidence, and report instrument-aware finance.
 - =long-memory-retrieval=: recover and audit prior local Codex session evidence.
 - =self-hosted-git-operations=: diagnose and synchronize non-GitHub SSH remotes safely.

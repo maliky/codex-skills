@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Multi-Exchange Adapters"
   short_description: "Maintain Kolabi adapters and typed Org strategies"
-  default_prompt: "Use $kolabi-multi-exchange-adapters to debug an adapter or validate Org strategy grammar, virtual order types, and price or quantity units."
+  default_prompt: "Use $kolabi-multi-exchange-adapters to maintain shared adapter contracts and Org grammar across venues, including the OKX route."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Crypto Historical Analysis"
   short_description: "Analyze crypto history and shared strategies"
-  default_prompt: "Use $crypto-historical-analysis for historical market statistics, close-only intrinsic-time calibration, multiscale quantiles, or shared manalysis strategies."
+  default_prompt: "Use $crypto-historical-analysis for historical statistics, close-only intrinsic-time calibration, cross-instrument strategy calibration, or shared manalysis strategies."

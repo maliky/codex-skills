@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Run Analysis"
   short_description: "Trace Kolabi run evidence and strategy revisions"
-  default_prompt: "Use $kolabi-run-analysis to trace revisions and cycle signals, recover supported head-fill evidence, and report instrument-aware finance and remaining exposure."
+  default_prompt: "Use $kolabi-run-analysis to trace a run, report MM fills and confirmed no-fill attempts accurately, and separate realised results from account-wide exposure."

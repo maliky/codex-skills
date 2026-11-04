@@ -1,6 +1,6 @@
 ---
 name: kolabi-multi-exchange-adapters
-description: "Use for kolabi cross-exchange adapter work: Binance, BitMEX, Kraken, demo/live setup, DB-backed exchange switching, adapter comparisons, Org strategy and CLI grammar, virtual order types, and price or quantity units."
+description: "Use for kolabi cross-exchange adapter work: Binance, BitMEX, Kraken, OKX, demo/live setup, DB-backed exchange switching, adapter comparisons, Org strategy and CLI grammar, virtual order types, and price or quantity units."
 ---
 
 # Kolabi Multi-Exchange Adapters
@@ -20,6 +20,7 @@ Use this skill for Kolabi adapter contracts and typed Org or CLI strategy inputs
 
 - **Adapter design or review**: read [adapter workflow](references/adapter-workflow.md).
 - **Org strategies, virtual types, units, or demo runs**: read [strategy grammar and demos](references/strategy-grammar-and-demos.md).
+- **OKX Europe X-Perps contracts, portfolio evidence or operator commands**: use [Kolabi OKX Futures](../kolabi-okx-futures/SKILL.md) alongside this skill when the shared contract is affected.
 
 ## Output Expectations
 

@@ -24,6 +24,12 @@ Before tabulating, identify:
 
 If the user asks for "current run only", exclude older attempts and stale DB rows unless explaining contamination.
 
+## Market Maker Reporting Scope
+
+- For a current MM status report, count executions and realised PnL from `MMBUY` and `MMSEL` unless the user requests a wider strategy scope. Show other families separately when needed to explain account exposure or an anomaly.
+- Call a reconciled attempt with confirmed zero execution a "tentative expirée sans exécution" (or "expired without execution" in English). Preserve exact log event names such as `HEAD_TIMEOUT` as evidence, but do not present these attempts as losing trades or execution errors. Keep failed submissions, genuinely unresolved attempts and partial fills distinct.
+- Query balance and position independently, with their own observation times and account scope. Label those figures account-wide; they cannot be attributed to the MM families merely because the run is current.
+
 ## Trigger, Fill, Cancellation And Vote Evidence
 
 | Claim | Evidence and limits |

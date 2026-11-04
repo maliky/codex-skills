@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kolabi OKX Futures"
+  short_description: "Operate Kolabi OKX X-Perps and portfolio"
+  default_prompt: "Use $kolabi-okx-futures to inspect the OKXF route, portfolio evidence, or operator commands safely."
