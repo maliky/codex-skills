@@ -112,3 +112,7 @@ Check these before proposing code changes:
 3. Still-live or unresolved pairs and virtual confirmations, in separate sections when relevant.
 4. Anomalies and likely causes, separated from confirmed facts.
 5. Suggested next check or fix only after the evidence is clear.
+
+## Account Reconciliation
+
+For opening wallets/positions, equity evolution, or profitable matched cycles alongside an account loss, use [account reconciliation](account-reconciliation.md). Match exact attempt identities and weighted fills, then reconcile the account ledger independently. `LEASE_CLOSED` and `ORDER_RECONCILED` do not prove execution. Inspect confirmed rejection payloads, including nested `raw_event.event.OrderRejected.order.orderError`, without assigning one observed reason to all missing tails. Include rejected and unclosed attempts in the denominator; missing fee evidence remains unknown.

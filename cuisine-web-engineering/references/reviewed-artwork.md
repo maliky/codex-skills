@@ -32,3 +32,7 @@ For an authorised cleanup, identify the current source/master/queue/review mappi
 Inspect `scripts/build_category_images.py`, `build_recipe_colors.py`, `build_ingredient_colors.py` and `catalog/recipe_colors.py` for the active collection's contract. Check source and master hashes plus the actual review evidence before building. The builders enforce different subsets of these checks; a successful resize alone does not certify editorial acceptance.
 
 The current web derivatives use WebP widths 320/640/960. Only approved entries with current source fingerprints belong in the served manifest. Verify that stale or absent colour derivatives fall back to the validated original and that the matching asset/version is selected. Masters, queue files and review histories are production state, not public media. Source changes invalidate their derived acceptance until checked again.
+
+## Recovering Missing Binaries
+
+Reviewed queues and manifests do not prove the image binaries exist; this checkout can exclude them from Git. Recheck after the user reports a transfer. If originals are missing, an existing release can supply them only after verifying each candidate's SHA-256 against the current authoritative source manifest. Copy only verified matches; do not weaken checks or regenerate an original merely because its exact deployed copy is absent locally. A manifest label can identify an unavailable photograph, but disclose that metadata identification is not visual inspection.

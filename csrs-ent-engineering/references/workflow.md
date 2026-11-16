@@ -46,3 +46,9 @@ Reuse Odoo `res.users`, `hr.employee`, `hr.department`, `project.task`, `mail.th
 - PostgreSQL should remain private. Preserve volumes and existing passwords unless the user explicitly asks to rotate or delete them.
 - Safe preprod sequence: verify branch state, create a mode-600 PostgreSQL dump, fast-forward or merge into `preprod`, run the repo deploy script, then verify services, `/readyz/`, `/app/`, and direct Odoo calls.
 - DNS success does not imply Nginx, TLS, WebSocket, or application readiness; use `koba-vps-webops` for those host layers.
+
+## Retrospective Requirements Specifications
+
+For a cahier des charges describing implemented work, review routes, services, permissions and tests as well as manuals and architecture. Distinguish exposed behavior from models, unexposed APIs, test-only features and proposed migrations. State reviewed revisions; static source review is not executed acceptance testing or proof of deployment. Keep CSRS Report capabilities separate from ENT's Odoo-owned extension and its legacy-mirror/cutover state.
+
+Follow the requested audience, language and document length rather than reusing one earlier specification's choices as universal defaults. An author's requested perspective is not a signature or institutional endorsement. Use [document conversion](../../document-conversion/SKILL.md) for editable/exported deliverables, explicitly check requested paper size and PDF page count, and keep maintained source authoritative. Ignored DOCX/PDF exports require a deliberate staging choice when publication is authorized; private-document publication needs an authorized destination, and an automatic-review rejection must not be bypassed through another command or remote.

@@ -44,3 +44,9 @@ Force-push only when the user explicitly authorizes rewriting that branch. Prefe
 ## Large Transfers
 
 Before publishing many generated assets, inspect `.gitignore`, `.gitattributes`, Git LFS policy, staged scope, and repository size. Keep one authoritative asset version when project policy says so. A failed ref update may leave uploaded objects on the server, but it still requires an OID check before assuming publication or retransferring everything.
+
+## Publishing An Existing Repository To GitLab
+
+Inspect the authoritative destination, advertised refs, worktree and all requested local branches/tags first. For an empty destination, add a separate remote rather than replacing existing remotes. Match the requested scope: current branch, selected branches or all local branches/tags; do not infer all-history publication from an ambiguous file upload request. When all local refs are authorized, use explicit head/tag refspecs, optionally atomically when supported; avoid `--mirror`, which can publish unrelated refs or delete remote ones. Handle annotated-tag peeled refs separately when comparing IDs. Verify every requested local ref against tracking and freshly advertised remote refs; reject non-fast-forward divergence rather than forcing it.
+
+A successful push is not a backup of ignored files, live databases or uploads. Before authorized local deletion, inspect unpublished refs in local bare repositories and runtime dependencies. Distinguish completed publication from a proposed decommission. If automatic security review rejects a destination, do not bypass it through another remote or command; report the stated boundary and resolve destination authorization through the applicable process.

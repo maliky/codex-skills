@@ -26,6 +26,7 @@ Keep Odoo authoritative for business state and Django thin. Inspect the real che
 ## Routes
 
 - **Architecture, Odoo contracts, tests, and deployment**: read [workflow](references/workflow.md).
+- **Retrospective requirements documents grounded in implemented behavior**: read [retrospective specifications](references/workflow.md#retrospective-requirements-specifications), then use `document-conversion` for the requested exports.
 
 ## Output Expectations
 

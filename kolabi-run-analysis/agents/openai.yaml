@@ -1,4 +1,4 @@
 interface:
   display_name: "Kolabi Run Analysis"
-  short_description: "Trace Kolabi run evidence and strategy revisions"
-  default_prompt: "Use $kolabi-run-analysis to report run outcomes or compare portfolio contributions per symbol at startup prices, with cash flows and exposure reconciled."
+  short_description: "Reconcile Kolabi runs, positions, balances and PnL"
+  default_prompt: "Use $kolabi-run-analysis to reconcile prices, positions, wallet movements and equity with family results, or compare portfolio contributions at startup prices."

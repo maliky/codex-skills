@@ -22,3 +22,7 @@ Remote paths such as `jil@54.36.60.51:git/repo.git`, `jil@54.36.60.51:~/git/repo
 - Do not weaken host-key checking. A changed host key requires independent verification.
 
 After changing a remote URL, run a read-only advertisement such as `git ls-remote` before attempting a push. If authentication succeeds but the path is wrong, preserve the server error exactly so the repository owner can distinguish a missing repository from an access-control failure.
+
+## GitLab SSH Bootstrap
+
+For GitLab.com, verify the advertised SSH host-key fingerprint against current official GitLab documentation before trusting it. A read-only connectivity check can use a temporary `UserKnownHostsFile` with strict checking; do not persist a trust entry merely for that test. Persist verified trust only when needed for an authorized ongoing workflow. Host-key failure, account authentication and repository-path authorization are separate checks. Do not guess a namespace solely from an account name when configured remotes or an explicit project URL provide the destination.

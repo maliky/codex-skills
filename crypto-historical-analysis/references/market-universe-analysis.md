@@ -39,3 +39,9 @@ State the ranking universe and unit in each heading. Put the exact source comman
 - Treat directional density, balance, lift, risk ratio, risk difference, odds ratio, phi, and backward coverage as descriptive full-history statistics.
 - Keep low-support candidates in complete CSV output but exclude them from rankings according to the command's support threshold.
 - Record unresolved asset mappings and provider/cache fallback behavior instead of silently dropping instruments.
+
+## Directional Interpretation And Compact Tables
+
+Directional lift is target frequency after a source signal divided by target baseline; high lift alone establishes neither high probability, adequate support nor causality. Directional balance compares temporal directions `q(A→B) - q(B→A)`, not buy versus sell. `LiftAB` uses B's baseline and `LiftBA` A's, so balance and lift rankings are not interchangeable. Confirm definitions in the current generator; for the documented forward-window route, target starts lie in `[source finish, source finish + forward window)`. Overlapping anchors can reuse targets and are not independent episodes. Apply the requested status/support filters without silently replacing them with a historical threshold.
+
+For wide Org rankings, use abbreviated headers and a foldable `:LEGEND:` drawer with one `:abbreviation: explanation` line per field; the manalysis convention targets roughly 200–250 characters per table line. Keep generator output, report copies and journal copies consistent, retain full-precision CSV evidence and exact originating commands, and respect local prose/display instructions. Check dataset availability before recomputing: a symbol-specific cache does not establish that a shared multi-symbol dataset exists.

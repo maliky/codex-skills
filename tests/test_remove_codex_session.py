@@ -107,6 +107,29 @@ class CleanupFixture(unittest.TestCase):
         backup_line = next(line for line in output.splitlines() if line.startswith("backup_dir: "))
         self.assertTrue(Path(backup_line.removeprefix("backup_dir: ")).is_dir())
 
+    def test_modern_stores_are_rejected_before_legacy_access(self) -> None:
+        for name in (
+            "thread_history_1.sqlite", "goals_1.sqlite", "queue_1.sqlite",
+            "memories_1.sqlite", "thread_history_1.sqlite-wal",
+            "thread_history_1.sqlite-shm",
+        ):
+            for flags in ((), ("--dry-run",)):
+                with self.subTest(store=name, flags=flags):
+                    store = self.home / name
+                    store.write_bytes(b"preserve modern state")
+                    before = {p: p.read_bytes() for p in self.home.rglob("*") if p.is_file()}
+                    with mock.patch.object(cleanup, "sqlite_tables") as inspect_db, mock.patch.object(
+                        cleanup, "create_snapshot"
+                    ) as snapshot:
+                        result, _, error = self.run_main("--session-id", SESSION_ID, *flags)
+                    self.assertEqual(result, 1)
+                    self.assertIn("codex delete", error)
+                    inspect_db.assert_not_called()
+                    snapshot.assert_not_called()
+                    after = {p: p.read_bytes() for p in self.home.rglob("*") if p.is_file()}
+                    self.assertEqual(before, after)
+                    store.unlink()
+
     def test_failure_restores_all_stores(self) -> None:
         with mock.patch.object(
             cleanup, "cleanup_db", side_effect=sqlite3.OperationalError("injected")

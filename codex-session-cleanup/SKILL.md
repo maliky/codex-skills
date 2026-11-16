@@ -19,33 +19,30 @@ For an unlock or resume repair, use the lock-recovery route below; the removal s
 
 ## Workflow
 
-1. Resolve the target exactly from the provided id or alias.
-2. Inspect `history.jsonl`, `session_index.jsonl`, `sessions/...jsonl`, and `state_5.sqlite` before deletion.
-3. Prefer the bundled cleanup script over manual JSONL or SQL edits.
-4. Probe SQLite schema before touching optional tables.
-5. Verify after deletion and report any residual references that belong to other sessions.
-6. Keep the skill-local cleanup script canonical; root-level copies under `$CODEX_HOME/scripts` are host-local conveniences.
+1. Resolve the exact authorized UUID from the index and metadata; identify active writers before removal.
+2. Read the installed `codex delete --help` and current storage layout. Prefer the supported CLI over direct JSONL/SQL deletion; read [supported deletion and legacy fallback](references/cleanup-script-usage.md).
+3. Inventory only relevant counts and sizes. Agree any backup policy rather than automatically copying shared databases or oversized transcripts onto a full disk.
+4. After deletion, verify the transcript, exact index entry, current SQLite stores and exact-ID prompt-history rows independently with read-only, schema-aware inspection.
+5. Preserve other sessions, references inside their text, shared databases, skills and assets. Do not remove a shared database to reclaim one conversation.
 
-## Scripts
+## Commands
 
-Use the bundled script for deterministic cleanup:
+After exact-target authorization and checking current help:
 
 ```bash
-python3 scripts/remove_codex_session.py --codex-home "$CODEX_HOME" --session-id SESSION_ID --dry-run
-python3 scripts/remove_codex_session.py --codex-home "$CODEX_HOME" --session-id SESSION_ID
-python3 scripts/remove_codex_session.py --codex-home "$CODEX_HOME" --name THREAD_ALIAS
+codex delete --force SESSION_UUID
 ```
 
-Default `--codex-home` is `$CODEX_HOME` or `~/.codex`.
+`--force` suppresses the CLI prompt; it does not replace user authorization. Do not assume a dry-run flag exists. The bundled script is a legacy-only fallback and rejects known modern stores before database access. Host-local copies can be stale; never use them to bypass that guard.
 
 ## Routes
 
 - **Locked session or failed resume**: read [session lock recovery](references/session-lock-recovery.md).
-- **Exact session removal**: read [cleanup script usage](references/cleanup-script-usage.md), dry-run the script, run it, then verify all stores.
+- **Exact session removal**: read [supported deletion and legacy fallback](references/cleanup-script-usage.md), use the CLI, then verify all stores.
 - **Empty-session cleanup**: read [cleanup heuristics](references/cleanup-heuristics.md), list ids first, delete in a bounded batch, then verify counts.
 - **Script sharing or sync**: read [script sharing](references/script-sharing.md) before comparing root-local and skill-local copies.
-- **Manual recovery**: inspect stores directly only when the script is missing or fails; keep edits schema-aware and minimal.
+- **Manual recovery**: diagnose CLI failure before considering any separately reviewed direct-store procedure; failure is not authorization for SQL deletion.
 
 ## Output Expectations
 
-Report removed session ids, removed aliases, backup location, rollout/history/index/thread-row counts, and residual references intentionally left because they belong to another session.
+Report the exact target, deletion method, verified residual counts, backup policy actually used and measured space change. Distinguish transcripts from shared databases, logs and caches.

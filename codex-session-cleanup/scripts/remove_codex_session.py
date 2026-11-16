@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remove a local Codex session by exact id or exact thread-name alias."""
+"""Remove an exact session from a verified legacy Codex store; reject modern stores."""
 
 from __future__ import annotations
 
@@ -392,6 +392,20 @@ def main() -> int:
     target: Target | None = None
     staged: list[Path] = []
     try:
+        modern_stores = (
+            "thread_history_1.sqlite", "goals_1.sqlite", "queue_1.sqlite",
+            "memories_1.sqlite",
+        )
+        if any(
+            (paths.codex_home / (name + suffix)).exists()
+            for name in modern_stores
+            for suffix in ("", "-wal", "-shm")
+        ):
+            raise CleanupError(
+                "Unsupported modern Codex storage: use the installed `codex delete` "
+                "command and verify all stores. This legacy helper cannot safely "
+                "remove the session, including in dry-run mode."
+            )
         tables = sqlite_tables(paths.state_db)
         target = resolve_target(paths, args, tables)
         history_count = count_jsonl(

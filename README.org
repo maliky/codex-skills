@@ -14,7 +14,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 
 - =amc-assessment-engineering=: author native AMC assessments, validate scoring, and define AMC-source conversion boundaries.
 - =codex-runtime-recovery=: restore local or SSH Codex startup, daemon readiness, and SQLite runtime operation.
-- =codex-session-cleanup=: diagnose session writer locks and remove exact local sessions with backup and verification.
+- =codex-session-cleanup=: diagnose session writer locks and remove exact local sessions using supported deletion with store verification.
 - =courses-budget-engineering=: maintain private receipt evidence, catalogue associations, financial rules, and typed Courses workflows.
 - =csrs-ent-engineering=: maintain CSRS ENT/PENT Django-Odoo architecture, tests, promotion, and deployment.
 - =csrs-report-engineering=: maintain the CSRS Django/React app, deployment, and psiaka bootstrap workflow.
@@ -33,7 +33,7 @@ The tracked skill folders are portable; =.system/= contains built-in Codex skill
 - =kolabi-market-feeds=: reconcile feed-derived state while distinguishing triggers, fills, and uncertain outcomes.
 - =kolabi-multi-exchange-adapters=: maintain adapter boundaries and typed Org strategy grammar, virtual orders, and units.
 - =kolabi-okx-futures=: operate the explicit OKX Europe X-Perp route, contract units, portfolio evidence, and operator commands.
-- =kolabi-run-analysis=: trace run evidence, report instrument-aware finance, and compare portfolio contributions per symbol at startup prices.
+- =kolabi-run-analysis=: trace run evidence, reconcile prices, positions and balances with account equity, and compare portfolios at startup prices.
 - =long-memory-retrieval=: recover and audit prior local Codex session evidence.
 - =self-hosted-git-operations=: diagnose and synchronize non-GitHub SSH remotes safely.
 - =tu-curriculum-audit=: reconcile curriculum tables, descriptions, aliases, and witnesses.
